@@ -165,14 +165,13 @@ app.put("/api/food-plan", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  "mongodb+srv://ananddev:PpxXIVSYPILYgBWf@cluster0.ovdb4wk.mongodb.net/milap?retryWrites=true&w=majority";
 
 async function startServer() {
   try {
-    if (!process.env.MONGODB_URI) {
-      throw new Error("MONGODB_URI .env file mein missing hai");
-    }
-
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(MONGODB_URI);
     console.log("MongoDB Atlas connected successfully!");
 
     app.listen(PORT, () => {

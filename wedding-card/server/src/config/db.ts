@@ -19,7 +19,9 @@ export const getStorageMode = () => ({
 });
 
 export const connectDB = async (): Promise<boolean> => {
-  const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/vivahpatra';
+  const uri =
+    process.env.MONGODB_URI ||
+    'mongodb+srv://ananddev:PpxXIVSYPILYgBWf@cluster0.ovdb4wk.mongodb.net/vivahpatra?retryWrites=true&w=majority';
 
   try {
     mongoose.set('strictQuery', false);

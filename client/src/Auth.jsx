@@ -1,6 +1,7 @@
 import { useState } from "react";
 import logoImg from "./assets/logo.jpg";
 import { UserRound, Mail, Lock, Phone, Calendar, MapPin, X, ChevronDown, ChevronUp } from "lucide-react";
+import { API_BASE } from "./apiConfig";
 
 export default function Auth({ onLogin, onClose }) {
   const [isRegister, setIsRegister] = useState(false);
@@ -38,7 +39,7 @@ export default function Auth({ onLogin, onClose }) {
         : { userId: userId.trim(), password };
 
       const response = await fetch(
-        `http://localhost:5000/api/auth/${
+        `${API_BASE}/api/auth/${
           isRegister ? "register" : "login"
         }`,
         {

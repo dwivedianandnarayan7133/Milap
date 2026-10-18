@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logoImg from "../assets/logo.jpg";
+import { API_BASE } from "../apiConfig";
 import {
   UserRound,
   Mail,
@@ -41,7 +42,7 @@ export default function ProfileManager({ authData, onUpdateProfile, onLogout }) 
 
     try {
       const token = authData?.token;
-      const response = await fetch("http://localhost:5000/api/auth/profile", {
+      const response = await fetch(`${API_BASE}/api/auth/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

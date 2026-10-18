@@ -1,4 +1,5 @@
 import logoImg from "../assets/logo.jpg";
+import { CARD_STUDIO_URL } from "../apiConfig";
 import {
   MapPin,
   Phone,
@@ -14,7 +15,7 @@ import {
 export default function UniversalFooter({ setPage, onOpenAdmin, onOpenAuth }) {
   function handleNav(targetPage) {
     if (targetPage === "Invitation") {
-      window.location.href = "http://localhost:5174";
+      window.location.href = CARD_STUDIO_URL;
       return;
     }
     if (setPage) {

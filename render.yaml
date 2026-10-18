@@ -15,7 +15,7 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: MONGODB_URI
-        sync: false
+        value: mongodb+srv://ananddev:PpxXIVSYPILYgBWf@cluster0.ovdb4wk.mongodb.net/milap?retryWrites=true&w=majority
 
   # Milap Frontend Web Application (React + Vite)
   - type: web

@@ -3,9 +3,10 @@ import { useEffect, useMemo, useState } from "react";
 import { Utensils, Users, IndianRupee, ShoppingBasket } from "lucide-react";
 import logoImg from "./assets/logo.jpg";
 import "./FoodPlanner.css";
+import { API_BASE } from "./apiConfig";
 
 const STORAGE_KEY = "shaadiManagerFoodPlanner";
-const API_URL = "http://localhost:5000/api/food-plan";
+const API_URL = `${API_BASE}/api/food-plan`;
 const recipes = [
   { id: "rice", name: "Chawal", unit: "kg", perGuest: 0.08, rate: 60, veg: true },
   { id: "atta", name: "Aata (roti)", unit: "kg", perGuest: 0.10, rate: 40, veg: true },

@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import { CARD_STUDIO_URL } from "../apiConfig";
 
 export default function InvitationSection() {
   useEffect(() => {
-    window.location.href = "http://localhost:5174";
+    window.location.href = CARD_STUDIO_URL;
   }, []);
 
   return (
@@ -25,7 +26,7 @@ export default function InvitationSection() {
         Redirecting to your Indian invitation card designer
       </p>
       <a
-        href="http://localhost:5174"
+        href={CARD_STUDIO_URL}
         style={{
           background: "#941b45",
           color: "#fff",

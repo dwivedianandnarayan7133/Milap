@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import logoImg from "../assets/logo.jpg";
+import { CARD_STUDIO_URL } from "../apiConfig";
 import {
   Sun,
   Moon,
@@ -54,7 +55,7 @@ export default function UniversalHeader({
 
   function handleNav(targetPage) {
     if (targetPage === "Invitation") {
-      window.location.href = "http://localhost:5174";
+      window.location.href = CARD_STUDIO_URL;
       return;
     }
     setPage(targetPage);
