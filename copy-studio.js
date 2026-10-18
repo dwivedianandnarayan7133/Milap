@@ -7,7 +7,10 @@ const destDir = path.join(__dirname, 'client', 'public', 'studio');
 
 function copyRecursive(src, dest) {
   if (!fs.existsSync(src)) return;
-  if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
+  if (fs.existsSync(dest)) {
+    fs.rmSync(dest, { recursive: true, force: true });
+  }
+  fs.mkdirSync(dest, { recursive: true });
 
   const entries = fs.readdirSync(src, { withFileTypes: true });
   for (const entry of entries) {

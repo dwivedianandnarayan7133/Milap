@@ -25,8 +25,8 @@ export const PageStrip: React.FC = () => {
         </span>
       </div>
 
-      {/* Center: Interactive Thumbnails */}
-      <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto max-w-[200px] sm:max-w-xl py-1 scrollbar-none">
+      {/* Center: Interactive Thumbnails (Responsive Horizontal Scroller) */}
+      <div className="flex-1 min-w-0 mx-2 sm:mx-4 flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto scroll-smooth overscroll-x-contain py-1 custom-studio-scroller-h">
         {project.pages.map((p, idx) => {
           const isActive = idx === activePageIndex;
           const bg = p.background;

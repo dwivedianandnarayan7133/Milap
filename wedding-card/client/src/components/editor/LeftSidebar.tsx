@@ -35,12 +35,25 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
   onTabChange,
 }) => {
   const [internalActiveTab, setInternalActiveTab] = useState<string>('ai');
+  const tabListRef = React.useRef<HTMLDivElement>(null);
+  const activeTabRef = React.useRef<HTMLButtonElement>(null);
 
   const activeTab = controlledActiveTab !== undefined ? controlledActiveTab : internalActiveTab;
   const setActiveTab = (tab: string) => {
     if (onTabChange) onTabChange(tab);
     else setInternalActiveTab(tab);
   };
+
+  // Auto-scroll active tab into view when changed
+  React.useEffect(() => {
+    if (activeTabRef.current && tabListRef.current) {
+      activeTabRef.current.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      });
+    }
+  }, [activeTab]);
 
   const tabs = [
     { id: 'details', label: 'Details', icon: FileText },
@@ -67,7 +80,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors"
+            className="p-1.5 rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors cursor-pointer"
             title="Close Drawer"
           >
             <X className="w-5 h-5" />
@@ -75,35 +88,41 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
         </div>
       )}
 
-      {/* Tab Nav Strip */}
-      <div className="flex border-b border-stone-200 overflow-x-auto bg-stone-50/70 shrink-0 scrollbar-thin">
-        {tabs.map((t) => {
-          const Icon = t.icon;
-          const isActive = activeTab === t.id;
+      {/* Tab Nav Strip (Smooth Horizontal Scroller) */}
+      <div className="relative border-b border-stone-200 bg-stone-50/80 shrink-0">
+        <div
+          ref={tabListRef}
+          className="flex overflow-x-auto scroll-smooth overscroll-x-contain custom-studio-scroller-h select-none"
+        >
+          {tabs.map((t) => {
+            const Icon = t.icon;
+            const isActive = activeTab === t.id;
 
-          return (
-            <button
-              key={t.id}
-              onClick={() => setActiveTab(t.id)}
-              className={`flex-1 min-w-[50px] py-2.5 flex flex-col items-center justify-center gap-1 text-[10px] font-medium transition-all border-b-2 cursor-pointer ${
-                isActive
-                  ? 'border-royal-gold text-royal-maroon bg-white font-bold shadow-2xs'
-                  : 'border-transparent text-stone-500 hover:text-stone-800 hover:bg-white/60'
-              }`}
-            >
-              <Icon
-                className={`w-4 h-4 ${
-                  t.highlight && !isActive ? 'text-amber-500' : isActive ? 'text-royal-gold' : ''
+            return (
+              <button
+                key={t.id}
+                ref={isActive ? activeTabRef : undefined}
+                onClick={() => setActiveTab(t.id)}
+                className={`flex-1 min-w-[62px] sm:min-w-[68px] px-2 sm:px-3 py-2.5 flex flex-col items-center justify-center gap-1 text-[11px] font-medium transition-all border-b-2 cursor-pointer shrink-0 ${
+                  isActive
+                    ? 'border-royal-gold text-royal-maroon bg-white font-bold shadow-2xs'
+                    : 'border-transparent text-stone-500 hover:text-stone-800 hover:bg-white/60'
                 }`}
-              />
-              <span className="truncate max-w-[50px]">{t.label}</span>
-            </button>
-          );
-        })}
+              >
+                <Icon
+                  className={`w-4 h-4 ${
+                    t.highlight && !isActive ? 'text-amber-500' : isActive ? 'text-royal-gold' : ''
+                  }`}
+                />
+                <span className="whitespace-nowrap">{t.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Tab Body */}
-      <div className="flex-1 overflow-hidden">
+      {/* Tab Body Container */}
+      <div className="flex-1 overflow-hidden relative flex flex-col min-h-0">
         {activeTab === 'details' && <EventFormTab />}
         {activeTab === 'ai' && <AIStudioTab />}
         {activeTab === 'templates' && <TemplatesTab />}

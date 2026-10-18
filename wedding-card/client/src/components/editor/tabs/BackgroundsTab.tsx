@@ -74,7 +74,7 @@ export const BackgroundsTab: React.FC = () => {
   };
 
   return (
-    <div className="p-4 space-y-5 text-stone-800 text-sm overflow-y-auto max-h-[calc(100vh-140px)]">
+    <div className="p-4 space-y-5 text-stone-800 text-sm h-full overflow-y-auto overscroll-y-contain custom-studio-scroller pb-24 sm:pb-8">
       {/* AI Background Generator */}
       <div className="bg-amber-50/70 p-3.5 rounded-lg border border-amber-200/90 space-y-3">
         <div className="flex items-center gap-1.5 text-royal-maroon font-bold text-xs">

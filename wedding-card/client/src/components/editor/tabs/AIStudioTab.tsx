@@ -116,7 +116,7 @@ export const AIStudioTab: React.FC = () => {
   };
 
   return (
-    <div className="p-4 space-y-5 text-stone-800 text-sm overflow-y-auto max-h-[calc(100vh-140px)]">
+    <div className="p-4 space-y-5 text-stone-800 text-sm h-full overflow-y-auto overscroll-y-contain custom-studio-scroller pb-24 sm:pb-8">
       {/* Sub tabs */}
       <div className="flex border-b border-stone-200">
         <button

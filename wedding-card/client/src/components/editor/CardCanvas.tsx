@@ -164,14 +164,15 @@ export const CardCanvas: React.FC = () => {
 
   return (
     <div
-      className="flex-1 overflow-auto flex items-center justify-center p-2 sm:p-6 md:p-8 bg-stone-200/70 select-none relative touch-manipulation"
+      className="flex-1 overflow-auto flex bg-stone-200/70 select-none relative touch-manipulation custom-studio-scroller overscroll-contain"
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Zoomed Container */}
+      {/* Zoomed Container with margin auto so it centers when it fits, and scrolls in all directions when larger */}
       <div
+        className="m-auto p-3 sm:p-6 md:p-8 shrink-0 flex items-center justify-center"
         style={{
           transform: `scale(${zoom / 100})`,
           transformOrigin: 'center center',

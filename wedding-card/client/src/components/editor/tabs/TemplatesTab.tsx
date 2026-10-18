@@ -23,7 +23,7 @@ export const TemplatesTab: React.FC = () => {
   };
 
   return (
-    <div className="p-4 space-y-4 text-stone-800 text-sm overflow-y-auto max-h-[calc(100vh-140px)]">
+    <div className="p-4 space-y-4 text-stone-800 text-sm h-full overflow-y-auto overscroll-y-contain custom-studio-scroller pb-24 sm:pb-8">
       <div>
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-semibold text-stone-700">Filter Templates</span>

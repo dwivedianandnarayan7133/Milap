@@ -17,7 +17,7 @@ export const EventFormTab: React.FC = () => {
   };
 
   return (
-    <div className="p-4 space-y-6 text-stone-800 text-sm overflow-y-auto max-h-[calc(100vh-140px)]">
+    <div className="p-4 space-y-6 text-stone-800 text-sm h-full overflow-y-auto overscroll-y-contain custom-studio-scroller pb-24 sm:pb-8">
       {/* Category & Language Header */}
       <div className="bg-amber-50/80 p-3.5 rounded-lg border border-amber-200/80 space-y-3">
         <div>

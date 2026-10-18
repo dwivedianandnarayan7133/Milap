@@ -29,7 +29,7 @@ export const QRCodeTab: React.FC = () => {
   };
 
   return (
-    <div className="p-4 space-y-5 text-stone-800 text-sm overflow-y-auto max-h-[calc(100vh-140px)]">
+    <div className="p-4 space-y-5 text-stone-800 text-sm h-full overflow-y-auto overscroll-y-contain custom-studio-scroller pb-24 sm:pb-8">
       <div className="bg-amber-50/80 p-3 rounded-lg border border-amber-200/80">
         <div className="flex items-center gap-1.5 text-royal-maroon font-bold text-xs mb-1">
           <QrCode className="w-4 h-4 text-royal-gold" />

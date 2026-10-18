@@ -41,18 +41,68 @@
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #F4EDE2;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4AF37;
+  background: rgba(212, 175, 55, 0.45);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #AA7C11;
+}
+
+/* Responsive Studio Scroller Utilities */
+.custom-studio-scroller {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.5) transparent;
+  overscroll-behavior-y: contain;
+}
+
+.custom-studio-scroller::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-studio-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-studio-scroller::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.45);
+  border-radius: 9999px;
+}
+.custom-studio-scroller::-webkit-scrollbar-thumb:hover {
+  background: rgba(170, 124, 17, 0.8);
+}
+
+.custom-studio-scroller-h {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.4) transparent;
+  overscroll-behavior-x: contain;
+}
+
+.custom-studio-scroller-h::-webkit-scrollbar {
+  height: 4px;
+}
+.custom-studio-scroller-h::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-studio-scroller-h::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.45);
+  border-radius: 9999px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Canvas guide lines */
@@ -62,3 +112,4 @@
 .safe-guide {
   outline: 1px dashed rgba(16, 185, 129, 0.5);
 }
+

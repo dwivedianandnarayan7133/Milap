@@ -36,7 +36,7 @@ export const TextBlocksTab: React.FC = () => {
   };
 
   return (
-    <div className="p-4 space-y-5 text-stone-800 text-sm overflow-y-auto max-h-[calc(100vh-140px)]">
+    <div className="p-4 space-y-5 text-stone-800 text-sm h-full overflow-y-auto overscroll-y-contain custom-studio-scroller pb-24 sm:pb-8">
       {/* Standard Text Elements */}
       <div>
         <label className="block text-xs font-bold text-royal-maroon uppercase tracking-wider mb-2">

@@ -21,7 +21,7 @@ export const LayersTab: React.FC = () => {
   const elements = currentPage?.elements || [];
 
   return (
-    <div className="p-4 space-y-6 text-stone-800 text-sm overflow-y-auto max-h-[calc(100vh-140px)]">
+    <div className="p-4 space-y-6 text-stone-800 text-sm h-full overflow-y-auto overscroll-y-contain custom-studio-scroller pb-24 sm:pb-8">
       {/* Pages Section */}
       <div>
         <div className="flex items-center justify-between mb-2">
