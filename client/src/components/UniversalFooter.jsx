@@ -14,6 +14,10 @@ import {
 
 export default function UniversalFooter({ setPage, onOpenAdmin, onOpenAuth }) {
   function handleNav(targetPage) {
+    if (targetPage === "Invitation") {
+      window.location.href = "/studio/";
+      return;
+    }
     if (setPage) {
       setPage(targetPage);
     }

@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sparkles, ExternalLink, ArrowLeft, Maximize2 } from "lucide-react";
 
 export default function InvitationSection({ onBackHome }) {
   const [fullscreen, setFullscreen] = useState(false);
+
+  useEffect(() => {
+    // Direct redirect to dedicated VivahPatra AI Studio URL
+    window.location.href = "/studio/";
+  }, []);
 
   return (
     <div

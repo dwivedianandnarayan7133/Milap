@@ -95,6 +95,11 @@ export default function App() {
   const [dark, setDark] = useState(false);
 
   function navigateTo(target) {
+    if (target === "Invitation" || target === "/invitations") {
+      window.location.href = "/studio/";
+      return;
+    }
+
     let targetPage = "Home";
     let targetRoute = "/";
 

@@ -62,32 +62,32 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-stone-300 text-xs">
               <li>
-                <a href="http://localhost:5173" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                <a href="/food-planner" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3 h-3 text-rose-500" /> Food & Catering Planner
                 </a>
               </li>
               <li>
-                <a href="http://localhost:5173" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                <a href="/venues" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3 h-3 text-rose-500" /> Banquet & Venue Booking
                 </a>
               </li>
               <li>
-                <a href="http://localhost:5173" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                <a href="/tent-decor" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3 h-3 text-rose-500" /> Royal Tent & Floral Decor
                 </a>
               </li>
               <li>
-                <a href="http://localhost:5173" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                <a href="/dj-sound" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3 h-3 text-rose-500" /> DJ, Sound & Ambient Lighting
                 </a>
               </li>
               <li>
-                <a href="/editor" className="text-amber-400 font-semibold hover:underline flex items-center gap-1.5">
+                <a href="#/editor" className="text-amber-400 font-semibold hover:underline flex items-center gap-1.5">
                   <ChevronRight className="w-3 h-3 text-amber-400" /> AI Indian Invitation Cards
                 </a>
               </li>
               <li>
-                <a href="http://localhost:5173" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                <a href="/about" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3 h-3 text-rose-500" /> About Milap & BKC HQ Studio
                 </a>
               </li>
@@ -168,7 +168,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <p className="text-stone-400 mb-2">For managers, coordinators & vendors</p>
                 <a
-                  href="http://localhost:5173"
+                  href="/"
                   className="inline-flex items-center gap-1 px-3 py-1 bg-white/10 hover:bg-rose-900/60 text-white rounded text-[11px] font-medium transition-colors"
                 >
                   <Lock className="w-3 h-3 text-amber-400" /> Admin Access
@@ -182,9 +182,9 @@ export const Footer: React.FC = () => {
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between text-stone-400 text-[11px] gap-2">
           <p>© {new Date().getFullYear()} Milap Wedding & Event Management Pvt. Ltd. All rights reserved.</p>
           <div className="flex items-center gap-3">
-            <a href="http://localhost:5173" className="hover:text-amber-400 transition-colors">Privacy Policy</a>
+            <a href="/" className="hover:text-amber-400 transition-colors">Privacy Policy</a>
             <span>·</span>
-            <a href="http://localhost:5173" className="hover:text-amber-400 transition-colors">Terms of Service</a>
+            <a href="/" className="hover:text-amber-400 transition-colors">Terms of Service</a>
             <span>·</span>
             <span className="flex items-center gap-1 text-rose-400">
               Crafted with <Heart className="w-3 h-3 fill-rose-500 text-rose-500" /> for Indian Weddings

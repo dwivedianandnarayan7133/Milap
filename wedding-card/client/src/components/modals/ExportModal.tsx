@@ -3,6 +3,9 @@ import { useCardStore } from '../../store/cardStore';
 import { exportPdfApi, exportPngApi } from '../../services/api';
 import { Download, Check, AlertCircle, FileText, Image as ImageIcon, Share2, Sparkles, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { jsPDF } from 'jspdf';
+import * as htmlToImage from 'html-to-image';
+import { getDimensionsForFormat } from '../../utils/canvasUtils';
 
 interface ExportModalProps {
   isOpen: boolean;
@@ -27,14 +30,39 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
 
     try {
       if (exportType === 'pdf_print' || exportType === 'pdf_standard') {
-        const blob = await exportPdfApi({
-          pages: project.pages,
-          format: project.format,
-          bleed: exportType === 'pdf_print' ? includeBleed : false,
-          cropMarks: exportType === 'pdf_print' ? includeCropMarks : false,
-          dpi: exportType === 'pdf_print' ? 300 : 150,
-          projectName: project.title,
-        });
+        let blob: Blob | null = null;
+        try {
+          blob = await exportPdfApi({
+            pages: project.pages,
+            format: project.format,
+            bleed: exportType === 'pdf_print' ? includeBleed : false,
+            cropMarks: exportType === 'pdf_print' ? includeCropMarks : false,
+            dpi: exportType === 'pdf_print' ? 300 : 150,
+            projectName: project.title,
+          });
+        } catch (apiErr) {
+          console.warn('Backend PDF service unavailable, compiling client-side vector PDF...', apiErr);
+          const canvasEl = document.getElementById('main-card-canvas');
+          if (!canvasEl) throw new Error('Card canvas element not found');
+
+          const dims = getDimensionsForFormat(project.format);
+          const imgData = await htmlToImage.toPng(canvasEl, {
+            quality: 0.98,
+            pixelRatio: exportType === 'pdf_print' ? 3 : 2,
+            cacheBust: true,
+          });
+
+          const pdf = new jsPDF({
+            orientation: dims.widthPx > dims.heightPx ? 'landscape' : 'portrait',
+            unit: 'mm',
+            format: [dims.widthMm, dims.heightMm],
+          });
+
+          pdf.addImage(imgData, 'PNG', 0, 0, dims.widthMm, dims.heightMm);
+          blob = pdf.output('blob');
+        }
+
+        if (!blob) throw new Error('Failed to generate PDF document');
 
         // Trigger browser download
         const url = window.URL.createObjectURL(blob);
@@ -48,50 +76,47 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
 
         setDownloadSuccess(true);
         confetti({ particleCount: 60, spread: 60, origin: { y: 0.7 } });
-      } else if (exportType === 'png_all') {
-        // Export Page 1 (or current page) as high-res PNG
-        const pageToExport = project.pages[0];
-        const blob = await exportPngApi({
-          page: pageToExport,
-          format: project.format,
-          dpi: 300,
-          pageNumber: 1,
-        });
+      } else if (exportType === 'png_all' || exportType === 'png_whatsapp') {
+        let blob: Blob | null = null;
+        try {
+          blob = await exportPngApi({
+            page: project.pages[0],
+            format: exportType === 'png_whatsapp' ? 'whatsapp_story' : project.format,
+            dpi: exportType === 'png_whatsapp' ? 150 : 300,
+            pageNumber: 1,
+          });
+        } catch (apiErr) {
+          console.warn('Backend PNG service unavailable, rendering client-side image...', apiErr);
+          const canvasEl = document.getElementById('main-card-canvas');
+          if (!canvasEl) throw new Error('Card canvas element not found');
+
+          const dataUrl = await htmlToImage.toPng(canvasEl, {
+            quality: 0.98,
+            pixelRatio: exportType === 'png_whatsapp' ? 2 : 3,
+            cacheBust: true,
+          });
+
+          const res = await fetch(dataUrl);
+          blob = await res.blob();
+        }
+
+        if (!blob) throw new Error('Failed to generate PNG image');
 
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `${project.title}_Cover.png`;
+        a.download = `${project.title}_${exportType === 'png_whatsapp' ? 'WhatsApp' : 'HighRes'}.png`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
 
         setDownloadSuccess(true);
-        confetti({ particleCount: 40, spread: 50, origin: { y: 0.7 } });
-      } else if (exportType === 'png_whatsapp') {
-        const pageToExport = project.pages[0];
-        const blob = await exportPngApi({
-          page: pageToExport,
-          format: 'whatsapp_story',
-          dpi: 150,
-          pageNumber: 1,
-        });
-
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${project.title}_WhatsApp.png`;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-
-        setDownloadSuccess(true);
+        confetti({ particleCount: 50, spread: 55, origin: { y: 0.7 } });
       }
     } catch (err: any) {
       console.error(err);
-      setErrorMsg(err.message || 'Export failed. Please check backend connection.');
+      setErrorMsg(err.message || 'Export failed. Please try again.');
     } finally {
       setIsExporting(false);
     }
@@ -99,9 +124,9 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 select-none">
-      <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full overflow-hidden border border-amber-200">
+      <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[92vh] flex flex-col overflow-hidden border border-amber-200">
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-royal-maroon to-royal-maroon-dark p-4 text-white flex items-center justify-between">
+        <div className="bg-gradient-to-r from-royal-maroon to-royal-maroon-dark p-4 text-white flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
             <Download className="w-5 h-5 text-royal-gold" />
             <h2 className="text-base font-bold font-serif">Export & Download Invitation</h2>
@@ -115,7 +140,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 space-y-5 text-stone-800 text-sm">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-5 text-stone-800 text-sm overflow-y-auto flex-1">
           {/* Format Presets */}
           <div>
             <label className="block text-xs font-bold text-royal-maroon uppercase tracking-wider mb-2">

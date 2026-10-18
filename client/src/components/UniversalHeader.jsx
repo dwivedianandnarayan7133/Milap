@@ -54,6 +54,10 @@ export default function UniversalHeader({
   const dropdownRef = useRef(null);
 
   function handleNav(targetPage) {
+    if (targetPage === "Invitation") {
+      window.location.href = "/studio/";
+      return;
+    }
     setPage(targetPage);
     setMobileMenuOpen(false);
     setServicesOpen(false);

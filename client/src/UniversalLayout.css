@@ -1752,27 +1752,6 @@ div.desktop-tablet-only.footer-main-container {
   .branches-grid {
     grid-template-columns: 1fr;
   }
-
-  .about-stats-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .values-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hq-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-branches-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .story-card {
-    flex-direction: column;
-    text-align: center;
-  }
 }
 
 /* ============================================================
@@ -1780,18 +1759,21 @@ div.desktop-tablet-only.footer-main-container {
    ============================================================ */
 .about-us-container {
   max-width: 1050px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  box-sizing: border-box;
 }
 
 .about-hero-banner {
   background: linear-gradient(115deg, #68132e, #941b45 58%, #ba586a);
   color: white;
   border-radius: 22px;
-  padding: 40px 32px;
+  padding: 38px 32px;
   box-shadow: 0 10px 28px rgba(148, 27, 69, 0.16);
+  box-sizing: border-box;
 }
 
 .about-badge {
@@ -1804,12 +1786,16 @@ div.desktop-tablet-only.footer-main-container {
   font-size: 11px;
   letter-spacing: 1.2px;
   font-weight: 700;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .about-hero-banner h1 {
-  font-size: clamp(26px, 4vw, 38px);
+  font-size: clamp(24px, 3.8vw, 38px);
   margin: 16px 0 10px;
   letter-spacing: -0.5px;
+  line-height: 1.25;
+  word-break: break-word;
 }
 
 .about-hero-banner p {
@@ -1831,16 +1817,21 @@ div.desktop-tablet-only.footer-main-container {
   background: rgba(255, 255, 255, 0.14);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 14px;
-  padding: 16px;
+  padding: 16px 12px;
   text-align: center;
   backdrop-filter: blur(4px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .stat-card h3 {
-  font-size: 26px;
+  font-size: clamp(22px, 3.2vw, 28px);
   margin: 0 0 4px;
   color: #ffdfb0;
   font-weight: 800;
+  line-height: 1.2;
 }
 
 .stat-card p {
@@ -1848,6 +1839,7 @@ div.desktop-tablet-only.footer-main-container {
   font-size: 12px;
   color: #fcecef;
   font-weight: 500;
+  line-height: 1.35;
 }
 
 /* Story Section */
@@ -1860,6 +1852,7 @@ div.desktop-tablet-only.footer-main-container {
   align-items: center;
   gap: 28px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
 }
 
 .story-logo {
@@ -1871,10 +1864,16 @@ div.desktop-tablet-only.footer-main-container {
   flex-shrink: 0;
 }
 
+.story-text {
+  flex: 1;
+  min-width: 0;
+}
+
 .story-text h2 {
   margin: 0 0 10px;
   font-size: 22px;
   color: #881337;
+  line-height: 1.3;
 }
 
 .story-text p {
@@ -1884,11 +1883,16 @@ div.desktop-tablet-only.footer-main-container {
   color: #55484e;
 }
 
+.story-text p:last-child {
+  margin-bottom: 0;
+}
+
 /* Values Section */
 .section-title {
   font-size: 20px;
   color: #881337;
   margin: 0 0 18px;
+  line-height: 1.3;
 }
 
 .values-grid {
@@ -1901,8 +1905,11 @@ div.desktop-tablet-only.footer-main-container {
   background: white;
   border: 1px solid var(--border, #eee2e1);
   border-radius: 16px;
-  padding: 22px;
+  padding: 22px 18px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .value-icon {
@@ -1914,17 +1921,19 @@ div.desktop-tablet-only.footer-main-container {
   display: grid;
   place-items: center;
   margin-bottom: 14px;
+  flex-shrink: 0;
 }
 
 .value-card h3 {
   font-size: 15px;
   margin: 0 0 8px;
   color: #2b1f24;
+  line-height: 1.3;
 }
 
 .value-card p {
   margin: 0;
-  font-size: 12px;
+  font-size: 12.5px;
   line-height: 1.6;
   color: #72656b;
 }
@@ -1932,7 +1941,7 @@ div.desktop-tablet-only.footer-main-container {
 /* HQ Section */
 .hq-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.35fr 1fr;
   gap: 24px;
 }
 
@@ -1942,6 +1951,7 @@ div.desktop-tablet-only.footer-main-container {
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
 }
 
 .hq-tag {
@@ -1961,6 +1971,8 @@ div.desktop-tablet-only.footer-main-container {
   font-size: 22px;
   margin: 12px 0 4px;
   color: #881337;
+  line-height: 1.3;
+  word-break: break-word;
 }
 
 .hq-sub {
@@ -1979,6 +1991,12 @@ div.desktop-tablet-only.footer-main-container {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  min-width: 0;
+}
+
+.detail-item > div {
+  min-width: 0;
+  flex: 1;
 }
 
 .icon-wine {
@@ -1999,6 +2017,8 @@ div.desktop-tablet-only.footer-main-container {
   font-size: 13px;
   line-height: 1.55;
   color: #55484e;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .detail-item small {
@@ -2006,6 +2026,8 @@ div.desktop-tablet-only.footer-main-container {
   font-size: 11px;
   color: #826f76;
   margin-top: 3px;
+  line-height: 1.4;
+  word-break: break-word;
 }
 
 /* Consultation Card */
@@ -2015,6 +2037,7 @@ div.desktop-tablet-only.footer-main-container {
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
 }
 
 .about-consultation-card h3 {
@@ -2024,12 +2047,14 @@ div.desktop-tablet-only.footer-main-container {
   font-size: 18px;
   margin: 0 0 6px;
   color: #881337;
+  line-height: 1.3;
 }
 
 .about-consultation-card p {
   color: #72656b;
   font-size: 13px;
   margin: 0 0 18px;
+  line-height: 1.5;
 }
 
 .about-inquiry-form label {
@@ -2048,18 +2073,22 @@ div.desktop-tablet-only.footer-main-container {
 .about-inquiry-form input,
 .about-inquiry-form select {
   width: 100%;
+  min-height: 42px;
   padding: 10px 12px;
   border: 1px solid #ded0d5;
   border-radius: 9px;
   font-size: 13px;
   background: #faf8f9;
   outline: none;
+  box-sizing: border-box;
 }
 
 .about-submit-btn {
   width: 100%;
   margin-top: 10px;
+  min-height: 44px;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .consultation-success-box {
@@ -2094,14 +2123,18 @@ div.desktop-tablet-only.footer-main-container {
   background: white;
   border: 1px solid var(--border, #eee2e1);
   border-radius: 16px;
-  padding: 18px;
+  padding: 18px 16px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .branch-box h4 {
   font-size: 14px;
   color: #881337;
   margin: 0 0 6px;
+  line-height: 1.3;
 }
 
 .branch-box p {
@@ -2109,14 +2142,247 @@ div.desktop-tablet-only.footer-main-container {
   color: #55484e;
   line-height: 1.5;
   margin: 0 0 8px;
+  flex: 1;
+  word-break: break-word;
 }
 
 .branch-box small {
   color: #88787f;
   font-size: 11px;
+  word-break: break-word;
 }
 
-/* Dark Mode for About Us */
+/* ============================================================
+   ABOUT US RESPONSIVENESS (TABLETS, PHONES & DIFFERENT SCREENS)
+   ============================================================ */
+
+/* Medium Tablets & Small Laptops (<= 1024px) */
+@media (max-width: 1024px) {
+  .about-us-container {
+    gap: 26px;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .hq-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-branches-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+/* Standard Tablets & Large Phones (<= 768px) */
+@media (max-width: 768px) {
+  .about-us-container {
+    gap: 22px;
+  }
+
+  .about-hero-banner {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+
+  .about-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .stat-card {
+    padding: 14px 10px;
+    border-radius: 12px;
+  }
+
+  .stat-card h3 {
+    font-size: 22px;
+  }
+
+  .story-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 18px;
+    gap: 16px;
+    border-radius: 18px;
+  }
+
+  .story-logo {
+    width: 76px;
+    height: 76px;
+    border-radius: 18px;
+  }
+
+  .story-text h2 {
+    font-size: 20px;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .about-hq-card,
+  .about-consultation-card {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .about-branches-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* Mobile Phones (<= 540px) */
+@media (max-width: 540px) {
+  .about-us-container {
+    gap: 18px;
+  }
+
+  .about-hero-banner {
+    padding: 22px 15px;
+    border-radius: 16px;
+  }
+
+  .about-hero-banner h1 {
+    font-size: 22px;
+    margin: 12px 0 8px;
+  }
+
+  .about-hero-banner p {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .about-stats-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .stat-card {
+    padding: 12px 6px;
+    border-radius: 10px;
+  }
+
+  .stat-card h3 {
+    font-size: 19px;
+  }
+
+  .stat-card p {
+    font-size: 11px;
+  }
+
+  .story-card {
+    padding: 18px 14px;
+    gap: 14px;
+    border-radius: 16px;
+  }
+
+  .story-logo {
+    width: 66px;
+    height: 66px;
+    border-radius: 16px;
+  }
+
+  .story-text h2 {
+    font-size: 18px;
+  }
+
+  .story-text p {
+    font-size: 13px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .value-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+
+  .about-hq-card,
+  .about-consultation-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .about-hq-card h2 {
+    font-size: 19px;
+  }
+
+  .detail-item {
+    gap: 10px;
+  }
+
+  .detail-item strong {
+    font-size: 12.5px;
+  }
+
+  .detail-item p {
+    font-size: 12.5px;
+  }
+
+  .about-consultation-card h3 {
+    font-size: 17px;
+  }
+
+  .about-inquiry-form input,
+  .about-inquiry-form select {
+    font-size: 14px;
+    padding: 9px 10px;
+  }
+
+  .about-branches-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .branch-box {
+    padding: 14px 12px;
+    border-radius: 14px;
+  }
+}
+
+/* Ultra-compact Phones (<= 360px) */
+@media (max-width: 360px) {
+  .about-hero-banner {
+    padding: 18px 12px;
+  }
+
+  .about-hero-banner h1 {
+    font-size: 20px;
+  }
+
+  .about-stats-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .stat-card {
+    padding: 10px 4px;
+  }
+
+  .stat-card h3 {
+    font-size: 17px;
+  }
+
+  .stat-card p {
+    font-size: 10.5px;
+  }
+}
+
+/* ============================================================
+   DARK MODE FOR ABOUT US
+   ============================================================ */
 .dark .story-card,
 .dark .value-card,
 .dark .about-hq-card,

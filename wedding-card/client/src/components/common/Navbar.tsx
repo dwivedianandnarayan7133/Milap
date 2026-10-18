@@ -23,7 +23,7 @@ export const Navbar: React.FC = () => {
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-stone-700">
           <a
-            href="http://localhost:5173"
+            href="/"
             className="text-stone-600 hover:text-royal-maroon flex items-center gap-1 py-1 px-2 rounded-md hover:bg-amber-50 transition-colors font-semibold"
           >
             ← Milap Home
@@ -75,7 +75,7 @@ export const Navbar: React.FC = () => {
         <div className="md:hidden bg-white border-b border-amber-200/80 shadow-lg px-4 pt-3 pb-5 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="space-y-1">
             <a
-              href="http://localhost:5173"
+              href="/"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-royal-maroon bg-amber-50/60 border border-amber-200"
             >

@@ -25,6 +25,24 @@ export const CardCanvas: React.FC = () => {
   const currentPage = project.pages[activePageIndex] || project.pages[0];
   const dims = getDimensionsForFormat(project.format);
 
+  // Auto-fit calculation for mobile and tablet screens
+  useEffect(() => {
+    const checkFit = () => {
+      if (typeof window === 'undefined') return;
+      const padding = window.innerWidth < 640 ? 24 : 64;
+      const availableWidth = window.innerWidth - padding;
+      if (availableWidth < dims.widthPx) {
+        const fitPercentage = Math.max(35, Math.floor((availableWidth / dims.widthPx) * 95));
+        if (zoom > fitPercentage) {
+          useCardStore.getState().setZoom(fitPercentage);
+        }
+      }
+    };
+    checkFit();
+    window.addEventListener('resize', checkFit);
+    return () => window.removeEventListener('resize', checkFit);
+  }, [dims.widthPx]);
+
   // Background styling
   const bg = currentPage?.background;
   let bgStyle: React.CSSProperties = {
@@ -163,6 +181,7 @@ export const CardCanvas: React.FC = () => {
         {/* Main Card Canvas */}
         <div
           ref={canvasRef}
+          id="main-card-canvas"
           onClick={handleCanvasClick}
           className={`relative shadow-2xl transition-all duration-200 rounded-sm overflow-hidden ${
             bg?.textureName === 'ivory'
