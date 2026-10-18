@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="vpGoldFav" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3C4" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#AA7C11" />
+    </linearGradient>
+    <radialGradient id="vpMaroonFav" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#7B142A" />
+      <stop offset="80%" stop-color="#540A18" />
+      <stop offset="100%" stop-color="#2D030A" />
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="57" fill="url(#vpMaroonFav)" stroke="url(#vpGoldFav)" stroke-width="3" />
+  <circle cx="60" cy="60" r="51" fill="none" stroke="url(#vpGoldFav)" stroke-width="1" stroke-dasharray="3 2" />
+  <!-- Auspicious Kalash & Coconut -->
+  <path d="M60 22 C66 30 73 38 70 45 C66 48 54 48 50 45 C47 38 54 30 60 22 Z" fill="url(#vpGoldFav)" />
+  <circle cx="60" cy="15" r="3" fill="url(#vpGoldFav)" />
+  <path d="M52 42 C40 35 30 41 28 49 C37 52 46 48 52 44 Z" fill="url(#vpGoldFav)" />
+  <path d="M68 42 C80 35 90 41 92 49 C83 52 74 48 68 44 Z" fill="url(#vpGoldFav)" />
+  <path d="M43 48 C43 46 77 46 77 48 L74 54 L46 54 Z" fill="url(#vpGoldFav)" />
+  <path d="M46 54 C33 60 31 78 41 86 C49 92 71 92 79 86 C89 78 87 60 74 54 Z" fill="url(#vpGoldFav)" />
+  <path d="M60 61 C64 67 67 73 60 81 C53 73 56 67 60 61 Z" fill="#540A18" />
+  <circle cx="60" cy="74" r="2" fill="url(#vpGoldFav)" />
+  <path d="M46 88 H74 L71 94 H49 Z" fill="url(#vpGoldFav)" />
+  <rect x="44" y="94" width="32" height="3" rx="1.5" fill="url(#vpGoldFav)" />
+</svg>
