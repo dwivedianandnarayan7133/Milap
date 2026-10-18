@@ -3,8 +3,11 @@
   "buildCommand": "cd client && npm install && npm run build",
   "outputDirectory": "client/dist",
   "framework": "vite",
-  "cleanUrls": true,
   "rewrites": [
+    {
+      "source": "/studio/:match*",
+      "destination": "/studio/:match*"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
