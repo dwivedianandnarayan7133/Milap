@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logoImg from "./assets/logo.jpg";
 import FoodPlanner from "./FoodPlanner";
 import Auth from "./Auth";
@@ -31,6 +31,48 @@ import {
 import "./index.css";
 import "./UniversalLayout.css";
 
+// ==========================================
+// FEATURE URL ROUTE MAPPING
+// ==========================================
+export const ROUTE_MAP = {
+  "/": "Home",
+  "/home": "Home",
+  "/venues": "Venue",
+  "/venue": "Venue",
+  "/food-planner": "Food",
+  "/food": "Food",
+  "/invitations": "Invitation",
+  "/invitation": "Invitation",
+  "/cards": "Invitation",
+  "/dj-sound": "DJ & Stage",
+  "/tent-decor": "Tent & Decor",
+  "/bhandari": "Bhandari",
+  "/jaimala-stage": "Jaimala Stage",
+  "/sweets-drinks": "Sweets & Drinks",
+  "/about": "About",
+  "/about-us": "About",
+  "/contact": "Contact",
+  "/location": "Contact",
+  "/profile": "Profile",
+  "/bookings": "Bookings",
+};
+
+export const PAGE_TO_ROUTE = {
+  Home: "/",
+  Venue: "/venues",
+  Food: "/food-planner",
+  Invitation: "/invitations",
+  "DJ & Stage": "/dj-sound",
+  "Tent & Decor": "/tent-decor",
+  Bhandari: "/bhandari",
+  "Jaimala Stage": "/jaimala-stage",
+  "Sweets & Drinks": "/sweets-drinks",
+  About: "/about",
+  Contact: "/contact",
+  Profile: "/profile",
+  Bookings: "/bookings",
+};
+
 const services = [
   { name: "Venue Booking", desc: "Hall, home, farm & resorts", icon: MapPin, page: "Venue" },
   { name: "Food Planning", desc: "Veg & Non-Veg custom menu", icon: Utensils, page: "Food" },
@@ -43,8 +85,47 @@ const services = [
 ];
 
 export default function App() {
-  const [page, setPage] = useState("Home");
+  const getInitialPage = () => {
+    if (typeof window === "undefined") return "Home";
+    const path = window.location.pathname.toLowerCase().replace(/\/$/, "");
+    return ROUTE_MAP[path || "/"] || "Home";
+  };
+
+  const [page, setPageState] = useState(getInitialPage);
   const [dark, setDark] = useState(false);
+
+  function navigateTo(target) {
+    let targetPage = "Home";
+    let targetRoute = "/";
+
+    if (PAGE_TO_ROUTE[target]) {
+      targetPage = target;
+      targetRoute = PAGE_TO_ROUTE[target];
+    } else if (ROUTE_MAP[target?.toLowerCase()]) {
+      targetPage = ROUTE_MAP[target.toLowerCase()];
+      targetRoute = target.toLowerCase();
+    } else {
+      targetPage = target || "Home";
+      targetRoute = PAGE_TO_ROUTE[targetPage] || "/";
+    }
+
+    setPageState(targetPage);
+    if (typeof window !== "undefined" && window.location.pathname !== targetRoute) {
+      window.history.pushState({ page: targetPage }, "", targetRoute);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Handle browser back and forward button navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.toLowerCase().replace(/\/$/, "");
+      const targetPage = ROUTE_MAP[path || "/"] || "Home";
+      setPageState(targetPage);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   // User Auth State
   const [authData, setAuthData] = useState(() => {
@@ -109,7 +190,7 @@ export default function App() {
       {/* UNIVERSAL HEADER */}
       <UniversalHeader
         page={page}
-        setPage={setPage}
+        setPage={navigateTo}
         dark={dark}
         setDark={setDark}
         authData={authData}
@@ -144,14 +225,14 @@ export default function App() {
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "16px" }}>
                   <button
                     className="hero-btn"
-                    onClick={() => setPage("Food")}
+                    onClick={() => navigateTo("Food")}
                   >
                     Calculate Food Budget <ArrowRight size={17} />
                   </button>
                   <button
                     className="outline-btn"
                     style={{ background: "rgba(255,255,255,0.15)", color: "#fff", borderColor: "rgba(255,255,255,0.4)" }}
-                    onClick={() => setPage("About")}
+                    onClick={() => navigateTo("About")}
                   >
                     <Info size={15} /> About Us
                   </button>
@@ -184,13 +265,7 @@ export default function App() {
                 <button
                   className="service-card"
                   key={name}
-                  onClick={() => {
-                    if (target === "Invitation") {
-                      window.location.href = "http://localhost:5174";
-                    } else {
-                      setPage(target);
-                    }
-                  }}
+                  onClick={() => navigateTo(target)}
                 >
                   <span className={`service-icon tone-${i % 4}`}>
                     <Icon size={23} />
@@ -215,7 +290,7 @@ export default function App() {
               </div>
               <button
                 className="outline-btn"
-                onClick={() => setPage("About")}
+                onClick={() => navigateTo("About")}
               >
                 Learn About Milap <ArrowRight size={15} />
               </button>
@@ -226,7 +301,10 @@ export default function App() {
         ) : page === "About" || page === "Contact" ? (
           <AboutUsView onOpenAdmin={() => setAdminModalOpen(true)} />
         ) : page === "Invitation" ? (
-          <InvitationSection onBackHome={() => setPage("Home")} />
+          <InvitationSection
+            onBackHome={() => navigateTo("Home")}
+            onOpenContact={() => navigateTo("Contact")}
+          />
         ) : page === "Profile" ? (
           authData ? (
             <ProfileManager
@@ -260,10 +338,10 @@ export default function App() {
                   Update your guest and catering details in your profile.
                 </p>
                 <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
-                  <button className="primary-btn" onClick={() => setPage("Profile")}>
+                  <button className="primary-btn" onClick={() => navigateTo("Profile")}>
                     Update Profile Details
                   </button>
-                  <button className="outline-btn" onClick={() => setPage("Food")}>
+                  <button className="outline-btn" onClick={() => navigateTo("Food")}>
                     Manage Food Plan
                   </button>
                 </div>
@@ -288,10 +366,10 @@ export default function App() {
               Our team at the Milap BKC Corporate Office is coordinating premier services for {page}.
             </p>
             <div style={{ display: "flex", gap: "10px", marginTop: "18px" }}>
-              <button className="primary-btn" onClick={() => setPage("Contact")}>
+              <button className="primary-btn" onClick={() => navigateTo("Contact")}>
                 Inquire with BKC Office
               </button>
-              <button className="outline-btn" onClick={() => setPage("Home")}>
+              <button className="outline-btn" onClick={() => navigateTo("Home")}>
                 Back to Home
               </button>
             </div>
@@ -301,7 +379,7 @@ export default function App() {
 
       {/* UNIVERSAL FOOTER (GREY BACKGROUND) */}
       <UniversalFooter
-        setPage={setPage}
+        setPage={navigateTo}
         onOpenAdmin={() => setAdminModalOpen(true)}
         onOpenAuth={() => setAuthModalOpen(true)}
       />
@@ -333,10 +411,7 @@ export default function App() {
           <button
             key={name}
             className={page === name ? "nav-item active" : "nav-item"}
-            onClick={() => {
-              setPage(name);
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
+            onClick={() => navigateTo(name)}
           >
             <Icon size={21} />
             <span>{name}</span>

@@ -14,13 +14,8 @@ import {
 
 export default function UniversalFooter({ setPage, onOpenAdmin, onOpenAuth }) {
   function handleNav(targetPage) {
-    if (targetPage === "Invitation") {
-      window.location.href = CARD_STUDIO_URL;
-      return;
-    }
     if (setPage) {
       setPage(targetPage);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }
 

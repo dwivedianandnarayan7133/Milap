@@ -54,14 +54,9 @@ export default function UniversalHeader({
   const dropdownRef = useRef(null);
 
   function handleNav(targetPage) {
-    if (targetPage === "Invitation") {
-      window.location.href = CARD_STUDIO_URL;
-      return;
-    }
     setPage(targetPage);
     setMobileMenuOpen(false);
     setServicesOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   // Close dropdown on outside click
