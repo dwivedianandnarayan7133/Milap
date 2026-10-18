@@ -1,0 +1,31 @@
+services:
+  # Milap Backend Server (Node.js API)
+  - type: web
+    name: milap-server
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false
+
+  # Milap Frontend Web Application (React + Vite)
+  - type: web
+    name: milap-client
+    runtime: static
+    plan: free
+    region: oregon
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

@@ -1,0 +1,25 @@
+{
+  "name": "milap-platform",
+  "version": "1.0.0",
+  "description": "Milap - Modern Indian Wedding & Event Management Platform with VivahPatra AI Invitation Studio",
+  "private": true,
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && npm start",
+    "client:dev": "npm --prefix client run dev",
+    "server:dev": "npm --prefix server run dev",
+    "wedding:dev": "npm --prefix wedding-card/client run dev",
+    "wedding:server": "npm --prefix wedding-card/server run dev"
+  },
+  "keywords": [
+    "wedding",
+    "invitation",
+    "milap",
+    "vivahpatra",
+    "indian-wedding",
+    "react",
+    "express"
+  ],
+  "author": "dwivedianandnarayan7133",
+  "license": "ISC"
+}

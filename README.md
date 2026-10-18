@@ -120,6 +120,29 @@ Open `http://localhost:5174` in your browser or click **"Invitations"** on the M
 
 ---
 
+## 🚀 One-Click Cloud Deployment
+
+### A. Deploy on Render (Full-Stack Backend + Client)
+This repository includes a native [`render.yaml`](render.yaml) Blueprint configuration:
+1. Log in to [Render Dashboard](https://dashboard.render.com/).
+2. Click **New +** > **Blueprint**.
+3. Connect your GitHub repository: `https://github.com/dwivedianandnarayan7133/Milap` (or `https://github.com/Vishal-9580/Milap`).
+4. Render automatically configures:
+   - **`milap-server`** (Node.js web service running Express API)
+   - **`milap-client`** (Fast static site running React + Vite with SPA rewrites)
+5. Add your `MONGODB_URI` connection string in the Render environment variables dashboard.
+6. Click **Apply** to deploy live!
+
+### B. Deploy on Vercel (Frontend Client)
+This repository includes [`vercel.json`](vercel.json) pre-configured with Vite and SPA rewrites:
+1. Log in to [Vercel](https://vercel.com).
+2. Click **Add New...** > **Project**.
+3. Import your GitHub repository: `https://github.com/dwivedianandnarayan7133/Milap`.
+4. Vercel automatically detects the build command (`cd client && npm install && npm run build`) and output directory (`client/dist`).
+5. Click **Deploy** — your live production URL is ready in under 60 seconds!
+
+---
+
 ## 🎨 Technology Stack
 
 - **Frontend**: React 18, Vite, TypeScript, Tailwind CSS, Lucide Icons, Canvas API, Google Fonts.
