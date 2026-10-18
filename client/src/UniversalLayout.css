@@ -1721,6 +1721,16 @@ div.desktop-tablet-only.footer-main-container {
     display: none !important;
   }
 
+  .header-hotline-bar {
+    display: none !important;
+  }
+
+  .header-main-nav {
+    height: 60px;
+    padding: 0 14px;
+    gap: 10px;
+  }
+
   .phone-only {
     display: flex !important;
   }

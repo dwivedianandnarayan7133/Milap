@@ -5,6 +5,10 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/api/:match*",
+      "destination": "https://milap-server-qt84.onrender.com/api/:match*"
+    },
+    {
       "source": "/studio/:match*",
       "destination": "/studio/:match*"
     },

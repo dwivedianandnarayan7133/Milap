@@ -77,7 +77,7 @@ export default function UniversalHeader({
   return (
     <header className="universal-header">
       {/* Top Notification / Hotline Banner */}
-      <div className="header-hotline-bar">
+      <div className="header-hotline-bar desktop-tablet-only">
         <div className="hotline-container">
           <span className="hotline-item">
             <MapPin size={13} /> Corporate HQ: BKC Mumbai | Delhi NCR | Jaipur
