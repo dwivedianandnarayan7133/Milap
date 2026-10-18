@@ -1,6 +1,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Utensils, Users, IndianRupee, ShoppingBasket } from "lucide-react";
+import logoImg from "./assets/logo.jpg";
 import "./FoodPlanner.css";
 
 const STORAGE_KEY = "shaadiManagerFoodPlanner";
@@ -201,7 +202,7 @@ useEffect(() => {
   return (
     <div className="food-planner">
       <div className="food-heading">
-        <span className="food-symbol"><Utensils /></span>
+        <img src={logoImg} alt="Milap" className="food-planner-logo" />
         <div>
           <h1>Food Planner</h1>
           <p>Menu, ingredients aur budget ek jagah manage karein.</p>

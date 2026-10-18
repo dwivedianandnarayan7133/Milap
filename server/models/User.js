@@ -25,6 +25,38 @@ const userSchema = new mongoose.Schema(
       required: true,
       select: false,
     },
+    fullName: {
+      type: String,
+      default: "",
+    },
+    phone: {
+      type: String,
+      default: "",
+    },
+    weddingDate: {
+      type: String,
+      default: "",
+    },
+    city: {
+      type: String,
+      default: "",
+    },
+    guestCount: {
+      type: Number,
+      default: 500,
+    },
+    budget: {
+      type: String,
+      default: "",
+    },
+    foodPreference: {
+      type: String,
+      default: "Veg",
+    },
+    notes: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );

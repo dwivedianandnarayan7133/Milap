@@ -1,0 +1,177 @@
+import puppeteer from 'puppeteer';
+import { exportProjectToPDF, getDimensionsForFormat, findBrowserExecutable } from '../src/services/pdfService.js';
+import fs from 'fs';
+
+async function renderPreview() {
+  const p1 = {
+    id: 'p1_cover',
+    pageNumber: 1,
+    role: 'cover' as const,
+    title: 'Front Cover',
+    background: {
+      type: 'gradient' as const,
+      color: '#4A0815',
+      gradient: 'linear-gradient(135deg, #5B0C1D 0%, #36050E 100%)',
+      textureName: 'maroon_velvet',
+    },
+    elements: [
+      {
+        id: 'el_cover_frame',
+        type: 'frame' as const,
+        frameStyle: 'royal_arch',
+        color: '#D4AF37',
+        thickness: 3,
+        padding: 12,
+        x: 4,
+        y: 4,
+        width: 92,
+        height: 92,
+        rotation: 0,
+        zIndex: 1,
+        isLocked: true,
+      },
+      {
+        id: 'el_cover_ganesh',
+        type: 'motif' as const,
+        motifKey: 'ganesh',
+        color: '#D4AF37',
+        x: 38,
+        y: 12,
+        width: 24,
+        height: 16,
+        rotation: 0,
+        zIndex: 2,
+      },
+      {
+        id: 'el_cover_blessing',
+        type: 'text' as const,
+        content: '॥ मांगल्यं तन्तुनानेन मम जीवनहेतुना ॥',
+        fontFamily: '"Rozha One", serif',
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#F3E5AB',
+        align: 'center',
+        lineHeight: 1.4,
+        letterSpacing: 2,
+        isFoil: true,
+        x: 10,
+        y: 30,
+        width: 80,
+        height: 8,
+        rotation: 0,
+        zIndex: 3,
+        role: 'blessing',
+      },
+      {
+        id: 'el_cover_subtitle',
+        type: 'text' as const,
+        content: 'शुभ विवाह आमन्त्रणम्',
+        fontFamily: '"Cinzel", "Rozha One", serif',
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#D4AF37',
+        align: 'center',
+        lineHeight: 1.3,
+        letterSpacing: 4,
+        x: 10,
+        y: 40,
+        width: 80,
+        height: 6,
+        rotation: 0,
+        zIndex: 3,
+        role: 'title',
+      },
+      {
+        id: 'el_cover_names',
+        type: 'text' as const,
+        content: 'आदित्य संग अनन्या',
+        fontFamily: '"Rozha One", serif',
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: '#FFFFFF',
+        align: 'center',
+        lineHeight: 1.5,
+        letterSpacing: 1,
+        isFoil: true,
+        textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+        x: 10,
+        y: 49,
+        width: 80,
+        height: 25,
+        rotation: 0,
+        zIndex: 3,
+        role: 'names',
+      },
+      {
+        id: 'el_cover_date',
+        type: 'text' as const,
+        content: '२८ नवम्बर २०२५ • उदयपुर, राजस्थान',
+        fontFamily: '"Noto Serif Devanagari", serif',
+        fontSize: 14,
+        fontWeight: '500',
+        color: '#F3E5AB',
+        align: 'center',
+        lineHeight: 1.4,
+        letterSpacing: 1,
+        x: 10,
+        y: 82,
+        width: 80,
+        height: 6,
+        rotation: 0,
+        zIndex: 3,
+        role: 'date_time',
+      },
+      {
+        id: 'el_cover_milaap',
+        type: 'text' as const,
+        content: 'MILAAP',
+        fontFamily: '"Cinzel", serif',
+        fontSize: 9,
+        fontWeight: '600',
+        color: '#D4AF37',
+        align: 'center',
+        lineHeight: 1.2,
+        letterSpacing: 4,
+        isFoil: true,
+        x: 20,
+        y: 91,
+        width: 60,
+        height: 4,
+        rotation: 0,
+        zIndex: 4,
+        role: 'quote',
+      },
+    ],
+  };
+
+  const executablePath = findBrowserExecutable();
+  const browser = await puppeteer.launch({
+    executablePath,
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
+
+  const page = await browser.newPage();
+  // Call exportPageToPNG internally or set content
+  const dims = getDimensionsForFormat('a5_portrait', false);
+  console.log('Dims:', dims);
+
+  // Generate PDF first
+  const pdfBuffer = await exportProjectToPDF({
+    pages: [p1],
+    format: 'a5_portrait',
+    bleed: false,
+    dpi: 300,
+    projectName: 'Test_Render',
+  });
+  fs.writeFileSync('test_render_single.pdf', pdfBuffer);
+
+  const { exportPageToPNG } = await import('../src/services/pdfService.js');
+  const pngBuffer = await exportPageToPNG(p1, 'a5_portrait', 300);
+  fs.writeFileSync('test_cover_preview.png', pngBuffer);
+
+  await browser.close();
+  console.log('Single page PDF and PNG written.');
+}
+
+renderPreview().catch(console.error);

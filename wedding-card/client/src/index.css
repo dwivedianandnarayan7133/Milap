@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: #E6DCCD;
+  }
+  body {
+    background-color: #FAF7F2;
+    color: #2D2424;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Custom Gold Foil Text Gradient */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #F9F1D8 0%, #D4AF37 40%, #AA7C11 80%, #F5E5AB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-gradient {
+  border-image: linear-gradient(135deg, #F3E5AB, #D4AF37, #AA7C11, #F3E5AB) 1;
+}
+
+/* Texture classes */
+.paper-texture-ivory {
+  background-color: #FFFDF9;
+  background-image: radial-gradient(#F0E8DC 0.75px, transparent 0.75px);
+  background-size: 16px 16px;
+}
+
+.paper-texture-parchment {
+  background-color: #F8F3E8;
+  background-image: 
+    radial-gradient(#E8DECE 0.5px, transparent 0.5px),
+    linear-gradient(to right, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+  background-size: 12px 12px, 36px 36px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F4EDE2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #AA7C11;
+}
+
+/* Canvas guide lines */
+.bleed-guide {
+  outline: 1px dashed rgba(220, 38, 38, 0.5);
+}
+.safe-guide {
+  outline: 1px dashed rgba(16, 185, 129, 0.5);
+}

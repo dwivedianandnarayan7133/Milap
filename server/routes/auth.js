@@ -9,7 +9,7 @@ const router = express.Router();
 
 function createToken(user) {
   return jwt.sign(
-    { sub: user._id.toString() },
+    { sub: user._id.toString(), userId: user._id.toString() },
     process.env.JWT_SECRET,
     { expiresIn: "1d" }
   );
@@ -18,7 +18,19 @@ function createToken(user) {
 // Register
 router.post("/register", async (req, res) => {
   try {
-    const { username, email, password } = req.body || {};
+    const {
+      username,
+      email,
+      password,
+      fullName,
+      phone,
+      weddingDate,
+      city,
+      guestCount,
+      budget,
+      foodPreference,
+      notes,
+    } = req.body || {};
 
     if (
       typeof username !== "string" ||
@@ -73,6 +85,14 @@ router.post("/register", async (req, res) => {
       username: cleanUsername,
       email: cleanEmail,
       passwordHash,
+      fullName: typeof fullName === "string" ? fullName.trim() : "",
+      phone: typeof phone === "string" ? phone.trim() : "",
+      weddingDate: typeof weddingDate === "string" ? weddingDate.trim() : "",
+      city: typeof city === "string" ? city.trim() : "",
+      guestCount: Math.max(1, Math.min(100000, Number(guestCount) || 500)),
+      budget: typeof budget === "string" ? budget.trim() : "",
+      foodPreference: typeof foodPreference === "string" ? foodPreference.trim() : "Veg",
+      notes: typeof notes === "string" ? notes.trim() : "",
     });
 
     return res.status(201).json({
@@ -82,6 +102,14 @@ router.post("/register", async (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
+        fullName: user.fullName || "",
+        phone: user.phone || "",
+        weddingDate: user.weddingDate || "",
+        city: user.city || "",
+        guestCount: user.guestCount || 500,
+        budget: user.budget || "",
+        foodPreference: user.foodPreference || "Veg",
+        notes: user.notes || "",
       },
     });
   } catch (error) {
@@ -140,6 +168,14 @@ router.post("/login", async (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
+        fullName: user.fullName || "",
+        phone: user.phone || "",
+        weddingDate: user.weddingDate || "",
+        city: user.city || "",
+        guestCount: user.guestCount || 500,
+        budget: user.budget || "",
+        foodPreference: user.foodPreference || "Veg",
+        notes: user.notes || "",
       },
     });
   } catch (error) {
@@ -147,6 +183,112 @@ router.post("/login", async (req, res) => {
     return res.status(500).json({
       message: "Login abhi complete nahi ho saka",
     });
+  }
+});
+
+// Middleware to authenticate token
+function authenticateToken(req, res, next) {
+  const header = req.headers.authorization || "";
+  const [scheme, token] = header.split(" ");
+  if (scheme !== "Bearer" || !token) {
+    return res.status(401).json({ message: "Login token required" });
+  }
+  try {
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = payload.userId || payload.id || payload._id || payload.sub;
+    if (!userId || !mongoose.isValidObjectId(userId)) {
+      return res.status(401).json({ message: "Invalid login token" });
+    }
+    req.userId = userId;
+    next();
+  } catch {
+    return res.status(401).json({ message: "Session expired. Please log in again." });
+  }
+}
+
+// Get user profile
+router.get("/profile", authenticateToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.json({
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        fullName: user.fullName || "",
+        phone: user.phone || "",
+        weddingDate: user.weddingDate || "",
+        city: user.city || "",
+        guestCount: user.guestCount || 500,
+        budget: user.budget || "",
+        foodPreference: user.foodPreference || "Veg",
+        notes: user.notes || "",
+      },
+    });
+  } catch (error) {
+    console.error("Profile fetch error:", error.message);
+    return res.status(500).json({ message: "Failed to fetch profile" });
+  }
+});
+
+// Update user profile
+router.put("/profile", authenticateToken, async (req, res) => {
+  try {
+    const {
+      fullName,
+      phone,
+      weddingDate,
+      city,
+      guestCount,
+      budget,
+      foodPreference,
+      notes,
+    } = req.body || {};
+
+    const updateData = {};
+    if (fullName !== undefined) updateData.fullName = String(fullName).trim();
+    if (phone !== undefined) updateData.phone = String(phone).trim();
+    if (weddingDate !== undefined) updateData.weddingDate = String(weddingDate).trim();
+    if (city !== undefined) updateData.city = String(city).trim();
+    if (guestCount !== undefined) {
+      updateData.guestCount = Math.max(1, Math.min(100000, Number(guestCount) || 500));
+    }
+    if (budget !== undefined) updateData.budget = String(budget).trim();
+    if (foodPreference !== undefined) updateData.foodPreference = String(foodPreference).trim();
+    if (notes !== undefined) updateData.notes = String(notes).trim();
+
+    const user = await User.findByIdAndUpdate(
+      req.userId,
+      { $set: updateData },
+      { new: true, runValidators: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.json({
+      message: "Profile updated successfully",
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        fullName: user.fullName || "",
+        phone: user.phone || "",
+        weddingDate: user.weddingDate || "",
+        city: user.city || "",
+        guestCount: user.guestCount || 500,
+        budget: user.budget || "",
+        foodPreference: user.foodPreference || "Veg",
+        notes: user.notes || "",
+      },
+    });
+  } catch (error) {
+    console.error("Profile update error:", error.message);
+    return res.status(500).json({ message: "Failed to update profile" });
   }
 });
 

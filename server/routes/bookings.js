@@ -17,7 +17,7 @@ function requireAuth(req, res, next) {
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    const userId = payload.userId || payload.id || payload._id;
+    const userId = payload.userId || payload.id || payload._id || payload.sub;
 
     if (!userId || !mongoose.isValidObjectId(userId)) {
       return res.status(401).json({ message: "Invalid login token" });

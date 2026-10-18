@@ -1,7 +1,13 @@
-
 import { useState } from "react";
+import logoImg from "./assets/logo.jpg";
 import FoodPlanner from "./FoodPlanner";
 import Auth from "./Auth";
+import UniversalHeader from "./components/UniversalHeader";
+import UniversalFooter from "./components/UniversalFooter";
+import AdminLoginModal from "./components/AdminLoginModal";
+import ProfileManager from "./components/ProfileManager";
+import AboutUsView from "./components/AboutUsView";
+import InvitationSection from "./components/InvitationSection";
 import {
   Home,
   CalendarDays,
@@ -15,30 +21,32 @@ import {
   ChefHat,
   Heart,
   Mail,
-  Bell,
-  Moon,
-  Sun,
   ArrowRight,
   Sparkles,
-  LogOut,
+  Phone,
+  CheckCircle,
+  Building,
+  Info,
 } from "lucide-react";
 import "./index.css";
+import "./UniversalLayout.css";
 
 const services = [
-  { name: "Venue Booking", desc: "Hall, home, farm", icon: MapPin, page: "Venue" },
-  { name: "Food Planning", desc: "Veg & Non-Veg", icon: Utensils, page: "Food" },
-  { name: "DJ & Sound", desc: "Music & lights", icon: Music, page: "DJ & Stage" },
-  { name: "Tent & Decor", desc: "Beautiful decoration", icon: Tent, page: "Tent & Decor" },
-  { name: "Bhandari", desc: "Cooking services", icon: ChefHat, page: "Bhandari" },
-  { name: "Invitation", desc: "Wedding card designs", icon: Mail, page: "Invitation" },
-  { name: "Jaimala Stage", desc: "Stage decoration", icon: Flower2, page: "Jaimala Stage" },
-  { name: "Sweets & Drinks", desc: "Mithai & water", icon: Heart, page: "Sweets & Drinks" },
+  { name: "Venue Booking", desc: "Hall, home, farm & resorts", icon: MapPin, page: "Venue" },
+  { name: "Food Planning", desc: "Veg & Non-Veg custom menu", icon: Utensils, page: "Food" },
+  { name: "DJ & Sound", desc: "Music, intelligent lighting", icon: Music, page: "DJ & Stage" },
+  { name: "Tent & Decor", desc: "Royal theme decorations", icon: Tent, page: "Tent & Decor" },
+  { name: "Bhandari", desc: "Traditional cooking masters", icon: ChefHat, page: "Bhandari" },
+  { name: "Invitation", desc: "Custom cards & RSVP", icon: Mail, page: "Invitation" },
+  { name: "Jaimala Stage", desc: "Cinematic stage design", icon: Flower2, page: "Jaimala Stage" },
+  { name: "Sweets & Drinks", desc: "Mithai, mocktails & water", icon: Heart, page: "Sweets & Drinks" },
 ];
 
 export default function App() {
   const [page, setPage] = useState("Home");
   const [dark, setDark] = useState(false);
 
+  // User Auth State
   const [authData, setAuthData] = useState(() => {
     try {
       const saved = sessionStorage.getItem("shaadiAuth");
@@ -48,68 +56,74 @@ export default function App() {
     }
   });
 
+  // Admin Auth State
+  const [adminData, setAdminData] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem("milapAdmin");
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  // Modal States
+  const [adminModalOpen, setAdminModalOpen] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+
   function handleLogin(data) {
     sessionStorage.setItem("shaadiAuth", JSON.stringify(data));
     setAuthData(data);
-    setPage("Home");
+    setAuthModalOpen(false);
   }
 
   function handleLogout() {
     sessionStorage.removeItem("shaadiAuth");
     setAuthData(null);
-    setPage("Home");
+  }
+
+  function handleAdminLogin(session) {
+    sessionStorage.setItem("milapAdmin", JSON.stringify(session));
+    setAdminData(session);
+  }
+
+  function handleAdminLogout() {
+    sessionStorage.removeItem("milapAdmin");
+    setAdminData(null);
+  }
+
+  function handleUpdateProfile(updatedData) {
+    sessionStorage.setItem("shaadiAuth", JSON.stringify(updatedData));
+    setAuthData(updatedData);
   }
 
   const navigation = [
     { name: "Home", icon: Home },
     { name: "Bookings", icon: CalendarDays },
     { name: "Food", icon: Utensils },
-    { name: "Budget", icon: Wallet },
+    { name: "About", icon: Info },
     { name: "Profile", icon: UserRound },
   ];
 
-  if (!authData) {
-    return <Auth onLogin={handleLogin} />;
-  }
-
   return (
     <div className={dark ? "app dark" : "app"}>
-      <header className="topbar">
-        <button className="brand" onClick={() => setPage("Home")}>
-          <span className="brand-logo">♥</span>
-          <span>
-            <strong>Milap</strong>
-            <small>Har Rishte ka Utsav</small>
-          </span>
-        </button>
+      {/* UNIVERSAL HEADER */}
+      <UniversalHeader
+        page={page}
+        setPage={setPage}
+        dark={dark}
+        setDark={setDark}
+        authData={authData}
+        adminData={adminData}
+        onOpenAuth={() => setAuthModalOpen(true)}
+        onOpenAdmin={() => setAdminModalOpen(true)}
+        onLogout={handleLogout}
+      />
 
-        <div className="header-actions">
-          <button
-            className="icon-btn"
-            onClick={() => setDark(!dark)}
-            aria-label="Toggle dark mode"
-          >
-            {dark ? <Sun /> : <Moon />}
-          </button>
-
-          <button className="icon-btn" aria-label="Notifications">
-            <Bell />
-          </button>
-
-          <button
-            className="icon-btn"
-            onClick={handleLogout}
-            title="Logout"
-            aria-label="Logout"
-          >
-            <LogOut />
-          </button>
-        </div>
-      </header>
-
+      {/* MAIN VIEW CONTENT */}
       <main className="main">
         {page === "Home" ? (
           <>
+            {/* Hero Section */}
             <section className="hero">
               <div className="hero-content">
                 <span className="hero-tag">
@@ -122,30 +136,47 @@ export default function App() {
                   <span>ab ek hi jagah.</span>
                 </h1>
 
-                <p>Venue, food, decoration aur budget — sab kuch aasan.</p>
+                <p>
+                  BKC Mumbai Headquarters se lekar pan-India destination venues,
+                  catering, decoration aur budget — sab kuch transparent aur aasan.
+                </p>
 
-                <button
-                  className="hero-btn"
-                  onClick={() => setPage("Bookings")}
-                >
-                  Start Planning <ArrowRight size={17} />
-                </button>
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "16px" }}>
+                  <button
+                    className="hero-btn"
+                    onClick={() => setPage("Food")}
+                  >
+                    Calculate Food Budget <ArrowRight size={17} />
+                  </button>
+                  <button
+                    className="outline-btn"
+                    style={{ background: "rgba(255,255,255,0.15)", color: "#fff", borderColor: "rgba(255,255,255,0.4)" }}
+                    onClick={() => setPage("About")}
+                  >
+                    <Info size={15} /> About Us
+                  </button>
+                </div>
               </div>
 
-              <div className="hero-heart">♥</div>
+              {/* Watermark Logo */}
+              <div className="hero-heart">
+                <img src={logoImg} alt="Milap Watermark" className="hero-logo-watermark" />
+              </div>
 
               <div className="hero-bottom">
-                <span>Your special day</span>
-                <span>Made with love</span>
+                <span>✓ 10,000+ Verified Couples</span>
+                <span>✓ Central Mumbai Office (BKC)</span>
+                <span>✓ 24/7 Concierge Hotline</span>
               </div>
             </section>
 
+            {/* Services Overview */}
             <div className="welcome-row">
               <div>
                 <p className="muted">WELCOME TO YOUR WEDDING PLANNER</p>
                 <h2>What would you like to plan?</h2>
               </div>
-              <span className="step-label">8 SERVICES</span>
+              <span className="step-label">8 WEDDING SERVICES</span>
             </div>
 
             <section className="service-grid">
@@ -153,7 +184,13 @@ export default function App() {
                 <button
                   className="service-card"
                   key={name}
-                  onClick={() => setPage(target)}
+                  onClick={() => {
+                    if (target === "Invitation") {
+                      window.location.href = "http://localhost:5174";
+                    } else {
+                      setPage(target);
+                    }
+                  }}
                 >
                   <span className={`service-icon tone-${i % 4}`}>
                     <Icon size={23} />
@@ -165,54 +202,141 @@ export default function App() {
               ))}
             </section>
 
+            {/* Wedding Planning Summary Card */}
             <section className="summary-card">
               <div>
-                <span className="muted">YOUR WEDDING</span>
-                <h3>Every detail matters</h3>
+                <span className="muted">COMPLETE TRANSPARENCY</span>
+                <h3>Corporate Headquarters & Experience Center</h3>
                 <p>
-                  Apni planning, bookings aur expenses ek jagah manage karein.
+                  Visit our flagship studio at Bandra Kurla Complex (BKC), Mumbai
+                  to discuss your theme, sample culinary menus, and consult with our
+                  head event directors.
                 </p>
               </div>
               <button
                 className="outline-btn"
-                onClick={() => setPage("Budget")}
+                onClick={() => setPage("About")}
               >
-                View Budget <ArrowRight size={15} />
+                Learn About Milap <ArrowRight size={15} />
               </button>
             </section>
           </>
         ) : page === "Food" ? (
           <FoodPlanner />
+        ) : page === "About" || page === "Contact" ? (
+          <AboutUsView onOpenAdmin={() => setAdminModalOpen(true)} />
+        ) : page === "Invitation" ? (
+          <InvitationSection onBackHome={() => setPage("Home")} />
         ) : page === "Profile" ? (
+          authData ? (
+            <ProfileManager
+              authData={authData}
+              onUpdateProfile={handleUpdateProfile}
+              onLogout={handleLogout}
+            />
+          ) : (
+            <div style={{ maxWidth: 480, margin: "30px auto" }}>
+              <Auth onLogin={handleLogin} />
+            </div>
+          )
+        ) : page === "Bookings" ? (
           <section className="page-panel">
-            <h2>Your Profile</h2>
-            <p>
-              Logged in as:{" "}
-              {authData.user?.username || authData.user?.email || "User"}
-            </p>
-            <button className="primary-btn" onClick={handleLogout}>
-              <LogOut size={17} /> Logout
-            </button>
+            <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" }}>
+              <div style={{ width: 48, height: 48, borderRadius: 14, background: "#fdf0f4", display: "grid", placeItems: "center", color: "#941b45" }}>
+                <CalendarDays size={24} />
+              </div>
+              <div>
+                <h2 style={{ margin: "0 0 4px", color: "#881337" }}>Your Event Bookings</h2>
+                <p style={{ margin: 0, color: "#777", fontSize: 13 }}>Track your venues, catering milestones, and artist schedules</p>
+              </div>
+            </div>
+
+            {authData ? (
+              <div style={{ background: "#fcf8fa", padding: "24px", borderRadius: "14px", border: "1px solid #fae2e8", textAlign: "center" }}>
+                <CheckCircle size={36} color="#27ae60" style={{ margin: "0 auto 10px" }} />
+                <h3>Account Connected: {authData.user?.fullName || authData.user?.username}</h3>
+                <p style={{ maxWidth: 480, margin: "0 auto 18px", color: "#666", fontSize: 14 }}>
+                  Wedding planning consultation is active with our Mumbai BKC headquarters team.
+                  Update your guest and catering details in your profile.
+                </p>
+                <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+                  <button className="primary-btn" onClick={() => setPage("Profile")}>
+                    Update Profile Details
+                  </button>
+                  <button className="outline-btn" onClick={() => setPage("Food")}>
+                    Manage Food Plan
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div style={{ background: "#fcf8fa", padding: "30px", borderRadius: "14px", border: "1px solid #fae2e8", textAlign: "center" }}>
+                <UserRound size={36} color="#941b45" style={{ margin: "0 auto 10px" }} />
+                <h3>Login Required to View Bookings</h3>
+                <p style={{ maxWidth: 450, margin: "0 auto 18px", color: "#666", fontSize: 14 }}>
+                  Please login or register your couple account to manage your event schedule and vendor bookings.
+                </p>
+                <button className="primary-btn" onClick={() => setAuthModalOpen(true)}>
+                  Login / Register Now
+                </button>
+              </div>
+            )}
           </section>
         ) : (
           <section className="page-panel">
             <h2>{page}</h2>
             <p>
-              This section is ready for the next development step.
+              Our team at the Milap BKC Corporate Office is coordinating premier services for {page}.
             </p>
-            <button className="primary-btn" onClick={() => setPage("Home")}>
-              Explore Home
-            </button>
+            <div style={{ display: "flex", gap: "10px", marginTop: "18px" }}>
+              <button className="primary-btn" onClick={() => setPage("Contact")}>
+                Inquire with BKC Office
+              </button>
+              <button className="outline-btn" onClick={() => setPage("Home")}>
+                Back to Home
+              </button>
+            </div>
           </section>
         )}
       </main>
 
+      {/* UNIVERSAL FOOTER (GREY BACKGROUND) */}
+      <UniversalFooter
+        setPage={setPage}
+        onOpenAdmin={() => setAdminModalOpen(true)}
+        onOpenAuth={() => setAuthModalOpen(true)}
+      />
+
+      {/* ADMIN LOGIN MODAL */}
+      <AdminLoginModal
+        isOpen={adminModalOpen}
+        onClose={() => setAdminModalOpen(false)}
+        adminData={adminData}
+        onAdminLogin={handleAdminLogin}
+        onAdminLogout={handleAdminLogout}
+      />
+
+      {/* USER LOGIN MODAL */}
+      {authModalOpen && !authData && (
+        <div className="modal-backdrop" onClick={() => setAuthModalOpen(false)}>
+          <div onClick={(e) => e.stopPropagation()}>
+            <Auth
+              onLogin={handleLogin}
+              onClose={() => setAuthModalOpen(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* BOTTOM NAVIGATION FOR MOBILE */}
       <nav className="bottom-nav">
         {navigation.map(({ name, icon: Icon }) => (
           <button
             key={name}
             className={page === name ? "nav-item active" : "nav-item"}
-            onClick={() => setPage(name)}
+            onClick={() => {
+              setPage(name);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             <Icon size={21} />
             <span>{name}</span>

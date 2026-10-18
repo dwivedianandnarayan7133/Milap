@@ -13,7 +13,7 @@
   margin-bottom: 24px;
 }
 
-.food-symbol {
+.food-symbol, .food-planner-logo {
   width: 54px;
   height: 54px;
   display: grid;
@@ -21,6 +21,8 @@
   background: #f8e8e8;
   color: #842d43;
   border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(148, 27, 69, 0.14);
 }
 
 .food-heading h1 { margin: 0 0 6px; }
