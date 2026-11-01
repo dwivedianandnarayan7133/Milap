@@ -5,6 +5,8 @@
 
 .walkie-container {
   max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 10px 16px 40px;
   font-family: inherit;
@@ -146,7 +148,13 @@
   border: 1px solid #e2e8f0;
   margin-bottom: 24px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.walkie-nav-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .w-tab {
@@ -633,6 +641,17 @@
 @media (max-width: 600px) {
   .calc-grid-2 {
     grid-template-columns: 1fr;
+  }
+  .search-box, .search-filter-input {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  .walkie-hero {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  .walkie-hero h1 {
+    font-size: 22px;
   }
 }
 

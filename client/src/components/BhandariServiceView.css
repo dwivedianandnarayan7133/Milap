@@ -5,6 +5,8 @@
 
 .bhandari-container {
   max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 10px 16px 40px;
   font-family: inherit;
@@ -126,7 +128,13 @@
   border: 1px solid #fae2e8;
   margin-bottom: 24px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   box-shadow: 0 2px 8px rgba(132, 45, 67, 0.04);
+}
+
+.bhandari-nav-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-tab {

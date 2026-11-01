@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import logoImg from "../assets/logo.jpg";
-import { CARD_STUDIO_URL } from "../apiConfig";
 import {
   Sun,
   Moon,
@@ -14,7 +13,6 @@ import {
   Utensils,
   Home,
   ShieldCheck,
-  Phone,
   ChevronDown,
   Sparkles,
   Tent,
@@ -25,6 +23,7 @@ import {
   Heart,
   Grid,
   Info,
+  Radio,
 } from "lucide-react";
 
 const navServicesList = [
@@ -33,6 +32,7 @@ const navServicesList = [
   { name: "DJ & Sound", desc: "Music & intelligent lighting", icon: Music, page: "DJ & Stage" },
   { name: "Tent & Decor", desc: "Royal floral & themes", icon: Tent, page: "Tent & Decor" },
   { name: "Bhandari", desc: "Traditional master cooks", icon: ChefHat, page: "Bhandari" },
+  { name: "Walkie-Talkie", desc: "Two-way radio & crew comms", icon: Radio, page: "Walkie-Talkie" },
   { name: "Invitation Cards", desc: "Luxury cards & RSVP", icon: Mail, page: "Invitation" },
   { name: "Jaimala Stage", desc: "Cinematic stage design", icon: Flower2, page: "Jaimala Stage" },
   { name: "Sweets & Drinks", desc: "Mithai & mocktail bars", icon: Heart, page: "Sweets & Drinks" },
@@ -50,6 +50,7 @@ export default function UniversalHeader({
   onLogout,
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -60,6 +61,7 @@ export default function UniversalHeader({
     }
     setPage(targetPage);
     setMobileMenuOpen(false);
+    setMobileServicesOpen(false);
     setServicesOpen(false);
   }
 
@@ -76,32 +78,7 @@ export default function UniversalHeader({
 
   return (
     <header className="universal-header">
-      {/* Top Notification / Hotline Banner */}
-      <div className="header-hotline-bar desktop-tablet-only">
-        <div className="hotline-container">
-          <span className="hotline-item">
-            <MapPin size={13} /> Corporate HQ: BKC Mumbai | Delhi NCR | Jaipur
-          </span>
-          <span className="hotline-item">
-            <Phone size={13} /> 24/7 Helpline: <strong>+91 (022) 2654-8900</strong>
-          </span>
-          {adminData ? (
-            <span className="hotline-admin-badge">
-              <ShieldCheck size={13} /> Admin Active ({adminData.username || "Staff"})
-            </span>
-          ) : (
-            <button
-              className="hotline-admin-link"
-              onClick={onOpenAdmin}
-              title="Restricted Staff & Admin Login"
-            >
-              <Lock size={12} /> Admin Portal
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Main Navigation Bar */}
+      {/* Main Navigation Bar (Clean top without dark hotline bar) */}
       <div className="header-main-nav">
         <button
           className="brand"
@@ -213,24 +190,26 @@ export default function UniversalHeader({
             {dark ? <Sun size={17} /> : <Moon size={17} />}
           </button>
 
-          {/* Admin Login Button */}
-          {adminData ? (
-            <button
-              className="admin-active-pill"
-              onClick={onOpenAdmin}
-              title="Click to view Admin Panel"
-            >
-              <ShieldCheck size={14} /> Admin
-            </button>
-          ) : (
-            <button
-              className="admin-login-cta"
-              onClick={onOpenAdmin}
-              title="Admin Portal Login"
-            >
-              <Lock size={13} /> <span>Admin</span>
-            </button>
-          )}
+          {/* Admin Login Button (Desktop & Tablet only - on mobile it lives in the menu) */}
+          <div className="header-admin-cta-desktop desktop-tablet-only">
+            {adminData ? (
+              <button
+                className="admin-active-pill"
+                onClick={onOpenAdmin}
+                title="Click to view Admin Panel"
+              >
+                <ShieldCheck size={14} /> Admin
+              </button>
+            ) : (
+              <button
+                className="admin-login-cta"
+                onClick={onOpenAdmin}
+                title="Admin Portal Login"
+              >
+                <Lock size={13} /> <span>Admin</span>
+              </button>
+            )}
+          </div>
 
           {/* User Auth Info */}
           {authData ? (
@@ -238,13 +217,15 @@ export default function UniversalHeader({
               <button
                 className="user-name-btn"
                 onClick={() => handleNav("Profile")}
-                title="View & Update Profile"
+                title={`Profile: ${authData.user?.fullName || authData.user?.username || "Account"}`}
               >
                 <UserRound size={15} />
-                <span>{authData.user?.fullName || authData.user?.username || "Account"}</span>
+                <span className="user-name-text">
+                  {authData.user?.fullName || authData.user?.username || "Account"}
+                </span>
               </button>
               <button
-                className="logout-mini-btn"
+                className="logout-mini-btn desktop-tablet-only"
                 onClick={onLogout}
                 title="Logout"
                 aria-label="Logout"
@@ -256,8 +237,9 @@ export default function UniversalHeader({
             <button
               className="user-login-cta"
               onClick={onOpenAuth}
+              title="Login or Register"
             >
-              <UserRound size={15} /> <span>Login</span>
+              <UserRound size={15} /> <span className="login-cta-text">Login</span>
             </button>
           )}
 
@@ -282,6 +264,41 @@ export default function UniversalHeader({
             >
               <Home size={17} /> Home
             </button>
+
+            {/* Collapsible Wedding Services Section in Mobile Menu */}
+            <div className="mobile-services-collapsible">
+              <button
+                type="button"
+                className="mobile-nav-link mobile-services-toggle-btn"
+                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+              >
+                <span className="mobile-services-toggle-label">
+                  <Grid size={17} /> <span>Wedding Services</span>
+                </span>
+                <ChevronDown size={16} className={`chevron-icon ${mobileServicesOpen ? "rotate" : ""}`} />
+              </button>
+
+              {mobileServicesOpen && (
+                <div className="mobile-services-subgrid">
+                  {navServicesList.map((svc) => {
+                    const Icon = svc.icon;
+                    return (
+                      <button
+                        key={svc.name}
+                        className={`mobile-service-subitem ${page === svc.page ? "active" : ""}`}
+                        onClick={() => handleNav(svc.page)}
+                      >
+                        <span className="svc-icon-badge-mini">
+                          <Icon size={14} />
+                        </span>
+                        <span>{svc.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
             <button
               className={`mobile-nav-link ${page === "Food" ? "active" : ""}`}
               onClick={() => handleNav("Food")}
@@ -292,13 +309,13 @@ export default function UniversalHeader({
               className={`mobile-nav-link ${page === "Bookings" ? "active" : ""}`}
               onClick={() => handleNav("Bookings")}
             >
-              <CalendarDays size={17} /> Bookings
+              <CalendarDays size={17} /> Bookings & Milestones
             </button>
             <button
               className={`mobile-nav-link ${page === "Profile" ? "active" : ""}`}
               onClick={() => handleNav("Profile")}
             >
-              <UserRound size={17} /> Profile & Wedding Details
+              <UserRound size={17} /> Profile & Event Details
             </button>
             <button
               className={`mobile-nav-link ${page === "About" || page === "Contact" ? "active" : ""}`}
@@ -316,7 +333,7 @@ export default function UniversalHeader({
                 onOpenAdmin();
               }}
             >
-              <Lock size={15} /> Admin Portal Login
+              <Lock size={15} /> Admin Portal ({adminData ? "Active" : "Staff Login"})
             </button>
             {authData ? (
               <button
@@ -326,7 +343,7 @@ export default function UniversalHeader({
                   onLogout();
                 }}
               >
-                <LogOut size={15} /> Logout ({authData.user?.username || "User"})
+                <LogOut size={15} /> Logout ({authData.user?.fullName || authData.user?.username || "User"})
               </button>
             ) : (
               <button

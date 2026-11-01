@@ -509,7 +509,7 @@ const styles = {
     width: "100%",
     maxWidth: 1200,
     margin: "0 auto",
-    padding: "28px 20px 48px",
+    padding: "16px 12px 64px",
     boxSizing: "border-box",
     color: "#172033",
     fontFamily: "Inter, system-ui, sans-serif",

@@ -1,5 +1,7 @@
 .food-planner {
   max-width: 1100px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 24px 16px 100px;
   color: var(--text, #302323);
@@ -682,6 +684,14 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .food-planner {
+    padding: 16px 10px 100px;
+  }
+  .food-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
   .grid-2col {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -689,13 +699,17 @@
   .food-total {
     flex-direction: column;
     align-items: stretch;
-    padding: 20px;
+    padding: 18px 14px;
+    gap: 16px;
   }
   .food-total h2 {
-    font-size: 28px;
+    font-size: 26px;
   }
   .summary-right {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
   }
   .food-pdf-download-btn {
     width: 100%;
@@ -703,5 +717,9 @@
   }
   .dish-list {
     grid-template-columns: 1fr;
+  }
+  .ingredient-table {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
 }
