@@ -1,3 +1,5 @@
+
+import BudgetManager from "./BudgetManager";
 import { useState, useEffect } from "react";
 import logoImg from "./assets/logo.jpg";
 import FoodPlanner from "./FoodPlanner";
@@ -8,6 +10,8 @@ import AdminLoginModal from "./components/AdminLoginModal";
 import ProfileManager from "./components/ProfileManager";
 import AboutUsView from "./components/AboutUsView";
 import InvitationSection from "./components/InvitationSection";
+import BhandariServiceView from "./components/BhandariServiceView";
+import WalkieServiceView from "./components/WalkieServiceView";
 import {
   Home,
   CalendarDays,
@@ -21,6 +25,7 @@ import {
   ChefHat,
   Heart,
   Mail,
+  Radio,
   ArrowRight,
   Sparkles,
   Phone,
@@ -47,6 +52,10 @@ export const ROUTE_MAP = {
   "/dj-sound": "DJ & Stage",
   "/tent-decor": "Tent & Decor",
   "/bhandari": "Bhandari",
+  "/walkie-talkie": "Walkie-Talkie",
+  "/walkie-talkies": "Walkie-Talkie",
+  "/walkie": "Walkie-Talkie",
+  "/radio-rental": "Walkie-Talkie",
   "/jaimala-stage": "Jaimala Stage",
   "/sweets-drinks": "Sweets & Drinks",
   "/about": "About",
@@ -55,6 +64,7 @@ export const ROUTE_MAP = {
   "/location": "Contact",
   "/profile": "Profile",
   "/bookings": "Bookings",
+  "/budget": "Budget",
 };
 
 export const PAGE_TO_ROUTE = {
@@ -65,13 +75,16 @@ export const PAGE_TO_ROUTE = {
   "DJ & Stage": "/dj-sound",
   "Tent & Decor": "/tent-decor",
   Bhandari: "/bhandari",
+  "Walkie-Talkie": "/walkie-talkie",
   "Jaimala Stage": "/jaimala-stage",
   "Sweets & Drinks": "/sweets-drinks",
   About: "/about",
   Contact: "/contact",
   Profile: "/profile",
   Bookings: "/bookings",
+  Budget: "/budget",
 };
+
 
 const services = [
   { name: "Venue Booking", desc: "Hall, home, farm & resorts", icon: MapPin, page: "Venue" },
@@ -79,6 +92,7 @@ const services = [
   { name: "DJ & Sound", desc: "Music, intelligent lighting", icon: Music, page: "DJ & Stage" },
   { name: "Tent & Decor", desc: "Royal theme decorations", icon: Tent, page: "Tent & Decor" },
   { name: "Bhandari", desc: "Traditional cooking masters", icon: ChefHat, page: "Bhandari" },
+  { name: "Walkie-Talkie", desc: "Two-way radio & crew comms", icon: Radio, page: "Walkie-Talkie" },
   { name: "Invitation", desc: "Custom cards & RSVP", icon: Mail, page: "Invitation" },
   { name: "Jaimala Stage", desc: "Cinematic stage design", icon: Flower2, page: "Jaimala Stage" },
   { name: "Sweets & Drinks", desc: "Mithai, mocktails & water", icon: Heart, page: "Sweets & Drinks" },
@@ -96,7 +110,7 @@ export default function App() {
 
   function navigateTo(target) {
     if (target === "Invitation" || target === "/invitations") {
-      window.location.href = "/studio/";
+      window.location.href = "/studio/index.html";
       return;
     }
 
@@ -182,13 +196,16 @@ export default function App() {
     setAuthData(updatedData);
   }
 
-  const navigation = [
-    { name: "Home", icon: Home },
-    { name: "Bookings", icon: CalendarDays },
-    { name: "Food", icon: Utensils },
-    { name: "About", icon: Info },
-    { name: "Profile", icon: UserRound },
-  ];
+  
+const navigation = [
+  { name: "Home", icon: Home },
+  { name: "Bookings", icon: CalendarDays },
+  { name: "Budget", icon: Wallet },
+  { name: "Food", icon: Utensils },
+  { name: "About", icon: Info },
+  { name: "Profile", icon: UserRound },
+];
+
 
   return (
     <div className={dark ? "app dark" : "app"}>
@@ -322,7 +339,11 @@ export default function App() {
               <Auth onLogin={handleLogin} />
             </div>
           )
-        ) : page === "Bookings" ? (
+        ) 
+       : page === "Budget" ? (
+         <BudgetManager authData={authData} />
+         ) : page === "Bookings" ? (
+
           <section className="page-panel">
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" }}>
               <div style={{ width: 48, height: 48, borderRadius: 14, background: "#fdf0f4", display: "grid", placeItems: "center", color: "#941b45" }}>
@@ -364,6 +385,20 @@ export default function App() {
               </div>
             )}
           </section>
+        ) : page === "Bhandari" ? (
+          <BhandariServiceView
+            authData={authData}
+            adminData={adminData}
+            onOpenAuth={() => setAuthModalOpen(true)}
+            onBackHome={() => navigateTo("Home")}
+          />
+        ) : page === "Walkie-Talkie" ? (
+          <WalkieServiceView
+            authData={authData}
+            adminData={adminData}
+            onOpenAuth={() => setAuthModalOpen(true)}
+            onBackHome={() => navigateTo("Home")}
+          />
         ) : (
           <section className="page-panel">
             <h2>{page}</h2>

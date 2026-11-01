@@ -6,7 +6,7 @@ export default function InvitationSection({ onBackHome }) {
 
   useEffect(() => {
     // Direct redirect to dedicated VivahPatra AI Studio URL
-    window.location.href = "/studio/";
+    window.location.href = "/studio/index.html";
   }, []);
 
   return (
@@ -94,7 +94,7 @@ export default function InvitationSection({ onBackHome }) {
             </button>
 
             <a
-              href="/studio/"
+              href="/studio/index.html"
               target="_blank"
               rel="noreferrer"
               style={{
@@ -153,7 +153,7 @@ export default function InvitationSection({ onBackHome }) {
         }}
       >
         <iframe
-          src="/studio/"
+          src="/studio/index.html"
           title="VivahPatra AI Indian Invitation Card Studio"
           style={{
             width: "100%",

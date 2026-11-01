@@ -9,20 +9,26 @@ dotenv.config({ path: path.join(__dirname, ".env") });
 
 const app = express();
 
+// Models
 const FoodPlan = require("./models/FoodPlan");
 
+// Middleware
 app.use(cors());
 app.use(express.json({ limit: "20kb" }));
 
+// Routes
 const authRoutes = require("./routes/auth");
 const bookingRoutes = require("./routes/bookings");
+const budgetRoutes = require("./routes/budget");
+const bhandariRoutes = require("./routes/bhandari");
+const walkieRoutes = require("./routes/walkie");
 
-app.use("/api/bookings", bookingRoutes);
+// Register API routes
 app.use("/api/auth", authRoutes);
-console.log(
-  "Registered routes:",
-  app.router?.stack?.map((layer) => layer.route?.path || layer.name)
-);
+app.use("/api/bookings", bookingRoutes);
+app.use("/api/budget", budgetRoutes);
+app.use("/api/bhandari", bhandariRoutes);
+app.use("/api/walkie", walkieRoutes);
 
 
 
@@ -120,7 +126,7 @@ app.put("/api/food-plan", async (req, res) => {
 
     if (
       !Array.isArray(selected) ||
-      !selected.every(id => allowedItems.includes(id)) ||
+      !selected.every(id => typeof id === "string" && /^[a-z0-9_-]{2,50}$/.test(id)) ||
       new Set(selected).size !== selected.length
     ) {
       return res.status(400).json({
@@ -132,7 +138,7 @@ app.put("/api/food-plan", async (req, res) => {
       !rates ||
       typeof rates !== "object" ||
       Array.isArray(rates) ||
-      Object.keys(rates).some(key => !allowedItems.includes(key)) ||
+      Object.keys(rates).some(key => typeof key !== "string" || !/^[a-z0-9_-]{2,50}$/.test(key)) ||
       Object.values(rates).some(
         rate =>
           typeof rate !== "number" ||
@@ -177,12 +183,6 @@ async function startServer() {
     app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);
     });
-    console.log(
-  "Auth route mounted:",
-  app._router?.stack?.some(
-    (layer) => layer.regexp?.toString().includes("api/auth")
-  )
-);
   } catch (error) {
     console.error("Startup error:", error.message);
     process.exit(1);
