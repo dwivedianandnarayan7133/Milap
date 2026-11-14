@@ -22,6 +22,8 @@ const bookingRoutes = require("./routes/bookings");
 const budgetRoutes = require("./routes/budget");
 const bhandariRoutes = require("./routes/bhandari");
 const walkieRoutes = require("./routes/walkie");
+const musicTentRoutes = require("./routes/musicTent");
+const { seedMusicTentData } = require("./seed/musicTentSeed");
 
 // Register API routes
 app.use("/api/auth", authRoutes);
@@ -29,6 +31,7 @@ app.use("/api/bookings", bookingRoutes);
 app.use("/api/budget", budgetRoutes);
 app.use("/api/bhandari", bhandariRoutes);
 app.use("/api/walkie", walkieRoutes);
+app.use("/api/music-tent", musicTentRoutes);
 
 
 
@@ -179,6 +182,8 @@ async function startServer() {
   try {
     await mongoose.connect(MONGODB_URI);
     console.log("MongoDB Atlas connected successfully!");
+    // Auto-seed Music & Tent module if empty
+    seedMusicTentData().catch((err) => console.warn("Seed notice:", err.message));
 
     app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);

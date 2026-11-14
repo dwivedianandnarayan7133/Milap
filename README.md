@@ -8,6 +8,13 @@
 
 ### 1. Milap Core Platform (`client/` & `server/`)
 - **Event & Venue Management**: Browse curated heritage venues, palatial resorts, banquet halls, and wedding destinations.
+- **Music Services & Tent Decoration (Satyam Kumar)**:
+  - Complete discovery, comparison, custom quotation and booking workflows for DJs, live bands, orchestras, Shehnai, wedding tents, hand-carved Mandaps, and floral decor.
+  - Interactive location-based search with coverage radius, distance calculation in km, and extended service areas.
+  - Transparent pricing basis (hours, performers, sound coverage, overtime, tent area sq ft, guest capacity, floral grades, labour, and transport).
+  - Reference image upload with file validation (JPG/PNG/WEBP, size limits) and secure storage.
+  - 3D Theme Gallery & Portfolios (Royal Rajwada Mandaps, Glass Orangeries, Floral Entrances).
+  - Distinguishes verified partner badges and confirmed availability from unverified community listings and sample quotes.
 - **Interactive Food Planner**: Real-time multi-cuisine catering calculator with live price estimates, regional Indian cuisines (North Indian, South Indian, Gujarati, Marwari, Awadhi, Bengali), live chaat counters, and beverage stations.
 - **Universal Header & Navigation**: Seamless navigation across Home, Venues, Food Planner, Invitations, Contact/Location, and About Us.
 - **Responsive Dark Charcoal Universal Footer**: Quick links, 24/7 dedicated event support, contact info, and legal policies.

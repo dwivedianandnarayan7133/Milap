@@ -12,6 +12,7 @@ import AboutUsView from "./components/AboutUsView";
 import InvitationSection from "./components/InvitationSection";
 import BhandariServiceView from "./components/BhandariServiceView";
 import WalkieServiceView from "./components/WalkieServiceView";
+import MusicTentServiceView from "./components/MusicTentServiceView";
 import {
   Home,
   CalendarDays,
@@ -50,7 +51,12 @@ export const ROUTE_MAP = {
   "/invitation": "Invitation",
   "/cards": "Invitation",
   "/dj-sound": "DJ & Stage",
+  "/dj": "DJ & Stage",
+  "/music": "DJ & Stage",
+  "/music-services": "DJ & Stage",
   "/tent-decor": "Tent & Decor",
+  "/tent": "Tent & Decor",
+  "/mandap": "Tent & Decor",
   "/bhandari": "Bhandari",
   "/walkie-talkie": "Walkie-Talkie",
   "/walkie-talkies": "Walkie-Talkie",
@@ -396,6 +402,14 @@ const navigation = [
           <WalkieServiceView
             authData={authData}
             adminData={adminData}
+            onOpenAuth={() => setAuthModalOpen(true)}
+            onBackHome={() => navigateTo("Home")}
+          />
+        ) : page === "DJ & Stage" || page === "Tent & Decor" || page === "Music & Tent" ? (
+          <MusicTentServiceView
+            authData={authData}
+            adminData={adminData}
+            initialMode={page === "Tent & Decor" ? "TentDecor" : page === "DJ & Stage" ? "Music" : "All"}
             onOpenAuth={() => setAuthModalOpen(true)}
             onBackHome={() => navigateTo("Home")}
           />
