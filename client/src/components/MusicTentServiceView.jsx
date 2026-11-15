@@ -143,7 +143,7 @@ export default function MusicTentServiceView({
     });
   }, [vendors, activeMode, selectedCity, verifiedOnly, searchQuery]);
 
-  // Handle Simple Image Upload
+  // Handle Image Upload with Automatic Lightweight Compression
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files || []);
     if (!files.length) return;
@@ -151,13 +151,38 @@ export default function MusicTentServiceView({
     files.slice(0, 3).forEach((file) => {
       const reader = new FileReader();
       reader.onload = (ev) => {
-        setQuoteForm((prev) => ({
-          ...prev,
-          referenceImages: [
-            ...prev.referenceImages,
-            { name: file.name, dataUrl: ev.target.result },
-          ],
-        }));
+        const img = new window.Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          const maxDim = 1200;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.75);
+          setQuoteForm((prev) => ({
+            ...prev,
+            referenceImages: [
+              ...prev.referenceImages,
+              { name: file.name, dataUrl: compressedDataUrl },
+            ],
+          }));
+        };
+        img.src = ev.target.result;
       };
       reader.readAsDataURL(file);
     });
@@ -168,17 +193,22 @@ export default function MusicTentServiceView({
     e.preventDefault();
     if (!quoteModalVendor) return;
 
+    if (!quoteForm.name?.trim() || !quoteForm.phone?.trim() || !quoteForm.eventDate?.trim() || !quoteForm.eventLocation?.trim()) {
+      alert("Please fill in your Name, Phone, Event Date, and Venue Address.");
+      return;
+    }
+
     try {
       const payload = {
         vendorId: quoteModalVendor._id,
-        customerName: quoteForm.name,
-        customerPhone: quoteForm.phone,
+        customerName: quoteForm.name.trim(),
+        customerPhone: quoteForm.phone.trim(),
         serviceType: quoteModalVendor.serviceType,
         category: quoteModalVendor.categories[0] || "DJ",
-        eventDate: quoteForm.eventDate,
-        eventLocation: quoteForm.eventLocation,
-        guestCount: quoteForm.guests,
-        customRequirements: quoteForm.notes,
+        eventDate: quoteForm.eventDate.trim(),
+        eventLocation: quoteForm.eventLocation.trim(),
+        guestCount: Number(quoteForm.guests) || 300,
+        customRequirements: quoteForm.notes?.trim() || "",
         referenceImages: quoteForm.referenceImages,
       };
 
@@ -188,17 +218,22 @@ export default function MusicTentServiceView({
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
-      if (data.success) {
+      const data = await res.json().catch(() => null);
+      if (res.ok && data?.success) {
         setSubmitSuccess("Quotation request sent! The vendor will contact you shortly.");
         setQuoteModalVendor(null);
+        setQuoteForm((prev) => ({
+          ...prev,
+          notes: "",
+          referenceImages: [],
+        }));
         loadEnquiries();
         setTimeout(() => setSubmitSuccess(""), 6000);
       } else {
-        alert(data.message || "Failed to submit request.");
+        alert(data?.message || `Request failed with error status: ${res.status}`);
       }
-    } catch {
-      alert("Error sending request.");
+    } catch (err) {
+      alert("Error sending request: " + (err.message || "Network issue"));
     }
   };
 
