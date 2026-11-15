@@ -615,7 +615,7 @@ const SEED_VENDORS = [
         "title": "Alibaug Villa Sundowner",
         "category": "DJ",
         "description": "Beachfront wedding cocktail party.",
-        "imageUrl": "https://images.unsplash.com/photo-1520523839898-50712825e617?auto=format&fit=crop&w=800&q=80",
+        "imageUrl": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80",
         "tags": [
           "DJ",
           "Saxophone",
@@ -750,7 +750,7 @@ const SEED_VENDORS = [
         "title": "Bridal Entry with Cold Sparks",
         "category": "DJ",
         "description": "Pyrotechnic and DJ entrance effect.",
-        "imageUrl": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80",
+        "imageUrl": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80",
         "tags": [
           "DJ",
           "Sparks",
@@ -817,7 +817,7 @@ const SEED_VENDORS = [
         "title": "Jaipur Palace Courtyard Sangeet",
         "category": "DJ",
         "description": "Heritage sound and light for royal wedding.",
-        "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80",
+        "imageUrl": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=800&q=80",
         "tags": [
           "DJ",
           "Palace",

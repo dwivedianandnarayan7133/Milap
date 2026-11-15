@@ -406,7 +406,16 @@ export default function MusicTentServiceView({
                   <div className="mt-card" key={vendor._id}>
                     {/* Visual Cover Photo */}
                     <div className="mt-card-image-box">
-                      <img src={cover} alt={vendor.name} />
+                      <img
+                        src={cover}
+                        alt={vendor.name}
+                        onError={(e) => {
+                          e.currentTarget.src =
+                            vendor.serviceType === "TentDecor"
+                              ? DEFAULT_COVERS.TentDecor
+                              : DEFAULT_COVERS.Music;
+                        }}
+                      />
                       <div className="mt-badge-overlay">
                         <span className="mt-pill-type">
                           {vendor.serviceType === "Both"
@@ -650,6 +659,12 @@ export default function MusicTentServiceView({
                   DEFAULT_COVERS.Music
                 }
                 alt={selectedVendor.name}
+                onError={(e) => {
+                  e.currentTarget.src =
+                    selectedVendor.serviceType === "TentDecor"
+                      ? DEFAULT_COVERS.TentDecor
+                      : DEFAULT_COVERS.Music;
+                }}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
