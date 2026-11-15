@@ -180,18 +180,17 @@ const MONGODB_URI =
   "mongodb+srv://ananddev:PpxXIVSYPILYgBWf@cluster0.ovdb4wk.mongodb.net/milap?retryWrites=true&w=majority";
 
 async function startServer() {
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+  });
+
   try {
-    await mongoose.connect(MONGODB_URI);
+    await mongoose.connect(MONGODB_URI, { serverSelectionTimeoutMS: 5000 });
     console.log("MongoDB Atlas connected successfully!");
     // Auto-seed Music & Tent module if empty
     seedMusicTentData().catch((err) => console.warn("Seed notice:", err.message));
-
-    app.listen(PORT, () => {
-      console.log(`Server running at http://localhost:${PORT}`);
-    });
   } catch (error) {
-    console.error("Startup error:", error.message);
-    process.exit(1);
+    console.warn("MongoDB connection notice (running with resilient in-memory store):", error.message);
   }
 }
 

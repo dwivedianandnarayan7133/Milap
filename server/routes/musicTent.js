@@ -679,23 +679,26 @@ router.post("/enquiries", optionalAuth, async (req, res) => {
 // ============================================================
 router.get("/enquiries", optionalAuth, async (req, res) => {
   try {
-    const { vendorId, status, phone } = req.query;
+    const { vendorId, status, phone, isAdmin, admin } = req.query;
     let enquiries = [];
+    const isAdministrator = isAdmin === "true" || admin === "true";
 
     if (mongoose.connection.readyState === 1) {
       try {
         let query = {};
-        if (req.userId) {
-          query.$or = [{ customer: req.userId }];
-          if (phone) query.$or.push({ customerPhone: phone });
-        } else if (phone) {
-          query.customerPhone = phone;
+        if (!isAdministrator) {
+          if (req.userId) {
+            query.$or = [{ customer: req.userId }];
+            if (phone) query.$or.push({ customerPhone: phone });
+          } else if (phone) {
+            query.customerPhone = phone;
+          }
         }
         if (vendorId) query.vendor = vendorId;
-        if (status) query.status = status;
+        if (status && status !== "All") query.status = status;
 
         enquiries = await MusicTentEnquiry.find(query)
-          .populate("vendor", "name phone email city locality verificationStatus")
+          .populate("vendor", "name phone email city locality verificationStatus categories coverImage")
           .sort({ createdAt: -1 })
           .lean();
       } catch (dbErr) {
@@ -704,12 +707,24 @@ router.get("/enquiries", optionalAuth, async (req, res) => {
       }
     } else {
       enquiries = inMemoryEnquiries.filter((e) => {
-        if (phone && e.customerPhone !== phone) return false;
+        if (!isAdministrator) {
+          if (phone && e.customerPhone !== phone) return false;
+        }
         if (vendorId && e.vendor?.toString() !== vendorId) return false;
-        if (status && e.status !== status) return false;
+        if (status && status !== "All" && e.status !== status) return false;
         return true;
       });
     }
+
+    // Populate vendor info for in-memory if needed
+    enquiries = enquiries.map((e) => {
+      if (e.vendor && (typeof e.vendor === "string" || !e.vendor.name)) {
+        const vId = e.vendor._id || e.vendor;
+        const vObj = inMemoryVendors.find((v) => v._id.toString() === vId.toString());
+        if (vObj) return { ...e, vendor: vObj };
+      }
+      return e;
+    });
 
     res.json({
       success: true,
@@ -1007,6 +1022,245 @@ router.post("/reviews", optionalAuth, async (req, res) => {
   } catch (err) {
     console.error("Review creation error:", err);
     res.status(500).json({ message: "Failed to submit review" });
+  }
+});
+
+// ============================================================
+// 10. ADMIN: GET /api/music-tent/admin/stats - Admin Dashboard Summary
+// ============================================================
+router.get("/admin/stats", async (req, res) => {
+  try {
+    let totalVendors = inMemoryVendors.length;
+    let verifiedVendors = inMemoryVendors.filter((v) => v.verificationStatus === "Verified").length;
+    let totalEnquiries = inMemoryEnquiries.length;
+    let pendingEnquiries = inMemoryEnquiries.filter((e) => e.status === "Pending").length;
+    let quotedEnquiries = inMemoryEnquiries.filter((e) => e.status === "Quoted").length;
+    let confirmedBookings = inMemoryBookings.length;
+
+    if (mongoose.connection.readyState === 1) {
+      try {
+        totalVendors = await MusicTentVendor.countDocuments();
+        verifiedVendors = await MusicTentVendor.countDocuments({ verificationStatus: "Verified" });
+        totalEnquiries = await MusicTentEnquiry.countDocuments();
+        pendingEnquiries = await MusicTentEnquiry.countDocuments({ status: "Pending" });
+        quotedEnquiries = await MusicTentEnquiry.countDocuments({ status: "Quoted" });
+        confirmedBookings = await MusicTentBooking.countDocuments();
+      } catch (err) {
+        console.warn("DB stats fetch failed, using fallback:", err.message);
+      }
+    }
+
+    res.json({
+      success: true,
+      totalVendors,
+      verifiedVendors,
+      totalEnquiries,
+      pendingEnquiries,
+      quotedEnquiries,
+      confirmedBookings,
+    });
+  } catch (err) {
+    console.error("Admin stats error:", err);
+    res.status(500).json({ message: "Failed to fetch admin stats" });
+  }
+});
+
+// ============================================================
+// 11. ADMIN: GET /api/music-tent/admin/enquiries - All Customer Requests
+// ============================================================
+router.get("/admin/enquiries", async (req, res) => {
+  try {
+    const { status, serviceType, search } = req.query;
+    let enquiries = [];
+
+    if (mongoose.connection.readyState === 1) {
+      try {
+        let query = {};
+        if (status && status !== "All") query.status = status;
+        if (serviceType && serviceType !== "All") query.serviceType = serviceType;
+        if (search && search.trim()) {
+          const sRegex = new RegExp(search.trim(), "i");
+          query.$or = [
+            { customerName: sRegex },
+            { customerPhone: sRegex },
+            { eventLocation: sRegex },
+            { enquiryNumber: sRegex },
+          ];
+        }
+
+        enquiries = await MusicTentEnquiry.find(query)
+          .populate("vendor", "name phone email city locality verificationStatus categories coverImage")
+          .sort({ createdAt: -1 })
+          .lean();
+      } catch (dbErr) {
+        console.warn("DB admin enquiries fetch failed:", dbErr.message);
+        enquiries = [...inMemoryEnquiries];
+      }
+    } else {
+      enquiries = inMemoryEnquiries.filter((e) => {
+        if (status && status !== "All" && e.status !== status) return false;
+        if (serviceType && serviceType !== "All" && e.serviceType !== serviceType) return false;
+        if (search && search.trim()) {
+          const s = search.trim().toLowerCase();
+          const matchCust = e.customerName?.toLowerCase().includes(s);
+          const matchPhone = e.customerPhone?.includes(s);
+          const matchLoc = e.eventLocation?.toLowerCase().includes(s);
+          const matchNum = e.enquiryNumber?.toLowerCase().includes(s);
+          if (!matchCust && !matchPhone && !matchLoc && !matchNum) return false;
+        }
+        return true;
+      });
+    }
+
+    // Populate vendor info for in-memory if needed
+    enquiries = enquiries.map((e) => {
+      if (e.vendor && (typeof e.vendor === "string" || !e.vendor.name)) {
+        const vId = e.vendor._id || e.vendor;
+        const vObj = inMemoryVendors.find((v) => v._id.toString() === vId.toString());
+        if (vObj) return { ...e, vendor: vObj };
+      }
+      return e;
+    });
+
+    res.json({
+      success: true,
+      count: enquiries.length,
+      enquiries,
+    });
+  } catch (err) {
+    console.error("Admin enquiries error:", err);
+    res.status(500).json({ message: "Failed to retrieve admin enquiries" });
+  }
+});
+
+// ============================================================
+// 12. ADMIN: PATCH /api/music-tent/admin/enquiries/:id/status - Update Status
+// ============================================================
+router.patch("/admin/enquiries/:id/status", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status, vendorNotes } = req.body;
+
+    if (!status) {
+      return res.status(400).json({ message: "Status is required" });
+    }
+
+    let enquiry = null;
+    if (mongoose.connection.readyState === 1 && mongoose.isValidObjectId(id)) {
+      try {
+        enquiry = await MusicTentEnquiry.findByIdAndUpdate(
+          id,
+          {
+            status,
+            ...(vendorNotes ? { vendorNotes } : {}),
+          },
+          { new: true }
+        ).populate("vendor", "name phone email city");
+      } catch (dbErr) {
+        console.warn("DB enquiry status update failed:", dbErr.message);
+      }
+    }
+
+    if (!enquiry) {
+      const idx = inMemoryEnquiries.findIndex((e) => e._id.toString() === id);
+      if (idx !== -1) {
+        inMemoryEnquiries[idx].status = status;
+        if (vendorNotes) inMemoryEnquiries[idx].vendorNotes = vendorNotes;
+        enquiry = inMemoryEnquiries[idx];
+      }
+    }
+
+    if (!enquiry) {
+      return res.status(404).json({ message: "Enquiry not found" });
+    }
+
+    res.json({
+      success: true,
+      message: `Enquiry status updated to ${status}`,
+      enquiry,
+    });
+  } catch (err) {
+    console.error("Admin enquiry status update error:", err);
+    res.status(500).json({ message: "Failed to update enquiry status" });
+  }
+});
+
+// ============================================================
+// 13. ADMIN: POST /api/music-tent/admin/enquiries/:id/quote - Dispatch Admin Quote
+// ============================================================
+router.post("/admin/enquiries/:id/quote", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { amount, inclusions = [], notes = "", validDays = 14 } = req.body;
+
+    const total = Number(amount);
+    if (!total || isNaN(total) || total <= 0) {
+      return res.status(400).json({ message: "Valid quote amount is required" });
+    }
+
+    const quotationNumber = `MTQ-ADM-${Date.now().toString().slice(-6)}`;
+    const validUntil = new Date(Date.now() + validDays * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+
+    const quoteBreakdown = {
+      baseCost: Math.round(total * 0.75),
+      lightingCost: Math.round(total * 0.1),
+      transportCost: Math.round(total * 0.05),
+      labourCost: Math.round(total * 0.1),
+      refundableDeposit: 2000,
+      subtotal: total,
+      tax: Math.round(total * 0.18),
+      total: Math.round(total * 1.18),
+    };
+
+    let enquiry = null;
+    if (mongoose.connection.readyState === 1 && mongoose.isValidObjectId(id)) {
+      try {
+        enquiry = await MusicTentEnquiry.findByIdAndUpdate(
+          id,
+          {
+            status: "Quoted",
+            vendorNotes: notes || `Admin approved quotation: ₹${total.toLocaleString("en-IN")}. Valid until ${validUntil}.`,
+          },
+          { new: true }
+        ).populate("vendor", "name phone email city");
+
+        await MusicTentQuotation.create({
+          quotationNumber,
+          enquiry: id,
+          vendor: enquiry.vendor?._id || enquiry.vendor,
+          pricingType: "AdminApprovedQuotation",
+          breakdown: quoteBreakdown,
+          inclusions: inclusions.length > 0 ? inclusions : ["Stage sound & DJ console", "Intelligent moving heads & smoke effect", "Sound technician setup"],
+          vendorNotes: notes || "Admin verified custom quotation for event date.",
+          validUntil,
+          status: "Submitted",
+        });
+      } catch (dbErr) {
+        console.warn("DB quote save failed:", dbErr.message);
+      }
+    }
+
+    if (!enquiry) {
+      const idx = inMemoryEnquiries.findIndex((e) => e._id.toString() === id);
+      if (idx !== -1) {
+        inMemoryEnquiries[idx].status = "Quoted";
+        inMemoryEnquiries[idx].vendorNotes = notes || `Admin approved quotation: ₹${total.toLocaleString("en-IN")}.`;
+        enquiry = inMemoryEnquiries[idx];
+      }
+    }
+
+    if (!enquiry) {
+      return res.status(404).json({ message: "Enquiry not found" });
+    }
+
+    res.json({
+      success: true,
+      message: `Quotation of ₹${total.toLocaleString("en-IN")} sent to customer successfully!`,
+      enquiry,
+    });
+  } catch (err) {
+    console.error("Admin send quote error:", err);
+    res.status(500).json({ message: "Failed to dispatch admin quotation" });
   }
 });
 

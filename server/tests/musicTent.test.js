@@ -253,7 +253,47 @@ async function runTests() {
   assert.ok(unverifiedVendors.length > 0, "Should have unverified sample vendors");
   console.log(`✓ Found ${verifiedVendors.length} Verified and ${unverifiedVendors.length} Unverified listings`);
 
+  // TEST 10: Admin Stats & Admin Enquiries View
+  console.log("Test 10: Admin stats & all enquiries list...");
+  const hAdminStats = findHandler(musicTentRoutes, "GET", "/admin/stats");
+  assert.ok(hAdminStats, "Handler for GET /admin/stats must exist");
+  const { req: reqAdminS, res: resAdminS, promise: pAdminS } = createMockReqRes({ method: "GET", url: "/admin/stats" });
+  hAdminStats(reqAdminS, resAdminS);
+  const resultAdminS = await pAdminS;
+  assert.strictEqual(resultAdminS.status, 200);
+  assert.ok(resultAdminS.body.totalEnquiries > 0, "Admin should see recorded enquiries");
+  console.log(`✓ Admin Stats: ${resultAdminS.body.totalEnquiries} enquiries, ${resultAdminS.body.totalVendors} vendors`);
+
+  const hAdminEnq = findHandler(musicTentRoutes, "GET", "/admin/enquiries");
+  assert.ok(hAdminEnq, "Handler for GET /admin/enquiries must exist");
+  const { req: reqAdminE, res: resAdminE, promise: pAdminE } = createMockReqRes({ method: "GET", url: "/admin/enquiries" });
+  hAdminEnq(reqAdminE, resAdminE);
+  const resultAdminE = await pAdminE;
+  assert.strictEqual(resultAdminE.status, 200);
+  assert.ok(resultAdminE.body.enquiries.length > 0, "Admin should see full list of customer requests");
+  console.log(`✓ Admin retrieved ${resultAdminE.body.enquiries.length} customer request(s)`);
+
+  // TEST 11: Admin sends quotation to customer request
+  console.log("Test 11: Admin dispatches quotation to customer...");
+  const hAdminQuote = findHandler(musicTentRoutes, "POST", "/admin/enquiries/:id/quote");
+  assert.ok(hAdminQuote, "Handler for POST /admin/enquiries/:id/quote must exist");
+  const { req: reqAdminQ, res: resAdminQ, promise: pAdminQ } = createMockReqRes({
+    method: "POST",
+    url: `/admin/enquiries/${enquiryId}/quote`,
+    params: { id: enquiryId },
+    body: {
+      amount: 19500,
+      notes: "Admin special rate: 2 Wireless Mics, Moving Heads & DJ Console included.",
+    },
+  });
+  hAdminQuote(reqAdminQ, resAdminQ);
+  const resultAdminQ = await pAdminQ;
+  assert.strictEqual(resultAdminQ.status, 200);
+  assert.strictEqual(resultAdminQ.body.enquiry.status, "Quoted");
+  console.log(`✓ Admin quotation dispatched successfully: ₹19,500`);
+
   console.log("\nALL MUSIC & TENT TESTS PASSED SUCCESSFULLY! ✓✓✓");
+  process.exit(0);
 }
 
 runTests().catch((err) => {
