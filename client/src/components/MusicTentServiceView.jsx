@@ -20,6 +20,7 @@ import {
   Eye,
 } from "lucide-react";
 import { API_BASE } from "../apiConfig";
+import { DEFAULT_VENDORS } from "./musicTentVendorsData";
 import "./MusicTentServiceView.css";
 
 // Fallback high quality imagery for wedding vendors
@@ -43,9 +44,9 @@ export default function MusicTentServiceView({
   // Tabs: "browse" | "estimator" | "my_quotes"
   const [activeTab, setActiveTab] = useState("browse");
 
-  // Vendors list
-  const [vendors, setVendors] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // Vendors list: initialized immediately with 12 DJ & Sound vendors + 4 Tent Decorators
+  const [vendors, setVendors] = useState(DEFAULT_VENDORS);
+  const [loading, setLoading] = useState(false);
 
   // Search & Filter
   const [searchQuery, setSearchQuery] = useState("");
@@ -76,20 +77,17 @@ export default function MusicTentServiceView({
   // User Enquiries
   const [enquiries, setEnquiries] = useState([]);
 
-  // Fetch Vendors
+  // Fetch Vendors from backend API to sync any fresh database additions
   useEffect(() => {
     async function loadVendors() {
-      setLoading(true);
       try {
         const res = await fetch(`${API_BASE}/api/music-tent/vendors`);
         const data = await res.json();
-        if (data.success) {
-          setVendors(data.vendors || []);
+        if (data.success && Array.isArray(data.vendors) && data.vendors.length > 0) {
+          setVendors(data.vendors);
         }
       } catch (err) {
-        console.warn("Could not load vendors:", err);
-      } finally {
-        setLoading(false);
+        console.warn("Could not load vendors from API, showing default 12 DJ & Sound vendors:", err);
       }
     }
     loadVendors();
