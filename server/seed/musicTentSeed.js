@@ -831,7 +831,7 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Royal Rajwada Mandap & Floral Sculptures",
+    "name": "Shahi Rajwada Mandap & Vivah Shamiana (शाही राजवाड़ा मंडप व शामियाना)",
     "contactPerson": "Devendra Rathore",
     "phone": "+91 98201 44556",
     "email": "devendra@rajwadamandap.com",
@@ -863,11 +863,11 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.97,
     "reviewCount": 84,
-    "description": "Exquisite 4-pillar Royal Rajwada mandaps hand-carved in gold stone finishes, cascading fresh red Dutch roses and fragrant Banarasi mogra.",
+    "description": "Bhavya 4-pillar hand-carved golden Rajwada mandap, fresh Banarasi mogra floral cascades, royal red velvet backdrop, and ceremonial Maharaj chairs.",
     "packages": [
       {
         "id": "tent-pkg-1",
-        "name": "Royal Rajwada Mandap & Jaimala Stage",
+        "name": "Shahi Rajwada Mandap & Jaimala Stage",
         "category": "Mandap",
         "price": 28000,
         "isPriceOnRequest": false,
@@ -877,7 +877,7 @@ const SEED_VENDORS = [
         "soundCoverage": "N/A",
         "inclusions": [
           "12x12 ft Carved Rajwada Stone Finish Mandap",
-          "Fresh Mogra & Dutch Red Rose Chandelier",
+          "Fresh Banarasi Mogra & Red Dutch Rose Chandelier",
           "24x14 ft Grand Jaimala Stage with Velvet Backdrop",
           "Royal Maharaj Bride & Groom Chairs + 8 Havan Chaukis"
         ]
@@ -885,13 +885,13 @@ const SEED_VENDORS = [
     ],
     "themePortfolios": [
       {
-        "title": "Royal Heritage Red & Gold Mandap",
+        "title": "Shahi Rajwada Mandap & Floral Decor",
         "category": "Mandap",
-        "description": "Opulent sacred pheras setup with fresh floral chandelier.",
+        "description": "Royal Indian sacred pheras setup with fresh red rose and mogra chandelier.",
         "imageUrl": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
         "tags": [
-          "Mandap",
           "Rajwada",
+          "Mandap",
           "Mumbai"
         ],
         "estimatedPrice": 28000
@@ -903,7 +903,7 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Udaivilas Heritage Shamiana & Royal Tents",
+    "name": "Marwar Heritage Kanat Shamiana & Baithak (मारवाड़ हेरिटेज शामियाना व कनात)",
     "contactPerson": "Mahendra Singh Chouhan",
     "phone": "+91 98290 55198",
     "email": "mahendra@virasatmandap.com",
@@ -912,7 +912,7 @@ const SEED_VENDORS = [
       "Wedding Tent",
       "Shamiana",
       "Theme Decoration",
-      "Mandap"
+      "Baithak"
     ],
     "city": "Jaipur",
     "locality": "Amer Road & C-Scheme",
@@ -934,13 +934,13 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.96,
     "reviewCount": 92,
-    "description": "Authentic Rajasthani royal shamianas with block-printed handloom linings, antique brass lanterns, low velvet baithak seating, and royal bolsters.",
+    "description": "Traditional Marwadi royal kanat shamiana with block-printed handloom linings, antique brass diya lanterns, low velvet baithak seating, and royal bolsters.",
     "packages": [
       {
         "id": "tent-pkg-2",
-        "name": "Palace Heritage Shamiana & Baithak Lounge",
+        "name": "Marwar Palace Shamiana & Baithak Lounge",
         "category": "Wedding Tent",
-        "price": 32000,
+        "price": 24000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
@@ -956,16 +956,16 @@ const SEED_VENDORS = [
     ],
     "themePortfolios": [
       {
-        "title": "Jaipur Palace Shamiana Lounge",
+        "title": "Marwar Royal Shamiana Baithak",
         "category": "Wedding Tent",
-        "description": "Royal courtyard tent with traditional seating.",
+        "description": "Authentic Rajasthani courtyard tent with traditional diwan seating.",
         "imageUrl": "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=80",
         "tags": [
+          "Marwar",
           "Shamiana",
-          "Heritage",
           "Jaipur"
         ],
-        "estimatedPrice": 32000
+        "estimatedPrice": 24000
       }
     ],
     "bookedDates": [
@@ -974,501 +974,85 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Glass Palace & Crystal Chandelier Mandap",
-    "contactPerson": "Rajesh Mehra",
-    "phone": "+91 98118 76543",
-    "email": "rajesh@glasspalacedecor.com",
+    "name": "Genda Phool Haldi & Mehndi Mela Canopy (गेंदा फूल हल्दी व मेहंदी शामियाना)",
+    "contactPerson": "Poonam Saxena",
+    "phone": "+91 94142 66311",
+    "email": "poonam@marigoldmagic.in",
     "serviceType": "TentDecor",
     "categories": [
-      "Mandap",
-      "Stage",
       "Theme Decoration",
+      "Haldi Mehndi",
+      "Floral Decoration",
       "Wedding Tent"
     ],
     "city": "Delhi NCR",
-    "locality": "Chattarpur Farms & Mehrauli",
-    "pinCode": "110074",
-    "address": "Main Chattarpur Road, New Delhi",
+    "locality": "West Delhi & Chandni Chowk",
+    "pinCode": "110027",
+    "address": "Ring Road, Rajouri Garden, New Delhi",
     "coordinates": {
-      "lat": 28.5023,
-      "lng": 77.1818
-    },
-    "serviceRadiusKm": 60,
-    "extendedServiceAreas": [
-      "Delhi",
-      "Gurugram",
-      "Noida",
-      "Faridabad"
-    ],
-    "experienceYears": 15,
-    "verificationStatus": "Verified",
-    "rating": 4.94,
-    "reviewCount": 76,
-    "description": "Breathtaking European glass palace aesthetics! Mirror aisle ramps, crystal hanging chandeliers, transparent acrylic mandaps, and white orchid ceilings.",
-    "packages": [
-      {
-        "id": "tent-pkg-3",
-        "name": "Fairytale Crystal Chandelier Glass Mandap",
-        "category": "Mandap",
-        "price": 35000,
-        "isPriceOnRequest": false,
-        "validityDays": 30,
-        "durationHours": 24,
-        "performersCount": 0,
-        "soundCoverage": "N/A",
-        "inclusions": [
-          "All-Transparent Acrylic & Mirror Finish Mandap",
-          "6 Multi-Tier Crystal Chandeliers with Warm Dimmers",
-          "60-ft Glossy Mirror Aisle Runner for Bridal Walk",
-          "Fresh White Orchids & Baby Breath Floral Ceiling"
-        ]
-      }
-    ],
-    "themePortfolios": [
-      {
-        "title": "Crystal Glass Palace Mandap",
-        "category": "Mandap",
-        "description": "Luminous crystal and mirror wedding setup.",
-        "imageUrl": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80",
-        "tags": [
-          "Crystal",
-          "Glass Mandap",
-          "Delhi"
-        ],
-        "estimatedPrice": 35000
-      }
-    ],
-    "bookedDates": [
-      "2026-12-02"
-    ]
-  },
-  {
-    "name": "Green Canopy Outdoor Lawn Tents & Fairylights",
-    "contactPerson": "Ananya Swaminathan",
-    "phone": "+91 98451 90123",
-    "email": "ananya@greencanopydesign.com",
-    "serviceType": "TentDecor",
-    "categories": [
-      "Wedding Tent",
-      "Theme Decoration",
-      "Floral Decoration",
-      "Entrance"
-    ],
-    "city": "Bengaluru",
-    "locality": "Palace Grounds & Hebbal",
-    "pinCode": "560006",
-    "address": "Bellary Road, Near Gate 4 Palace Grounds, Bengaluru",
-    "coordinates": {
-      "lat": 13.0067,
-      "lng": 77.5813
+      "lat": 28.6472,
+      "lng": 77.1219
     },
     "serviceRadiusKm": 50,
     "extendedServiceAreas": [
-      "Bengaluru",
-      "Mysuru",
-      "Nandi Hills"
+      "Delhi",
+      "Noida",
+      "Gurugram",
+      "Faridabad"
     ],
-    "experienceYears": 11,
+    "experienceYears": 10,
     "verificationStatus": "Verified",
-    "rating": 4.91,
-    "reviewCount": 58,
-    "description": "Romantic open-air forest wedding canopies, 10,000 fairy-light ceiling tunnels, natural wooden pergolas, and lush green eucalyptus & ivy runners.",
+    "rating": 4.94,
+    "reviewCount": 68,
+    "description": "Joyous traditional Haldi & Mehndi carnival! 150 kg fresh yellow & orange genda phool draping, floral jhula swing, Rajasthani umbrellas, and photo booths.",
     "packages": [
       {
-        "id": "tent-pkg-4",
-        "name": "Starlit Lawn Fairylight Canopy & Pagoda Tent",
-        "category": "Wedding Tent",
-        "price": 24000,
+        "id": "tent-pkg-3",
+        "name": "Genda Phool Haldi Canopy & Floral Jhula",
+        "category": "Theme Decoration",
+        "price": 16000,
         "isPriceOnRequest": false,
         "validityDays": 30,
-        "durationHours": 24,
+        "durationHours": 12,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "80x40 ft Starlit Fairy Light Ceiling Grid over Lawns",
-          "2 White German Pagoda Tents for Dining & Cocktails",
-          "Wooden Archway Entrance with Live Creeper Foliage",
-          "100 Hanging Edison Warm Filament Bulbs"
+          "Complete Yellow & Orange Marigold Floral Canopy (150 kg flowers)",
+          "Decorated Floral Swing (Jhula) for Bride & Groom",
+          "12 Colorful Rajasthani Leheriya Shamianas & Low Baithaks",
+          "Brass Urli with Floating Petals for Haldi Ceremony"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Starlight Forest Wedding Lawn",
-        "category": "Wedding Tent",
-        "description": "Fairylight ceiling and open-air gazebo.",
-        "imageUrl": "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80",
+        "title": "Genda Phool Haldi Mela Decor",
+        "category": "Theme Decoration",
+        "description": "Vibrant marigold flowers and festive yellow canopy.",
+        "imageUrl": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80",
         "tags": [
-          "Fairylight",
-          "Lawn Tent",
-          "Bengaluru"
+          "Haldi",
+          "Genda Phool",
+          "Delhi"
         ],
-        "estimatedPrice": 24000
+        "estimatedPrice": 16000
       }
     ],
     "bookedDates": [
-      "2026-11-23",
-      "2026-12-11"
+      "2026-11-20",
+      "2026-12-01"
     ]
   },
   {
-    "name": "Shahi Awadh Floral Archway & Jaimala Stage",
-    "contactPerson": "Syed Tariq Mirza",
-    "phone": "+91 94150 12890",
-    "email": "tariq@shahiawadhdecor.in",
-    "serviceType": "TentDecor",
-    "categories": [
-      "Stage",
-      "Floral Decoration",
-      "Entrance",
-      "Mandap"
-    ],
-    "city": "Lucknow",
-    "locality": "Gomti Nagar & Hazratganj",
-    "pinCode": "226010",
-    "address": "Vipin Khand, Gomti Nagar, Lucknow",
-    "coordinates": {
-      "lat": 26.8532,
-      "lng": 80.9984
-    },
-    "serviceRadiusKm": 80,
-    "extendedServiceAreas": [
-      "Lucknow",
-      "Kanpur",
-      "Ayodhya",
-      "Varanasi",
-      "Allahabad"
-    ],
-    "experienceYears": 16,
-    "verificationStatus": "Verified",
-    "rating": 4.89,
-    "reviewCount": 47,
-    "description": "Royal Nawabi grand wedding decor! Scalloped Mughal archways, cascading fragrant jasmine mogra, rich velvet stage backdrops, and antique brass lampstands.",
-    "packages": [
-      {
-        "id": "tent-pkg-5",
-        "name": "Royal Nawabi Jaimala Stage & Grand Archways",
-        "category": "Stage",
-        "price": 22000,
-        "isPriceOnRequest": false,
-        "validityDays": 30,
-        "durationHours": 24,
-        "performersCount": 0,
-        "soundCoverage": "N/A",
-        "inclusions": [
-          "30x16 ft Multi-Arch Mughal Stage with Wine Velvet Drapes",
-          "3 Tier Fresh Jasmine & Rajnigandha Floral Garland Drops",
-          "Royal Golden Shehnai Gate Entrance with 8 Brass Urli Stands",
-          "Ornate Nawabi Double Throne for Bride & Groom"
-        ]
-      }
-    ],
-    "themePortfolios": [
-      {
-        "title": "Nawabi Grand Stage & Mogra Arch",
-        "category": "Stage",
-        "description": "Traditional Awadhi royal wedding floral stage.",
-        "imageUrl": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
-        "tags": [
-          "Awadh",
-          "Stage",
-          "Lucknow"
-        ],
-        "estimatedPrice": 22000
-      }
-    ],
-    "bookedDates": [
-      "2026-11-30"
-    ]
-  },
-  {
-    "name": "Pastel Bloom Exotic Floral & Bohemian Tents",
-    "contactPerson": "Pooja Kulkarni",
-    "phone": "+91 98224 55102",
-    "email": "pooja@pastelbloom.in",
-    "serviceType": "TentDecor",
-    "categories": [
-      "Floral Decoration",
-      "Wedding Tent",
-      "Theme Decoration",
-      "Mandap"
-    ],
-    "city": "Pune",
-    "locality": "Koregaon Park & Baner",
-    "pinCode": "411045",
-    "address": "Baner Road, Near Balewadi High Street, Pune",
-    "coordinates": {
-      "lat": 18.5597,
-      "lng": 73.7895
-    },
-    "serviceRadiusKm": 45,
-    "extendedServiceAreas": [
-      "Pune",
-      "Lonavala",
-      "Mahabaleshwar",
-      "Mumbai"
-    ],
-    "experienceYears": 8,
-    "verificationStatus": "Verified",
-    "rating": 4.92,
-    "reviewCount": 41,
-    "description": "Trendy pastel aesthetics loved by modern couples! Peach, blush pink and ivory English roses, hydrangeas, pampas grass, and bohemian macrame cabanas.",
-    "packages": [
-      {
-        "id": "tent-pkg-6",
-        "name": "Pastel Dream Mandap & Boho Cocktail Tents",
-        "category": "Floral Decoration",
-        "price": 26000,
-        "isPriceOnRequest": false,
-        "validityDays": 30,
-        "durationHours": 24,
-        "performersCount": 0,
-        "soundCoverage": "N/A",
-        "inclusions": [
-          "Circular Floral Mandap with Blush Roses & Hydrangeas",
-          "3 Bohemian Macrame Teepee Cabanas with Floor Cushions",
-          "Rustic Wooden Crossback Chairs with Eucalyptus Sprigs",
-          "Custom Neon Signboard with Couple Initials"
-        ]
-      }
-    ],
-    "themePortfolios": [
-      {
-        "title": "Pastel Bloom Outdoor Mandap",
-        "category": "Floral Decoration",
-        "description": "Aesthetic blush pink and English rose decor.",
-        "imageUrl": "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=800&q=80",
-        "tags": [
-          "Pastel",
-          "Boho",
-          "Pune"
-        ],
-        "estimatedPrice": 26000
-      }
-    ],
-    "bookedDates": [
-      "2026-12-09"
-    ]
-  },
-  {
-    "name": "Temple Bells & South Indian Jasmine Canopy",
-    "contactPerson": "Venkatesh Iyer",
-    "phone": "+91 98402 33118",
-    "email": "venkat@templebellsdecor.in",
+    "name": "Kashi Vishwanath Temple Bell & Mogra Mandap (काशी विश्वनाथ मंदिर दीप व मोगरा मंडप)",
+    "contactPerson": "Pandit Rameshwar Sharma",
+    "phone": "+91 94500 81234",
+    "email": "rameshwar@kashimandap.in",
     "serviceType": "TentDecor",
     "categories": [
       "Mandap",
       "Floral Decoration",
       "Traditional",
-      "Stage"
-    ],
-    "city": "Bengaluru",
-    "locality": "Jayanagar & Malleshwaram",
-    "pinCode": "560011",
-    "address": "Kanmari Road, 4th Block, Jayanagar, Bengaluru",
-    "coordinates": {
-      "lat": 12.9299,
-      "lng": 77.5833
-    },
-    "serviceRadiusKm": 55,
-    "extendedServiceAreas": [
-      "Bengaluru",
-      "Mysuru",
-      "Chennai",
-      "Coimbatore"
-    ],
-    "experienceYears": 22,
-    "verificationStatus": "Verified",
-    "rating": 4.98,
-    "reviewCount": 110,
-    "description": "Traditional South Indian wedding grandeur. Authentic brass temple bells, carved pillars with banana trunks, pure Madurai malli jasmine, and golden lotus ponds.",
-    "packages": [
-      {
-        "id": "tent-pkg-7",
-        "name": "Sacred Temple Mandap & Madurai Malli Canopy",
-        "category": "Mandap",
-        "price": 25000,
-        "isPriceOnRequest": false,
-        "validityDays": 30,
-        "durationHours": 24,
-        "performersCount": 0,
-        "soundCoverage": "N/A",
-        "inclusions": [
-          "Traditional Carved South Indian Wooden Mandap",
-          "Pure Fresh Jasmine (Malli) and Lotus Bud Chandelier",
-          "Brass Hanging Bells & 16 Traditional Diya Deepastambhas",
-          "Banana Stems & Mango Leaf Torana Entrance Setup"
-        ]
-      }
-    ],
-    "themePortfolios": [
-      {
-        "title": "South Indian Temple Bell Mandap",
-        "category": "Mandap",
-        "description": "Pure white jasmine and golden temple bell decor.",
-        "imageUrl": "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80",
-        "tags": [
-          "Temple",
-          "Jasmine",
-          "Bengaluru"
-        ],
-        "estimatedPrice": 25000
-      }
-    ],
-    "bookedDates": [
-      "2026-11-22",
-      "2026-12-03"
-    ]
-  },
-  {
-    "name": "Beachside Sunset Cabana & Bamboo Mandap",
-    "contactPerson": "Karan Salgaonkar",
-    "phone": "+91 98204 90112",
-    "email": "karan@beachmandap.in",
-    "serviceType": "TentDecor",
-    "categories": [
-      "Wedding Tent",
-      "Mandap",
-      "Beach Wedding",
-      "Floral Decoration"
-    ],
-    "city": "Mumbai",
-    "locality": "Alibaug, Juhu & Aksa Beach",
-    "pinCode": "402201",
-    "address": "Varsoli Beach Road, Alibaug, Maharashtra",
-    "coordinates": {
-      "lat": 18.6577,
-      "lng": 72.8753
-    },
-    "serviceRadiusKm": 80,
-    "extendedServiceAreas": [
-      "Mumbai",
-      "Alibaug",
-      "Goa",
-      "Daman",
-      "Kashid"
-    ],
-    "experienceYears": 10,
-    "verificationStatus": "Verified",
-    "rating": 4.93,
-    "reviewCount": 54,
-    "description": "Romantic sea-facing destination wedding setups! Natural polished bamboo mandaps, fluttering sheer white muslin drapes, and sunset coconut torch pathways.",
-    "packages": [
-      {
-        "id": "tent-pkg-8",
-        "name": "Beachside Sunset Mandap & White Muslin Cabanas",
-        "category": "Wedding Tent",
-        "price": 27000,
-        "isPriceOnRequest": false,
-        "validityDays": 30,
-        "durationHours": 24,
-        "performersCount": 0,
-        "soundCoverage": "N/A",
-        "inclusions": [
-          "4-Pillar Polished Teak & Bamboo Sea-Facing Mandap",
-          "Flowing White Georgette Drapes with Tropical Floral Clusters",
-          "20 Beach Cabana Lounge Tents with Bamboo Furniture",
-          "50-meter Wooden Deck Boardwalk with Tiki Torches"
-        ]
-      }
-    ],
-    "themePortfolios": [
-      {
-        "title": "Alibaug Beach Sunset Mandap",
-        "category": "Beach Wedding",
-        "description": "Golden hour pheras mandap against ocean waves.",
-        "imageUrl": "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80",
-        "tags": [
-          "Beach",
-          "Mandap",
-          "Alibaug"
-        ],
-        "estimatedPrice": 27000
-      }
-    ],
-    "bookedDates": [
-      "2026-11-27"
-    ]
-  },
-  {
-    "name": "Golden Glow Sangeet Tunnel & Mirror Stage",
-    "contactPerson": "Nikhil Kapoor",
-    "phone": "+91 98101 77334",
-    "email": "nikhil@goldenglowdecor.com",
-    "serviceType": "TentDecor",
-    "categories": [
-      "Stage",
-      "Entrance",
-      "Theme Decoration",
-      "Lighting"
-    ],
-    "city": "Delhi NCR",
-    "locality": "Aerocity, Gurugram & Dwarka",
-    "pinCode": "110037",
-    "address": "Asset 8, Hospitality District, Aerocity, New Delhi",
-    "coordinates": {
-      "lat": 28.5501,
-      "lng": 77.1215
-    },
-    "serviceRadiusKm": 60,
-    "extendedServiceAreas": [
-      "Delhi",
-      "Gurugram",
-      "Noida",
-      "Faridabad"
-    ],
-    "experienceYears": 12,
-    "verificationStatus": "Verified",
-    "rating": 4.95,
-    "reviewCount": 65,
-    "description": "Specialists in high-glamour cocktail & sangeet nights! 100-foot LED fairy-light infinity tunnels, reflective acrylic mirror dance floors, and neon floral backdrops.",
-    "packages": [
-      {
-        "id": "tent-pkg-9",
-        "name": "Infinity Glow Entrance Tunnel & Sangeet Stage",
-        "category": "Stage",
-        "price": 29000,
-        "isPriceOnRequest": false,
-        "validityDays": 30,
-        "durationHours": 24,
-        "performersCount": 0,
-        "soundCoverage": "N/A",
-        "inclusions": [
-          "80-foot Archway Infinity Light Tunnel for Guest Entrance",
-          "32x20 ft Illuminated Glass & Mirror Dance Stage",
-          "Custom Acrylic Neon Monogram Wall for Photo Ops",
-          "Warm White Ambient Floodlights & DMX Stage Uplighting"
-        ]
-      }
-    ],
-    "themePortfolios": [
-      {
-        "title": "Aerocity Sangeet Tunnel & Mirror Floor",
-        "category": "Stage",
-        "description": "Illuminated entrance and glowing stage design.",
-        "imageUrl": "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80",
-        "tags": [
-          "Tunnel",
-          "Sangeet",
-          "Delhi"
-        ],
-        "estimatedPrice": 29000
-      }
-    ],
-    "bookedDates": [
-      "2026-12-06"
-    ]
-  },
-  {
-    "name": "Vrindavan Floral Lotus Mandap & Peacock Theme",
-    "contactPerson": "Pandit Rameshwar Sharma",
-    "phone": "+91 94500 81234",
-    "email": "rameshwar@vrindavandecor.in",
-    "serviceType": "TentDecor",
-    "categories": [
-      "Mandap",
-      "Floral Decoration",
-      "Theme Decoration",
       "Stage"
     ],
     "city": "Lucknow",
@@ -1490,38 +1074,38 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.97,
     "reviewCount": 88,
-    "description": "Devotional royal Indian themes inspired by Vrindavan. Hand-sculpted peacock entrance gates, floating pink lotus pond pheras mandap, and rajnigandha chandeliers.",
+    "description": "Devotional Vedic wedding mandap inspired by Kashi Vishwanath. Sacred hanging brass bells, pure fragrant mogra & rajnigandha chains, brass diyas and havan kund.",
     "packages": [
       {
-        "id": "tent-pkg-10",
-        "name": "Vrindavan Lotus Mandap & Peacock Gateway",
+        "id": "tent-pkg-4",
+        "name": "Kashi Vedic Mandap & Temple Bell Setup",
         "category": "Mandap",
-        "price": 23000,
+        "price": 22000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "8-Pillar Lotus Petal Mandap with Water Body Base",
-          "Twin 10-ft Hand-Crafted Floral Peacock Sculptures",
-          "50 kg Pure Rajnigandha & Red Rose Floral Rain Drops",
-          "Traditional Brass Aarti Thalis & 12 Havan Asanas"
+          "4-Pillar Carved Wooden Vedic Mandap Structure",
+          "Pure Fresh Mogra & Rajnigandha Garland Drops",
+          "16 Brass Hanging Temple Bells with Diya Deepastambhas",
+          "Traditional Brass Aarti Set & 8 Havan Chaukis"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Lotus Pond Sacred Mandap",
+        "title": "Kashi Temple Bell & Mogra Mandap",
         "category": "Mandap",
-        "description": "Vibrant Indian traditional floral decor.",
-        "imageUrl": "https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?auto=format&fit=crop&w=800&q=80",
+        "description": "Sacred Vedic wedding mandap with traditional brass diyas.",
+        "imageUrl": "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80",
         "tags": [
-          "Lotus",
+          "Vedic",
           "Mandap",
-          "Heritage"
+          "Kashi"
         ],
-        "estimatedPrice": 23000
+        "estimatedPrice": 22000
       }
     ],
     "bookedDates": [
@@ -1530,7 +1114,424 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "German Hanger Waterproof Air-Cooled Mega Tent",
+    "name": "Shahi Toran Dwar & Jaimala Stage (शाही तोरण द्वार व जयमाला स्टेज)",
+    "contactPerson": "Rajesh Mehra",
+    "phone": "+91 98118 76543",
+    "email": "rajesh@shahitoren.com",
+    "serviceType": "TentDecor",
+    "categories": [
+      "Stage",
+      "Entrance",
+      "Floral Decoration",
+      "Wedding Tent"
+    ],
+    "city": "Delhi NCR",
+    "locality": "Chattarpur Farms & Mehrauli",
+    "pinCode": "110074",
+    "address": "Main Chattarpur Road, New Delhi",
+    "coordinates": {
+      "lat": 28.5023,
+      "lng": 77.1818
+    },
+    "serviceRadiusKm": 60,
+    "extendedServiceAreas": [
+      "Delhi",
+      "Gurugram",
+      "Noida",
+      "Faridabad"
+    ],
+    "experienceYears": 16,
+    "verificationStatus": "Verified",
+    "rating": 4.93,
+    "reviewCount": 74,
+    "description": "Grand royal wedding entrance! 50-ft floral toran entry gate with 10 carved arches, elevated jaimala stage with velvet draping and royal couple sofa.",
+    "packages": [
+      {
+        "id": "tent-pkg-5",
+        "name": "Shahi Floral Toran Entrance & Grand Stage",
+        "category": "Stage",
+        "price": 25000,
+        "isPriceOnRequest": false,
+        "validityDays": 30,
+        "durationHours": 24,
+        "performersCount": 0,
+        "soundCoverage": "N/A",
+        "inclusions": [
+          "50-ft Grand Floral Toran Entrance Gate with 10 Arches",
+          "30x16 ft Elevated Jaimala Stage with Red Velvet Backdrop",
+          "Embroidered Shahi Throne Sofa for Bride & Groom",
+          "8 Brass Urlis with Floating Lotus Flowers at Pathway"
+        ]
+      }
+    ],
+    "themePortfolios": [
+      {
+        "title": "Shahi Floral Toran Entrance",
+        "category": "Entrance",
+        "description": "Royal Indian wedding archway and grand entrance decor.",
+        "imageUrl": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
+        "tags": [
+          "Toran",
+          "Entrance",
+          "Delhi"
+        ],
+        "estimatedPrice": 25000
+      }
+    ],
+    "bookedDates": [
+      "2026-11-23",
+      "2026-12-05"
+    ]
+  },
+  {
+    "name": "Sheesh Mahal Glass & Crystal Mandap (शीश महल ग्लास व क्रिस्टल फेरे मंडप)",
+    "contactPerson": "Nikhil Kapoor",
+    "phone": "+91 98101 77334",
+    "email": "nikhil@sheeshmahaldecor.com",
+    "serviceType": "TentDecor",
+    "categories": [
+      "Mandap",
+      "Stage",
+      "Theme Decoration",
+      "Wedding Tent"
+    ],
+    "city": "Delhi NCR",
+    "locality": "Aerocity, Gurugram & Dwarka",
+    "pinCode": "110037",
+    "address": "Hospitality District, Aerocity, New Delhi",
+    "coordinates": {
+      "lat": 28.5501,
+      "lng": 77.1215
+    },
+    "serviceRadiusKm": 60,
+    "extendedServiceAreas": [
+      "Delhi",
+      "Gurugram",
+      "Noida",
+      "Faridabad"
+    ],
+    "experienceYears": 14,
+    "verificationStatus": "Verified",
+    "rating": 4.95,
+    "reviewCount": 81,
+    "description": "Inspired by the historic Jaipur Sheesh Mahal! Mirror-reflective aisle runner, crystal chandeliers, transparent glass mandap pillars, and white orchid ceilings.",
+    "packages": [
+      {
+        "id": "tent-pkg-6",
+        "name": "Sheesh Mahal Glass Mandap & Mirror Aisle",
+        "category": "Mandap",
+        "price": 32000,
+        "isPriceOnRequest": false,
+        "validityDays": 30,
+        "durationHours": 24,
+        "performersCount": 0,
+        "soundCoverage": "N/A",
+        "inclusions": [
+          "All-Glass & Mirror Finish 4-Pillar Mandap",
+          "6 Multi-Tier Crystal Chandeliers with Warm Dimmers",
+          "60-ft Glossy Mirror Aisle Runner for Bridal Walk",
+          "Fresh White Orchids & Baby Breath Floral Ceiling"
+        ]
+      }
+    ],
+    "themePortfolios": [
+      {
+        "title": "Sheesh Mahal Glass Mandap",
+        "category": "Mandap",
+        "description": "Regal mirror and crystal wedding mandap design.",
+        "imageUrl": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80",
+        "tags": [
+          "Sheesh Mahal",
+          "Mandap",
+          "Delhi"
+        ],
+        "estimatedPrice": 32000
+      }
+    ],
+    "bookedDates": [
+      "2026-12-02",
+      "2026-12-16"
+    ]
+  },
+  {
+    "name": "Awadhi Royal Dastarkhwan & Shamiana (अवधी शाही दस्तरख्वान व शामियाना)",
+    "contactPerson": "Syed Tariq Mirza",
+    "phone": "+91 94150 12890",
+    "email": "tariq@awadhidastarkhwan.in",
+    "serviceType": "TentDecor",
+    "categories": [
+      "Wedding Tent",
+      "Shamiana",
+      "Stage",
+      "Theme Decoration"
+    ],
+    "city": "Lucknow",
+    "locality": "Gomti Nagar & Hazratganj",
+    "pinCode": "226010",
+    "address": "Vipin Khand, Gomti Nagar, Lucknow",
+    "coordinates": {
+      "lat": 26.8532,
+      "lng": 80.9984
+    },
+    "serviceRadiusKm": 80,
+    "extendedServiceAreas": [
+      "Lucknow",
+      "Kanpur",
+      "Ayodhya",
+      "Varanasi"
+    ],
+    "experienceYears": 17,
+    "verificationStatus": "Verified",
+    "rating": 4.91,
+    "reviewCount": 55,
+    "description": "Shahi Awadhi hospitality decor! Scalloped Nawabi archways, embroidered velvet canopies, low Dastarkhwan dining baithak, and antique silver aarti lamps.",
+    "packages": [
+      {
+        "id": "tent-pkg-7",
+        "name": "Awadhi Nawabi Shamiana & Royal Dastarkhwan",
+        "category": "Wedding Tent",
+        "price": 23000,
+        "isPriceOnRequest": false,
+        "validityDays": 30,
+        "durationHours": 24,
+        "performersCount": 0,
+        "soundCoverage": "N/A",
+        "inclusions": [
+          "60x30 ft Nawabi Embroidered Shamiana Tent",
+          "Traditional Low Dastarkhwan Seating for 200 Guests",
+          "3-Tier Fresh Jasmine & Red Rose Floral Drops",
+          "Ornate Nawabi Double Throne for Bride & Groom"
+        ]
+      }
+    ],
+    "themePortfolios": [
+      {
+        "title": "Awadhi Royal Dastarkhwan Shamiana",
+        "category": "Shamiana",
+        "description": "Opulent Nawabi royal wedding shamiana and dining decor.",
+        "imageUrl": "https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?auto=format&fit=crop&w=800&q=80",
+        "tags": [
+          "Awadh",
+          "Dastarkhwan",
+          "Lucknow"
+        ],
+        "estimatedPrice": 23000
+      }
+    ],
+    "bookedDates": [
+      "2026-11-30"
+    ]
+  },
+  {
+    "name": "Rajnigandha Floral Lawn & Fairylight Starlit Tent (रजनीगंधा लॉन व फेयरीलाइट शामियाना)",
+    "contactPerson": "Ananya Swaminathan",
+    "phone": "+91 98451 90123",
+    "email": "ananya@rajnigandhalawn.com",
+    "serviceType": "TentDecor",
+    "categories": [
+      "Wedding Tent",
+      "Theme Decoration",
+      "Floral Decoration",
+      "Fairylight"
+    ],
+    "city": "Bengaluru",
+    "locality": "Palace Grounds & Hebbal",
+    "pinCode": "560006",
+    "address": "Bellary Road, Gate 4 Palace Grounds, Bengaluru",
+    "coordinates": {
+      "lat": 13.0067,
+      "lng": 77.5813
+    },
+    "serviceRadiusKm": 50,
+    "extendedServiceAreas": [
+      "Bengaluru",
+      "Mysuru",
+      "Nandi Hills"
+    ],
+    "experienceYears": 12,
+    "verificationStatus": "Verified",
+    "rating": 4.92,
+    "reviewCount": 63,
+    "description": "Magical open-lawn Indian wedding canopy! 10,000 warm fairy-lights ceiling grid, hanging fresh rajnigandha strings, German pagoda dining tents.",
+    "packages": [
+      {
+        "id": "tent-pkg-8",
+        "name": "Starlit Fairylight Canopy & Rajnigandha Mandap",
+        "category": "Wedding Tent",
+        "price": 26000,
+        "isPriceOnRequest": false,
+        "validityDays": 30,
+        "durationHours": 24,
+        "performersCount": 0,
+        "soundCoverage": "N/A",
+        "inclusions": [
+          "80x40 ft Starlit Fairy Light Ceiling Grid over Lawns",
+          "2 White German Pagoda Tents for Dining & Cocktails",
+          "Circular Open Mandap with Rajnigandha Floral Rain",
+          "100 Hanging Edison Warm Filament Bulbs"
+        ]
+      }
+    ],
+    "themePortfolios": [
+      {
+        "title": "Rajnigandha Lawn Starlit Canopy",
+        "category": "Wedding Tent",
+        "description": "Fairylight ceiling grid and fragrant rajnigandha lawn decor.",
+        "imageUrl": "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80",
+        "tags": [
+          "Rajnigandha",
+          "Fairylight",
+          "Bengaluru"
+        ],
+        "estimatedPrice": 26000
+      }
+    ],
+    "bookedDates": [
+      "2026-11-23",
+      "2026-12-11"
+    ]
+  },
+  {
+    "name": "Dakshin Vivah Madurai Malli & Banana Stem Mandap (दक्षिण विवाह मदुरै मल्लिका मंडप)",
+    "contactPerson": "Venkatesh Iyer",
+    "phone": "+91 98402 33118",
+    "email": "venkat@dakshinvivah.in",
+    "serviceType": "TentDecor",
+    "categories": [
+      "Mandap",
+      "Traditional",
+      "Floral Decoration",
+      "South Indian"
+    ],
+    "city": "Bengaluru",
+    "locality": "Jayanagar & Malleshwaram",
+    "pinCode": "560011",
+    "address": "Kanmari Road, 4th Block, Jayanagar, Bengaluru",
+    "coordinates": {
+      "lat": 12.9299,
+      "lng": 77.5833
+    },
+    "serviceRadiusKm": 60,
+    "extendedServiceAreas": [
+      "Bengaluru",
+      "Mysuru",
+      "Chennai",
+      "Coimbatore"
+    ],
+    "experienceYears": 22,
+    "verificationStatus": "Verified",
+    "rating": 4.98,
+    "reviewCount": 110,
+    "description": "Traditional South Indian wedding grandeur! Fresh banana stems, mango leaf toranam, pure fragrant Madurai malli jasmine garlands, and brass deepams.",
+    "packages": [
+      {
+        "id": "tent-pkg-9",
+        "name": "Dakshin Traditional Madurai Malli Mandap",
+        "category": "Mandap",
+        "price": 24000,
+        "isPriceOnRequest": false,
+        "validityDays": 30,
+        "durationHours": 24,
+        "performersCount": 0,
+        "soundCoverage": "N/A",
+        "inclusions": [
+          "Traditional Carved South Indian Wooden Mandap",
+          "Pure Fresh Jasmine (Malli) and Lotus Bud Chandelier",
+          "Brass Hanging Bells & 16 Traditional Diya Deepastambhas",
+          "Banana Stems & Mango Leaf Torana Entrance Setup"
+        ]
+      }
+    ],
+    "themePortfolios": [
+      {
+        "title": "Dakshin Vivah Jasmine Mandap",
+        "category": "Mandap",
+        "description": "Traditional South Indian temple flower and banana stem mandap.",
+        "imageUrl": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80",
+        "tags": [
+          "South Indian",
+          "Mandap",
+          "Jasmine"
+        ],
+        "estimatedPrice": 24000
+      }
+    ],
+    "bookedDates": [
+      "2026-11-22",
+      "2026-12-03"
+    ]
+  },
+  {
+    "name": "Sangeet Swarna Mahal LED Light Tunnel & Stage (संगीत स्वर्ण महल व एलईडी टनल स्टेज)",
+    "contactPerson": "Karan Salgaonkar",
+    "phone": "+91 98204 90112",
+    "email": "karan@swarnamahal.in",
+    "serviceType": "TentDecor",
+    "categories": [
+      "Stage",
+      "Entrance",
+      "Theme Decoration",
+      "Lighting"
+    ],
+    "city": "Mumbai",
+    "locality": "Lower Parel & Juhu",
+    "pinCode": "400013",
+    "address": "Senapati Bapat Marg, Lower Parel, Mumbai",
+    "coordinates": {
+      "lat": 18.9986,
+      "lng": 72.8306
+    },
+    "serviceRadiusKm": 50,
+    "extendedServiceAreas": [
+      "Mumbai",
+      "Thane",
+      "Navi Mumbai",
+      "Pune"
+    ],
+    "experienceYears": 13,
+    "verificationStatus": "Verified",
+    "rating": 4.94,
+    "reviewCount": 71,
+    "description": "Grand golden palace aesthetic for Sangeet & Cocktail! 80-foot glowing light tunnel entrance, mirror dance stage, and royal floral photo backdrop.",
+    "packages": [
+      {
+        "id": "tent-pkg-10",
+        "name": "Swarna Mahal Glowing Light Tunnel & Sangeet Stage",
+        "category": "Stage",
+        "price": 27000,
+        "isPriceOnRequest": false,
+        "validityDays": 30,
+        "durationHours": 24,
+        "performersCount": 0,
+        "soundCoverage": "N/A",
+        "inclusions": [
+          "80-foot Archway Infinity Light Tunnel for Guest Entrance",
+          "32x20 ft Illuminated Glass & Mirror Dance Stage",
+          "Golden Palace Themed Floral Backdrop for Photo Ops",
+          "Warm White Ambient Floodlights & DMX Stage Uplighting"
+        ]
+      }
+    ],
+    "themePortfolios": [
+      {
+        "title": "Swarna Mahal Glowing Tunnel Stage",
+        "category": "Stage",
+        "description": "Golden illuminated archway entrance and mirror dance floor.",
+        "imageUrl": "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80",
+        "tags": [
+          "Swarna Mahal",
+          "Sangeet",
+          "Mumbai"
+        ],
+        "estimatedPrice": 27000
+      }
+    ],
+    "bookedDates": [
+      "2026-12-06"
+    ]
+  },
+  {
+    "name": "German Water-Proof Mega Wedding Pandal (जर्मन वाटरप्रूफ भव्य विवाह वाटरप्रूफ पंडाल)",
     "contactPerson": "Jignesh Shah",
     "phone": "+91 98250 91823",
     "email": "jignesh@megatents.in",
@@ -1559,15 +1560,15 @@ const SEED_VENDORS = [
     ],
     "experienceYears": 17,
     "verificationStatus": "Verified",
-    "rating": 4.88,
-    "reviewCount": 72,
-    "description": "Commercial mega-structures for 1,000 to 5,000 guests! German aluminium clear-span hangers, 100% waterproof, heavy air-conditioning units, and satin ceilings.",
+    "rating": 4.89,
+    "reviewCount": 79,
+    "description": "Heavy all-weather waterproof German aluminum hanger structure for 1,000 to 3,000 wedding guests! Full air-cooling ducts, carpeted wooden flooring.",
     "packages": [
       {
         "id": "tent-pkg-11",
-        "name": "German Hanger AC Tent (100x60 ft, 1500 Guests)",
+        "name": "German Hanger Grand Wedding Pandal (100x60 ft)",
         "category": "Wedding Tent",
-        "price": 38000,
+        "price": 35000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 36,
@@ -1575,24 +1576,24 @@ const SEED_VENDORS = [
         "soundCoverage": "N/A",
         "inclusions": [
           "Aluminium Clear-Span German Hanger Structure (6,000 sq ft)",
-          "Flame-Retardant & Waterproof White Satin Ceiling Drape",
-          "8 Ductable 8.5-Ton Industrial Air Cooling Units",
-          "Heavy Duty Wooden Planking Base Floor with Carpet"
+          "Flame-Retardant & 100% Waterproof White Satin Ceiling Drape",
+          "8 Industrial Air Cooling Ducts & Starlight Chandeliers",
+          "Heavy Duty Wooden Planking Base Floor with Red Carpet"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Mega German Hanger Grand Banquet",
+        "title": "Grand German Waterproof Pandal",
         "category": "Wedding Tent",
-        "description": "Air-conditioned mega tent structure for grand weddings.",
+        "description": "Air-conditioned mega pandal structure for grand weddings.",
         "imageUrl": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80",
         "tags": [
           "German Hanger",
-          "AC Tent",
+          "Pandal",
           "Ahmedabad"
         ],
-        "estimatedPrice": 38000
+        "estimatedPrice": 35000
       }
     ],
     "bookedDates": [
@@ -1600,16 +1601,16 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Marigold Magic Haldi & Mehndi Mela Canopy",
-    "contactPerson": "Poonam Saxena",
-    "phone": "+91 94142 66311",
-    "email": "poonam@marigoldmagic.in",
+    "name": "Braj Vrindavan Peacock Floral Mandap (ब्रज वृंदावन मयूर व कमल कुंड मंडप)",
+    "contactPerson": "Bhawani Singh Rathore",
+    "phone": "+91 94140 88219",
+    "email": "bhawani@vrindavanmandap.in",
     "serviceType": "TentDecor",
     "categories": [
-      "Theme Decoration",
+      "Mandap",
       "Floral Decoration",
-      "Haldi Mehndi",
-      "Wedding Tent"
+      "Theme Decoration",
+      "Heritage"
     ],
     "city": "Jaipur",
     "locality": "Vaishali Nagar & Mansarovar",
@@ -1619,54 +1620,54 @@ const SEED_VENDORS = [
       "lat": 26.9084,
       "lng": 75.7487
     },
-    "serviceRadiusKm": 60,
+    "serviceRadiusKm": 70,
     "extendedServiceAreas": [
       "Jaipur",
-      "Ajmer",
+      "Mathura",
+      "Vrindavan",
       "Delhi NCR",
       "Agra"
     ],
-    "experienceYears": 9,
+    "experienceYears": 15,
     "verificationStatus": "Verified",
-    "rating": 4.94,
-    "reviewCount": 62,
-    "description": "Vibrant Rajasthani mela carnival for Haldi & Mehndi! Bright yellow & orange genda phool draping, quirky auto-rickshaw photo booths, and colorful tassels.",
+    "rating": 4.96,
+    "reviewCount": 82,
+    "description": "Sacred Braj Vrindavan themed wedding decor! Twin hand-carved floral peacocks, floating lotus pond pheras mandap, sacred havan asanas and marigold torans.",
     "packages": [
       {
         "id": "tent-pkg-12",
-        "name": "Vibrant Genda Phool Haldi & Mehndi Carnival",
-        "category": "Theme Decoration",
-        "price": 18000,
+        "name": "Vrindavan Peacock & Lotus Pheras Mandap",
+        "category": "Mandap",
+        "price": 21000,
         "isPriceOnRequest": false,
         "validityDays": 30,
-        "durationHours": 12,
+        "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "Complete Yellow & Orange Marigold Floral Canopy (150 kg flowers)",
-          "Quirky Hand-Painted Floral Auto-Rickshaw Photo Booth",
-          "12 Colorful Rajasthani Leheriya Shamianas & Low Baithaks",
-          "Brass Urli Floating Flowers for Bridal & Groom Haldi Ceremony"
+          "8-Pillar Lotus Petal Mandap with Water Body Base",
+          "Twin 10-ft Hand-Crafted Floral Peacock Sculptures",
+          "50 kg Pure Rajnigandha & Red Rose Floral Drops",
+          "Traditional Brass Aarti Thalis & 12 Havan Asanas"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Marigold Haldi Mela Carnival",
-        "category": "Theme Decoration",
-        "description": "Joyous yellow marigold decor and photo booth.",
-        "imageUrl": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80",
+        "title": "Braj Vrindavan Peacock Mandap",
+        "category": "Mandap",
+        "description": "Traditional peacock floral sculpture and lotus pond mandap.",
+        "imageUrl": "https://images.unsplash.com/photo-1509927083803-4bd519298ac4?auto=format&fit=crop&w=800&q=80",
         "tags": [
-          "Haldi",
-          "Marigold",
-          "Jaipur"
+          "Peacock",
+          "Mandap",
+          "Vrindavan"
         ],
-        "estimatedPrice": 18000
+        "estimatedPrice": 21000
       }
     ],
     "bookedDates": [
-      "2026-11-20",
-      "2026-12-01"
+      "2026-11-26"
     ]
   }
 ];
