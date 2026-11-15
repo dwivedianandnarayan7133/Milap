@@ -831,16 +831,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Shahi Rajwada Mandap & Vivah Shamiana (शाही राजवाड़ा मंडप व शामियाना)",
+    "name": "Royal Rajwada Canopy Tent Decorators",
     "contactPerson": "Devendra Rathore",
     "phone": "+91 98201 44556",
     "email": "devendra@rajwadamandap.com",
     "serviceType": "TentDecor",
     "categories": [
-      "Mandap",
-      "Floral Decoration",
-      "Wedding Tent",
-      "Stage"
+      "Tent & Canopy",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Mumbai",
     "locality": "Bandra West & Juhu",
@@ -863,12 +862,12 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.97,
     "reviewCount": 84,
-    "description": "Bhavya 4-pillar hand-carved golden Rajwada mandap, fresh Banarasi mogra floral cascades, royal red velvet backdrop, and ceremonial Maharaj chairs.",
+    "description": "Specialists in royal red velvet canopy tents, gold-embroidered valances, chandeliers, and luxury indoor/outdoor wedding canopy setups.",
     "packages": [
       {
         "id": "tent-pkg-1",
-        "name": "Shahi Rajwada Mandap & Jaimala Stage",
-        "category": "Mandap",
+        "name": "Royal Red Rajwada Velvet Canopy Setup",
+        "category": "Tent & Canopy",
         "price": 28000,
         "isPriceOnRequest": false,
         "validityDays": 30,
@@ -876,23 +875,22 @@ const SEED_VENDORS = [
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "12x12 ft Carved Rajwada Stone Finish Mandap",
-          "Fresh Banarasi Mogra & Red Dutch Rose Chandelier",
-          "24x14 ft Grand Jaimala Stage with Velvet Backdrop",
-          "Royal Maharaj Bride & Groom Chairs + 8 Havan Chaukis"
+          "Handcrafted Crimson Red Velvet Royal Canopy Tent (20x20 ft)",
+          "Pure Zari Embroidered Ceiling Valance & Golden Tassels",
+          "Centerpiece Crystal Chandelier with Warm Dimmable Ambient Glow",
+          "Low Maharaja Diwan Baithak with Silk Bolsters & Cushions"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Shahi Rajwada Mandap & Floral Decor",
-        "category": "Mandap",
-        "description": "Royal Indian sacred pheras setup with fresh red rose and mogra chandelier.",
-        "imageUrl": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
+        "title": "Royal Rajwada Canopy Tent Decorators",
+        "category": "Tent & Canopy",
+        "description": "Specialists in royal red velvet canopy tents, gold-embroidered valances, chandeliers, and luxury indoor/outdoor wedding canopy setups.",
+        "imageUrl": "/images/tents/tent-1.jpg",
         "tags": [
-          "Rajwada",
-          "Mandap",
-          "Mumbai"
+          "Tent & Canopy",
+          "Wedding"
         ],
         "estimatedPrice": 28000
       }
@@ -903,16 +901,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Marwar Heritage Kanat Shamiana & Baithak (मारवाड़ हेरिटेज शामियाना व कनात)",
+    "name": "Grand Floral Jaimala Stage & Backdrop",
     "contactPerson": "Mahendra Singh Chouhan",
     "phone": "+91 98290 55198",
     "email": "mahendra@virasatmandap.com",
     "serviceType": "TentDecor",
     "categories": [
-      "Wedding Tent",
-      "Shamiana",
-      "Theme Decoration",
-      "Baithak"
+      "Jaimala Stage",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Jaipur",
     "locality": "Amer Road & C-Scheme",
@@ -934,38 +931,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.96,
     "reviewCount": 92,
-    "description": "Traditional Marwadi royal kanat shamiana with block-printed handloom linings, antique brass diya lanterns, low velvet baithak seating, and royal bolsters.",
+    "description": "Exquisite luxury floral wall backdrops, poolside wedding stages, royal velvet sofa seating, and ambient warm spotlights.",
     "packages": [
       {
         "id": "tent-pkg-2",
-        "name": "Marwar Palace Shamiana & Baithak Lounge",
-        "category": "Wedding Tent",
-        "price": 24000,
+        "name": "Grand Floral Jaimala Stage & Royal Sofa Setup",
+        "category": "Jaimala Stage",
+        "price": 26000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "50x30 ft Marwadi Handloom Block-Printed Shamiana",
-          "16 Low-Seating Diwans with Zari Cushions & Bolsters",
-          "24 Antique Brass Diya Lanterns & Urli Bowls",
-          "Carved Wooden Welcome Gate with Shehnai Motifs"
+          "24x12 ft Grand Fresh Floral Stage Wall (Roses, Carnations & Lilies)",
+          "Royal Carved High-Back Maharaja Double Sofa Couch",
+          "Carpeted Wooden Platform Stage with Golden Fascia Border",
+          "Warm LED Focus Stage Spotlights & Candle Pedestals"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Marwar Royal Shamiana Baithak",
-        "category": "Wedding Tent",
-        "description": "Authentic Rajasthani courtyard tent with traditional diwan seating.",
-        "imageUrl": "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=80",
+        "title": "Grand Floral Jaimala Stage & Backdrop",
+        "category": "Jaimala Stage",
+        "description": "Exquisite luxury floral wall backdrops, poolside wedding stages, royal velvet sofa seating, and ambient warm spotlights.",
+        "imageUrl": "/images/tents/tent-2.jpg",
         "tags": [
-          "Marwar",
-          "Shamiana",
-          "Jaipur"
+          "Jaimala Stage",
+          "Wedding"
         ],
-        "estimatedPrice": 24000
+        "estimatedPrice": 26000
       }
     ],
     "bookedDates": [
@@ -974,16 +970,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Genda Phool Haldi & Mehndi Mela Canopy (गेंदा फूल हल्दी व मेहंदी शामियाना)",
+    "name": "Circular Floral Ring Jaimala Stage",
     "contactPerson": "Poonam Saxena",
     "phone": "+91 94142 66311",
     "email": "poonam@marigoldmagic.in",
     "serviceType": "TentDecor",
     "categories": [
-      "Theme Decoration",
-      "Haldi Mehndi",
-      "Floral Decoration",
-      "Wedding Tent"
+      "Jaimala Stage",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Delhi NCR",
     "locality": "West Delhi & Chandni Chowk",
@@ -1004,38 +999,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.94,
     "reviewCount": 68,
-    "description": "Joyous traditional Haldi & Mehndi carnival! 150 kg fresh yellow & orange genda phool draping, floral jhula swing, Rajasthani umbrellas, and photo booths.",
+    "description": "Modern circular floral ring arch with hanging Edison bulbs, golden flower pedestals, and customized romantic couple stage decor.",
     "packages": [
       {
         "id": "tent-pkg-3",
-        "name": "Genda Phool Haldi Canopy & Floral Jhula",
-        "category": "Theme Decoration",
-        "price": 16000,
+        "name": "Circular Floral Ring Arch & Edison Light Stage",
+        "category": "Jaimala Stage",
+        "price": 24000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 12,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "Complete Yellow & Orange Marigold Floral Canopy (150 kg flowers)",
-          "Decorated Floral Swing (Jhula) for Bride & Groom",
-          "12 Colorful Rajasthani Leheriya Shamianas & Low Baithaks",
-          "Brass Urli with Floating Petals for Haldi Ceremony"
+          "10-Foot Circular Steel Frame Clad with Dense Fresh White & Red Roses",
+          "Hanging Vintage Edison Bulb Clusters with Dimmable Warm Glow",
+          "Twin Golden Cylindrical Pedestals with Floral Urns",
+          "Designer Couple Sofa / Velvet Love Seat with Stage Carpeting"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Genda Phool Haldi Mela Decor",
-        "category": "Theme Decoration",
-        "description": "Vibrant marigold flowers and festive yellow canopy.",
-        "imageUrl": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80",
+        "title": "Circular Floral Ring Jaimala Stage",
+        "category": "Jaimala Stage",
+        "description": "Modern circular floral ring arch with hanging Edison bulbs, golden flower pedestals, and customized romantic couple stage decor.",
+        "imageUrl": "/images/tents/tent-3.jpg",
         "tags": [
-          "Haldi",
-          "Genda Phool",
-          "Delhi"
+          "Jaimala Stage",
+          "Wedding"
         ],
-        "estimatedPrice": 16000
+        "estimatedPrice": 24000
       }
     ],
     "bookedDates": [
@@ -1044,16 +1038,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Kashi Vishwanath Temple Bell & Mogra Mandap (काशी विश्वनाथ मंदिर दीप व मोगरा मंडप)",
+    "name": "Boho Chic Mehndi Canopy & Baithak Lounge",
     "contactPerson": "Pandit Rameshwar Sharma",
     "phone": "+91 94500 81234",
     "email": "rameshwar@kashimandap.in",
     "serviceType": "TentDecor",
     "categories": [
-      "Mandap",
-      "Floral Decoration",
-      "Traditional",
-      "Stage"
+      "Baithak & Shamiana",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Lucknow",
     "locality": "Varanasi Cantt & Lucknow",
@@ -1074,38 +1067,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.97,
     "reviewCount": 88,
-    "description": "Devotional Vedic wedding mandap inspired by Kashi Vishwanath. Sacred hanging brass bells, pure fragrant mogra & rajnigandha chains, brass diyas and havan kund.",
+    "description": "Vibrant ethnic printed canopies, low diwan floor baithak with round bolsters, colorful pom-poms, and Rajasthani umbrellas.",
     "packages": [
       {
         "id": "tent-pkg-4",
-        "name": "Kashi Vedic Mandap & Temple Bell Setup",
-        "category": "Mandap",
-        "price": 22000,
+        "name": "Boho Mehndi Canopy & Low Baithak Lounge",
+        "category": "Baithak & Shamiana",
+        "price": 20000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "4-Pillar Carved Wooden Vedic Mandap Structure",
-          "Pure Fresh Mogra & Rajnigandha Garland Drops",
-          "16 Brass Hanging Temple Bells with Diya Deepastambhas",
-          "Traditional Brass Aarti Set & 8 Havan Chaukis"
+          "Multi-Colored Ethnic Block-Printed Canopy Tent (18x18 ft)",
+          "12 Floor Mattresses (Gaddas) with Saffron & Teal Silk Covers",
+          "24 Round Ethnic Bolsters & Tasseled Floor Cushions",
+          "Hanging Mirror-Work Parasols & Festive Tassels"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Kashi Temple Bell & Mogra Mandap",
-        "category": "Mandap",
-        "description": "Sacred Vedic wedding mandap with traditional brass diyas.",
-        "imageUrl": "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80",
+        "title": "Boho Chic Mehndi Canopy & Baithak Lounge",
+        "category": "Baithak & Shamiana",
+        "description": "Vibrant ethnic printed canopies, low diwan floor baithak with round bolsters, colorful pom-poms, and Rajasthani umbrellas.",
+        "imageUrl": "/images/tents/tent-4.jpg",
         "tags": [
-          "Vedic",
-          "Mandap",
-          "Kashi"
+          "Baithak & Shamiana",
+          "Wedding"
         ],
-        "estimatedPrice": 22000
+        "estimatedPrice": 20000
       }
     ],
     "bookedDates": [
@@ -1114,16 +1106,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Shahi Toran Dwar & Jaimala Stage (शाही तोरण द्वार व जयमाला स्टेज)",
+    "name": "Yellow Marigold Haldi Canopy & Urli Setup",
     "contactPerson": "Rajesh Mehra",
     "phone": "+91 98118 76543",
     "email": "rajesh@shahitoren.com",
     "serviceType": "TentDecor",
     "categories": [
-      "Stage",
-      "Entrance",
-      "Floral Decoration",
-      "Wedding Tent"
+      "Haldi & Floral Decor",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Delhi NCR",
     "locality": "Chattarpur Farms & Mehrauli",
@@ -1144,38 +1135,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.93,
     "reviewCount": 74,
-    "description": "Grand royal wedding entrance! 50-ft floral toran entry gate with 10 carved arches, elevated jaimala stage with velvet draping and royal couple sofa.",
+    "description": "Fresh yellow and orange marigold drapes canopy, dual brass urlis on green turf, floral backdrop, and ritual seating stools.",
     "packages": [
       {
         "id": "tent-pkg-5",
-        "name": "Shahi Floral Toran Entrance & Grand Stage",
-        "category": "Stage",
-        "price": 25000,
+        "name": "Traditional Yellow Marigold Haldi & Urli Package",
+        "category": "Haldi & Floral Decor",
+        "price": 16000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "50-ft Grand Floral Toran Entrance Gate with 10 Arches",
-          "30x16 ft Elevated Jaimala Stage with Red Velvet Backdrop",
-          "Embroidered Shahi Throne Sofa for Bride & Groom",
-          "8 Brass Urlis with Floating Lotus Flowers at Pathway"
+          "14x14 ft Yellow & White Sheer Drapery Cube Canopy",
+          "500 Fresh Marigold (Genda Phool) Hanging Floral Garlands",
+          "Pair of Large Traditional Brass Urlis Filled with Rose Petals",
+          "Green Artificial Grass Carpet Base & Ritual Wooden Stools (Patlas)"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Shahi Floral Toran Entrance",
-        "category": "Entrance",
-        "description": "Royal Indian wedding archway and grand entrance decor.",
-        "imageUrl": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
+        "title": "Yellow Marigold Haldi Canopy & Urli Setup",
+        "category": "Haldi & Floral Decor",
+        "description": "Fresh yellow and orange marigold drapes canopy, dual brass urlis on green turf, floral backdrop, and ritual seating stools.",
+        "imageUrl": "/images/tents/tent-5.jpg",
         "tags": [
-          "Toran",
-          "Entrance",
-          "Delhi"
+          "Haldi & Floral Decor",
+          "Wedding"
         ],
-        "estimatedPrice": 25000
+        "estimatedPrice": 16000
       }
     ],
     "bookedDates": [
@@ -1184,16 +1174,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Sheesh Mahal Glass & Crystal Mandap (शीश महल ग्लास व क्रिस्टल फेरे मंडप)",
+    "name": "Royal Floral Entrance Gate & Red Carpet Walkway",
     "contactPerson": "Nikhil Kapoor",
     "phone": "+91 98101 77334",
     "email": "nikhil@sheeshmahaldecor.com",
     "serviceType": "TentDecor",
     "categories": [
-      "Mandap",
-      "Stage",
-      "Theme Decoration",
-      "Wedding Tent"
+      "Entrance & Passage",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Delhi NCR",
     "locality": "Aerocity, Gurugram & Dwarka",
@@ -1214,38 +1203,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.95,
     "reviewCount": 81,
-    "description": "Inspired by the historic Jaipur Sheesh Mahal! Mirror-reflective aisle runner, crystal chandeliers, transparent glass mandap pillars, and white orchid ceilings.",
+    "description": "Grand arched floral toran dwar entrance, dramatic fabric draping, fairy light tunnel, and 80-foot red carpet walkway.",
     "packages": [
       {
         "id": "tent-pkg-6",
-        "name": "Sheesh Mahal Glass Mandap & Mirror Aisle",
-        "category": "Mandap",
-        "price": 32000,
+        "name": "Grand Floral Toran Gate & 80-Foot Red Carpet Passage",
+        "category": "Entrance & Passage",
+        "price": 22000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "All-Glass & Mirror Finish 4-Pillar Mandap",
-          "6 Multi-Tier Crystal Chandeliers with Warm Dimmers",
-          "60-ft Glossy Mirror Aisle Runner for Bridal Walk",
-          "Fresh White Orchids & Baby Breath Floral Ceiling"
+          "20-Foot Grand Arched Welcome Gate with Fresh Pink & Yellow Florals",
+          "80-Foot Luxury Crimson Red Carpet Runway Aisle",
+          "Dramatic Side Draping with Golden Tassels & 16 Vintage Lanterns",
+          "Overhead Fairy Light Starlit Tunnel with Welcome Floral Urns"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Sheesh Mahal Glass Mandap",
-        "category": "Mandap",
-        "description": "Regal mirror and crystal wedding mandap design.",
-        "imageUrl": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80",
+        "title": "Royal Floral Entrance Gate & Red Carpet Walkway",
+        "category": "Entrance & Passage",
+        "description": "Grand arched floral toran dwar entrance, dramatic fabric draping, fairy light tunnel, and 80-foot red carpet walkway.",
+        "imageUrl": "/images/tents/tent-6.jpg",
         "tags": [
-          "Sheesh Mahal",
-          "Mandap",
-          "Delhi"
+          "Entrance & Passage",
+          "Wedding"
         ],
-        "estimatedPrice": 32000
+        "estimatedPrice": 22000
       }
     ],
     "bookedDates": [
@@ -1254,16 +1242,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Awadhi Royal Dastarkhwan & Shamiana (अवधी शाही दस्तरख्वान व शामियाना)",
+    "name": "Illuminated Royal Jaimala Throne Stage",
     "contactPerson": "Syed Tariq Mirza",
     "phone": "+91 94150 12890",
     "email": "tariq@awadhidastarkhwan.in",
     "serviceType": "TentDecor",
     "categories": [
-      "Wedding Tent",
-      "Shamiana",
-      "Stage",
-      "Theme Decoration"
+      "Jaimala Stage",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Lucknow",
     "locality": "Gomti Nagar & Hazratganj",
@@ -1284,38 +1271,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.91,
     "reviewCount": 55,
-    "description": "Shahi Awadhi hospitality decor! Scalloped Nawabi archways, embroidered velvet canopies, low Dastarkhwan dining baithak, and antique silver aarti lamps.",
+    "description": "Multi-tiered grand wedding stage with carved golden throne chairs, floral arches, crystal chandelier headers, and stage pyros.",
     "packages": [
       {
         "id": "tent-pkg-7",
-        "name": "Awadhi Nawabi Shamiana & Royal Dastarkhwan",
-        "category": "Wedding Tent",
-        "price": 23000,
+        "name": "Illuminated Grand Royal Jaimala Throne Stage",
+        "category": "Jaimala Stage",
+        "price": 34000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "60x30 ft Nawabi Embroidered Shamiana Tent",
-          "Traditional Low Dastarkhwan Seating for 200 Guests",
-          "3-Tier Fresh Jasmine & Red Rose Floral Drops",
-          "Ornate Nawabi Double Throne for Bride & Groom"
+          "30x16 ft Multi-Tiered Carpeted Grand Stage Platform",
+          "Pair of Golden Carved Royal King & Queen Throne Chairs",
+          "Three-Arch Floral Truss Crown with Cascading White & Red Flowers",
+          "Three Crystal Chandeliers & Warm LED Backlit Pillars"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Awadhi Royal Dastarkhwan Shamiana",
-        "category": "Shamiana",
-        "description": "Opulent Nawabi royal wedding shamiana and dining decor.",
-        "imageUrl": "https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?auto=format&fit=crop&w=800&q=80",
+        "title": "Illuminated Royal Jaimala Throne Stage",
+        "category": "Jaimala Stage",
+        "description": "Multi-tiered grand wedding stage with carved golden throne chairs, floral arches, crystal chandelier headers, and stage pyros.",
+        "imageUrl": "/images/tents/tent-7.jpg",
         "tags": [
-          "Awadh",
-          "Dastarkhwan",
-          "Lucknow"
+          "Jaimala Stage",
+          "Wedding"
         ],
-        "estimatedPrice": 23000
+        "estimatedPrice": 34000
       }
     ],
     "bookedDates": [
@@ -1323,16 +1309,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Rajnigandha Floral Lawn & Fairylight Starlit Tent (रजनीगंधा लॉन व फेयरीलाइट शामियाना)",
+    "name": "Traditional Red & Gold Bridal Mandap Canopy",
     "contactPerson": "Ananya Swaminathan",
     "phone": "+91 98451 90123",
     "email": "ananya@rajnigandhalawn.com",
     "serviceType": "TentDecor",
     "categories": [
-      "Wedding Tent",
-      "Theme Decoration",
-      "Floral Decoration",
-      "Fairylight"
+      "Mandap",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Bengaluru",
     "locality": "Palace Grounds & Hebbal",
@@ -1352,38 +1337,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.92,
     "reviewCount": 63,
-    "description": "Magical open-lawn Indian wedding canopy! 10,000 warm fairy-lights ceiling grid, hanging fresh rajnigandha strings, German pagoda dining tents.",
+    "description": "Traditional deep red velvet and zari embroidered bridal canopy, hanging fresh mogra garlands, sacred havankund, and brass lamps.",
     "packages": [
       {
         "id": "tent-pkg-8",
-        "name": "Starlit Fairylight Canopy & Rajnigandha Mandap",
-        "category": "Wedding Tent",
-        "price": 26000,
+        "name": "Shahi Red & Gold Vedic Bridal Mandap Canopy",
+        "category": "Mandap",
+        "price": 30000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "80x40 ft Starlit Fairy Light Ceiling Grid over Lawns",
-          "2 White German Pagoda Tents for Dining & Cocktails",
-          "Circular Open Mandap with Rajnigandha Floral Rain",
-          "100 Hanging Edison Warm Filament Bulbs"
+          "Traditional 4-Pillar Carved Wooden Mandap with Red Velvet Draping",
+          "Golden Zari Embroidered Overhead Ceiling Canopy (Chhatra)",
+          "Hanging Fresh Mogra & Tuberoses Floral Toran Garlands",
+          "Copper Havankund with Ghee Stools & 4 Traditional Low Phera Chowkis"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Rajnigandha Lawn Starlit Canopy",
-        "category": "Wedding Tent",
-        "description": "Fairylight ceiling grid and fragrant rajnigandha lawn decor.",
-        "imageUrl": "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80",
+        "title": "Traditional Red & Gold Bridal Mandap Canopy",
+        "category": "Mandap",
+        "description": "Traditional deep red velvet and zari embroidered bridal canopy, hanging fresh mogra garlands, sacred havankund, and brass lamps.",
+        "imageUrl": "/images/tents/tent-8.jpg",
         "tags": [
-          "Rajnigandha",
-          "Fairylight",
-          "Bengaluru"
+          "Mandap",
+          "Wedding"
         ],
-        "estimatedPrice": 26000
+        "estimatedPrice": 30000
       }
     ],
     "bookedDates": [
@@ -1392,16 +1376,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Dakshin Vivah Madurai Malli & Banana Stem Mandap (दक्षिण विवाह मदुरै मल्लिका मंडप)",
+    "name": "Luxury White Shamiana & Low Diwan Lounge",
     "contactPerson": "Venkatesh Iyer",
     "phone": "+91 98402 33118",
     "email": "venkat@dakshinvivah.in",
     "serviceType": "TentDecor",
     "categories": [
-      "Mandap",
-      "Traditional",
-      "Floral Decoration",
-      "South Indian"
+      "Baithak & Shamiana",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Bengaluru",
     "locality": "Jayanagar & Malleshwaram",
@@ -1422,38 +1405,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.98,
     "reviewCount": 110,
-    "description": "Traditional South Indian wedding grandeur! Fresh banana stems, mango leaf toranam, pure fragrant Madurai malli jasmine garlands, and brass deepams.",
+    "description": "Scalloped white royal canvas shamiana with royal blue floor gaddas, low diwan cushions, lanterns, and open lawn starlit canopy.",
     "packages": [
       {
         "id": "tent-pkg-9",
-        "name": "Dakshin Traditional Madurai Malli Mandap",
-        "category": "Mandap",
-        "price": 24000,
+        "name": "Luxury White Scalloped Shamiana & Blue Diwan Baithak",
+        "category": "Baithak & Shamiana",
+        "price": 25000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "Traditional Carved South Indian Wooden Mandap",
-          "Pure Fresh Jasmine (Malli) and Lotus Bud Chandelier",
-          "Brass Hanging Bells & 16 Traditional Diya Deepastambhas",
-          "Banana Stems & Mango Leaf Torana Entrance Setup"
+          "Premium Scalloped White Canvas Shamiana with Tasseled Valance (25x25 ft)",
+          "16 Floor Mattresses (Gaddas) in Rich Royal Blue Velvet Sheen",
+          "32 Round Silk Bolsters & Floor Cushions for Guest Lounge Seating",
+          "Vintage Iron Lanterns with Warm Fairy Lights along Border"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Dakshin Vivah Jasmine Mandap",
-        "category": "Mandap",
-        "description": "Traditional South Indian temple flower and banana stem mandap.",
-        "imageUrl": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80",
+        "title": "Luxury White Shamiana & Low Diwan Lounge",
+        "category": "Baithak & Shamiana",
+        "description": "Scalloped white royal canvas shamiana with royal blue floor gaddas, low diwan cushions, lanterns, and open lawn starlit canopy.",
+        "imageUrl": "/images/tents/tent-9.jpg",
         "tags": [
-          "South Indian",
-          "Mandap",
-          "Jasmine"
+          "Baithak & Shamiana",
+          "Wedding"
         ],
-        "estimatedPrice": 24000
+        "estimatedPrice": 25000
       }
     ],
     "bookedDates": [
@@ -1462,16 +1444,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Sangeet Swarna Mahal LED Light Tunnel & Stage (संगीत स्वर्ण महल व एलईडी टनल स्टेज)",
+    "name": "Pastel Welcome Arch & Floral Photo Booth",
     "contactPerson": "Karan Salgaonkar",
     "phone": "+91 98204 90112",
     "email": "karan@swarnamahal.in",
     "serviceType": "TentDecor",
     "categories": [
-      "Stage",
-      "Entrance",
-      "Theme Decoration",
-      "Lighting"
+      "Photo Booth & Entrance",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Mumbai",
     "locality": "Lower Parel & Juhu",
@@ -1492,38 +1473,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.94,
     "reviewCount": 71,
-    "description": "Grand golden palace aesthetic for Sangeet & Cocktail! 80-foot glowing light tunnel entrance, mirror dance stage, and royal floral photo backdrop.",
+    "description": "Pastel blush and eucalyptus floral frame, customized couple name easel stand, vintage lanterns, and photo-booth corner.",
     "packages": [
       {
         "id": "tent-pkg-10",
-        "name": "Swarna Mahal Glowing Light Tunnel & Sangeet Stage",
-        "category": "Stage",
-        "price": 27000,
+        "name": "Pastel Garden Welcome Arch & Floral Photo Booth",
+        "category": "Photo Booth & Entrance",
+        "price": 18000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "80-foot Archway Infinity Light Tunnel for Guest Entrance",
-          "32x20 ft Illuminated Glass & Mirror Dance Stage",
-          "Golden Palace Themed Floral Backdrop for Photo Ops",
-          "Warm White Ambient Floodlights & DMX Stage Uplighting"
+          "Pastel Geometric Wooden Frame with Blush Roses & Eucalyptus Leaves",
+          "Customized Wooden Welcome Easel Board with Couple Initials & Date",
+          "Vintage White Floor Lanterns & Pillar Candles Base",
+          "Dedicated Warm Backlighting for Social Media Smartphone Photography"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Swarna Mahal Glowing Tunnel Stage",
-        "category": "Stage",
-        "description": "Golden illuminated archway entrance and mirror dance floor.",
-        "imageUrl": "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80",
+        "title": "Pastel Welcome Arch & Floral Photo Booth",
+        "category": "Photo Booth & Entrance",
+        "description": "Pastel blush and eucalyptus floral frame, customized couple name easel stand, vintage lanterns, and photo-booth corner.",
+        "imageUrl": "/images/tents/tent-10.jpg",
         "tags": [
-          "Swarna Mahal",
-          "Sangeet",
-          "Mumbai"
+          "Photo Booth & Entrance",
+          "Wedding"
         ],
-        "estimatedPrice": 27000
+        "estimatedPrice": 18000
       }
     ],
     "bookedDates": [
@@ -1531,16 +1511,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "German Water-Proof Mega Wedding Pandal (जर्मन वाटरप्रूफ भव्य विवाह वाटरप्रूफ पंडाल)",
+    "name": "Hydraulic Revolving Jaimala Stage Decorators",
     "contactPerson": "Jignesh Shah",
     "phone": "+91 98250 91823",
     "email": "jignesh@megatents.in",
     "serviceType": "TentDecor",
     "categories": [
-      "Wedding Tent",
-      "German Hanger",
-      "Waterproof Tent",
-      "Air Cooled"
+      "Jaimala Stage",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Ahmedabad",
     "locality": "SG Highway & Bopal",
@@ -1562,38 +1541,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.89,
     "reviewCount": 79,
-    "description": "Heavy all-weather waterproof German aluminum hanger structure for 1,000 to 3,000 wedding guests! Full air-cooling ducts, carpeted wooden flooring.",
+    "description": "Motorized 12-foot revolving hydraulic stage, floral ring skirtings, dual entry ramp, synchronized cold pyros, and dry-ice fog.",
     "packages": [
       {
         "id": "tent-pkg-11",
-        "name": "German Hanger Grand Wedding Pandal (100x60 ft)",
-        "category": "Wedding Tent",
-        "price": 35000,
+        "name": "12-Foot Motorized Revolving Hydraulic Stage Setup",
+        "category": "Jaimala Stage",
+        "price": 38000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 36,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "Aluminium Clear-Span German Hanger Structure (6,000 sq ft)",
-          "Flame-Retardant & 100% Waterproof White Satin Ceiling Drape",
-          "8 Industrial Air Cooling Ducts & Starlight Chandeliers",
-          "Heavy Duty Wooden Planking Base Floor with Red Carpet"
+          "Heavy Duty 12-Foot Rotating Hydraulic Stage with Smooth Speed Control",
+          "Dense Fresh Carnation & Orchid Floral Skirting along Revolving Edge",
+          "Twin Entry Elevated Stairway with Golden Railings & Red Carpet",
+          "Technician On-Site + 4 Synchronized Cold Pyro Sparkulars for Varmala"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Grand German Waterproof Pandal",
-        "category": "Wedding Tent",
-        "description": "Air-conditioned mega pandal structure for grand weddings.",
-        "imageUrl": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80",
+        "title": "Hydraulic Revolving Jaimala Stage Decorators",
+        "category": "Jaimala Stage",
+        "description": "Motorized 12-foot revolving hydraulic stage, floral ring skirtings, dual entry ramp, synchronized cold pyros, and dry-ice fog.",
+        "imageUrl": "/images/tents/tent-11.jpg",
         "tags": [
-          "German Hanger",
-          "Pandal",
-          "Ahmedabad"
+          "Jaimala Stage",
+          "Wedding"
         ],
-        "estimatedPrice": 35000
+        "estimatedPrice": 38000
       }
     ],
     "bookedDates": [
@@ -1601,16 +1579,15 @@ const SEED_VENDORS = [
     ]
   },
   {
-    "name": "Braj Vrindavan Peacock Floral Mandap (ब्रज वृंदावन मयूर व कमल कुंड मंडप)",
+    "name": "Golden Satin Wedding Celebration Pandal",
     "contactPerson": "Bhawani Singh Rathore",
     "phone": "+91 94140 88219",
     "email": "bhawani@vrindavanmandap.in",
     "serviceType": "TentDecor",
     "categories": [
-      "Mandap",
-      "Floral Decoration",
-      "Theme Decoration",
-      "Heritage"
+      "Pandal & Stage",
+      "Wedding Decor",
+      "Theme Decor"
     ],
     "city": "Jaipur",
     "locality": "Vaishali Nagar & Mansarovar",
@@ -1632,38 +1609,37 @@ const SEED_VENDORS = [
     "verificationStatus": "Verified",
     "rating": 4.96,
     "reviewCount": 82,
-    "description": "Sacred Braj Vrindavan themed wedding decor! Twin hand-carved floral peacocks, floating lotus pond pheras mandap, sacred havan asanas and marigold torans.",
+    "description": "Grand golden-yellow satin pleated backdrop, royal double sofa, crystal chandeliers, floral borders, and full VIP dining shamiana.",
     "packages": [
       {
         "id": "tent-pkg-12",
-        "name": "Vrindavan Peacock & Lotus Pheras Mandap",
-        "category": "Mandap",
-        "price": 21000,
+        "name": "Grand Golden Satin Celebration Pandal & Stage",
+        "category": "Pandal & Stage",
+        "price": 42000,
         "isPriceOnRequest": false,
         "validityDays": 30,
         "durationHours": 24,
         "performersCount": 0,
         "soundCoverage": "N/A",
         "inclusions": [
-          "8-Pillar Lotus Petal Mandap with Water Body Base",
-          "Twin 10-ft Hand-Crafted Floral Peacock Sculptures",
-          "50 kg Pure Rajnigandha & Red Rose Floral Drops",
-          "Traditional Brass Aarti Thalis & 12 Havan Asanas"
+          "40x20 ft Golden Yellow Satin Pleated Drapery Stage Backdrop",
+          "Royal Carved Double High-Back Golden Sofa Couch",
+          "Four Large Crystal Chandeliers & Warm Halo Focus Lighting",
+          "Fresh Lily, Rose & Carnation Border Headers along Whole Stage"
         ]
       }
     ],
     "themePortfolios": [
       {
-        "title": "Braj Vrindavan Peacock Mandap",
-        "category": "Mandap",
-        "description": "Traditional peacock floral sculpture and lotus pond mandap.",
-        "imageUrl": "https://images.unsplash.com/photo-1509927083803-4bd519298ac4?auto=format&fit=crop&w=800&q=80",
+        "title": "Golden Satin Wedding Celebration Pandal",
+        "category": "Pandal & Stage",
+        "description": "Grand golden-yellow satin pleated backdrop, royal double sofa, crystal chandeliers, floral borders, and full VIP dining shamiana.",
+        "imageUrl": "/images/tents/tent-12.jpg",
         "tags": [
-          "Peacock",
-          "Mandap",
-          "Vrindavan"
+          "Pandal & Stage",
+          "Wedding"
         ],
-        "estimatedPrice": 21000
+        "estimatedPrice": 42000
       }
     ],
     "bookedDates": [
@@ -1671,6 +1647,57 @@ const SEED_VENDORS = [
     ]
   }
 ];
+
+async function seedMusicTentData(disconnectOnDone = true) {
+  try {
+    const mongoUri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/milap";
+    if (mongoose.connection.readyState === 0) {
+      await mongoose.connect(mongoUri);
+      console.log("Connected to MongoDB for Music & Tent seed.");
+    }
+
+    console.log("Seeding Music & Tent vendors (12 DJ & Sound + 12 Tent Decoration in 100% English)...");
+
+    // Clear existing vendors
+    await MusicTentVendor.deleteMany({});
+    await MusicTentReview.deleteMany({});
+
+    const createdVendors = await MusicTentVendor.insertMany(SEED_VENDORS);
+    console.log(`✓ Successfully seeded ${createdVendors.length} Music & Tent vendors!`);
+
+    // Add sample reviews
+    const reviewsToInsert = [];
+    for (const v of createdVendors) {
+      reviewsToInsert.push({
+        vendor: v._id,
+        customerName: "Aakash Sharma",
+        rating: 5,
+        comment: `Exceptional service by ${v.name}! The arrangements were breathtaking and the crowd loved it.`,
+        serviceUsed: v.serviceType === "Music" ? "DJ & Sound" : "Tent & Decoration",
+        isVerifiedBooking: true,
+      });
+      reviewsToInsert.push({
+        vendor: v._id,
+        customerName: "Priyanka Roy",
+        rating: 4.8,
+        comment: "Punctual, professional, and completely stress-free coordination. Highly recommended for family events!",
+        serviceUsed: v.serviceType === "Music" ? "DJ & Sound" : "Tent & Decoration",
+        isVerifiedBooking: true,
+      });
+    }
+
+    await MusicTentReview.insertMany(reviewsToInsert);
+    console.log(`✓ Seeded ${reviewsToInsert.length} reviews for Music & Tent vendors!`);
+
+    if (disconnectOnDone) {
+      await mongoose.disconnect();
+      console.log("Disconnected from MongoDB.");
+    }
+  } catch (err) {
+    console.error("Error seeding Music & Tent data:", err);
+    throw err;
+  }
+}
 
 const SEED_REVIEWS = [
   {
@@ -1683,102 +1710,20 @@ const SEED_REVIEWS = [
     isVerifiedBooking: true,
   },
   {
-    vendorName: "BassDroppers Visuals & Club DJ Set",
-    customerName: "Aman Gupta",
+    vendorName: "Royal Rajwada Canopy Tent Decorators",
+    customerName: "Kavita & Aditya Mathur",
     rating: 5,
-    eventDate: "2026-10-02",
-    serviceUsed: "Sangeet DJ",
-    comment: "Incredible energy! The bass was punchy, lighting was flawless, and the transition between Punjabi and Bollywood tracks kept the crowd going.",
+    eventDate: "2026-10-25",
+    serviceUsed: "Tent & Decoration",
+    comment: "The crimson velvet canopy and crystal chandelier were absolutely majestic. All our guests complimented the royal palace ambiance!",
     isVerifiedBooking: true,
-  },
-  {
-    vendorName: "Shehnai Ustad Bismillah Heritage & Nagada Mandal",
-    customerName: "Harshit Agrawal",
-    rating: 5,
-    eventDate: "2026-09-15",
-    serviceUsed: "Shehnai & Nagada",
-    comment: "The morning Shehnai ragas brought tears of joy to our elders. Truly authentic Banaras tradition.",
-    isVerifiedBooking: true,
-  },
-  {
-    vendorName: "Sunset Groove Beachside DJ & Live Sax",
-    customerName: "Natasha Cooper",
-    rating: 5,
-    eventDate: "2026-10-24",
-    serviceUsed: "Sundowner Sax & DJ",
-    comment: "The saxophone playing along with Bollywood chillout was the highlight of our Alibaug cocktail night!",
-    isVerifiedBooking: true,
-  },
-  {
-    vendorName: "Acoustic Strings Sufi & Bollywood Band",
-    customerName: "Meera & Siddharth",
-    rating: 5,
-    eventDate: "2026-09-28",
-    serviceUsed: "Sufi Live Band",
-    comment: "Such soulful singing and flute melodies. Our guests are still raving about the musical ambiance.",
-    isVerifiedBooking: true,
-  },
-  {
-    vendorName: "Virasat Royal Mandap & Floral Decorators",
-    customerName: "Divya & Kabir Rathore",
-    rating: 5,
-    eventDate: "2026-10-12",
-    serviceUsed: "Royal Rajwada Mandap",
-    comment: "The Rajwada stone finish Mandap at our Jaipur wedding felt like something out of a royal fairy tale. Fresh mogra scent filled the entire palace lawn.",
-    isVerifiedBooking: true,
-  },
+  }
 ];
 
-async function seedMusicTentData() {
-  try {
-    const MONGODB_URI =
-      process.env.MONGODB_URI ||
-      "mongodb+srv://ananddev:PpxXIVSYPILYgBWf@cluster0.ovdb4wk.mongodb.net/milap?retryWrites=true&w=majority";
-
-    if (mongoose.connection.readyState !== 1) {
-      await mongoose.connect(MONGODB_URI);
-      console.log("Connected to MongoDB for Music & Tent seed.");
-    }
-
-    // Refresh vendors with 12 DJ & Sound vendors + Tent vendors
-    await MusicTentVendor.deleteMany({});
-    await MusicTentReview.deleteMany({});
-
-    console.log("Seeding Music & Tent vendors (12 DJ & Sound + Royal Tent providers)...");
-    for (const vData of SEED_VENDORS) {
-      const vendor = await MusicTentVendor.create(vData);
-
-      // Create reviews for this vendor
-      const matchedReviews = SEED_REVIEWS.filter(
-        (r) => r.vendorName === vendor.name
-      );
-      for (const r of matchedReviews) {
-        await MusicTentReview.create({
-          vendor: vendor._id,
-          customerName: r.customerName,
-          rating: r.rating,
-          eventDate: r.eventDate,
-          serviceUsed: r.serviceUsed,
-          comment: r.comment,
-          isVerifiedBooking: r.isVerifiedBooking,
-        });
-      }
-    }
-
-    console.log(`✓ Successfully seeded ${SEED_VENDORS.length} Music & Tent vendors and reviews!`);
-  } catch (err) {
-    console.error("Seed error:", err.message);
-  }
-}
-
-module.exports = {
-  SEED_VENDORS,
-  SEED_REVIEWS,
-  seedMusicTentData,
-};
-
 if (require.main === module) {
-  seedMusicTentData().then(() => {
-    mongoose.disconnect();
-  });
+  seedMusicTentData(true)
+    .then(() => process.exit(0))
+    .catch(() => process.exit(1));
 }
+
+module.exports = { seedMusicTentData, SEED_VENDORS, SEED_REVIEWS };

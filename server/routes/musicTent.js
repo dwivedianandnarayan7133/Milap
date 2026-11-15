@@ -13,7 +13,7 @@ const { SEED_VENDORS, SEED_REVIEWS } = require("../seed/musicTentSeed");
 const router = express.Router();
 
 // In-memory fallback stores when MongoDB is in disconnected state
-let inMemoryVendors = JSON.parse(JSON.stringify(SEED_VENDORS)).map((v, i) => ({
+let inMemoryVendors = JSON.parse(JSON.stringify(SEED_VENDORS || [])).map((v, i) => ({
   ...v,
   _id: new mongoose.Types.ObjectId().toString(),
   createdAt: new Date().toISOString(),
@@ -22,7 +22,7 @@ let inMemoryVendors = JSON.parse(JSON.stringify(SEED_VENDORS)).map((v, i) => ({
 let inMemoryEnquiries = [];
 let inMemoryQuotations = [];
 let inMemoryBookings = [];
-let inMemoryReviews = JSON.parse(JSON.stringify(SEED_REVIEWS)).map((r, i) => {
+let inMemoryReviews = JSON.parse(JSON.stringify(SEED_REVIEWS || [])).map((r, i) => {
   const vendor = inMemoryVendors.find((v) => v.name === r.vendorName);
   return {
     ...r,
