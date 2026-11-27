@@ -18,10 +18,39 @@ import {
   Upload,
   Image,
   Eye,
+  Navigation,
+  Compass,
 } from "lucide-react";
 import { API_BASE } from "../apiConfig";
 import { DEFAULT_VENDORS } from "./musicTentVendorsData";
 import "./MusicTentServiceView.css";
+
+// Coordinates for Indian wedding hubs
+const CITY_COORDINATES = {
+  Mumbai: { lat: 19.076, lng: 72.8777 },
+  "Delhi NCR": { lat: 28.6139, lng: 77.209 },
+  Jaipur: { lat: 26.9124, lng: 75.7873 },
+  Bengaluru: { lat: 12.9716, lng: 77.5946 },
+  Pune: { lat: 18.5204, lng: 73.8567 },
+  Lucknow: { lat: 26.8467, lng: 80.9462 },
+  Ahmedabad: { lat: 23.0225, lng: 72.5714 },
+};
+
+// Haversine distance calculator in kilometers
+function calculateDistanceKm(lat1, lon1, lat2, lon2) {
+  if (!lat1 || !lon1 || !lat2 || !lon2) return null;
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return Math.round(R * c * 10) / 10;
+}
 
 // Fallback high quality imagery for wedding vendors
 const DEFAULT_COVERS = {
@@ -52,6 +81,13 @@ export default function MusicTentServiceView({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCity, setSelectedCity] = useState("All");
   const [verifiedOnly, setVerifiedOnly] = useState(false);
+
+  // Location-based Search & Distance
+  const [userCoords, setUserCoords] = useState(null);
+  const [detectingLocation, setDetectingLocation] = useState(false);
+  const [locationStatusText, setLocationStatusText] = useState("");
+  const [maxDistanceFilter, setMaxDistanceFilter] = useState("All"); // "All" | "25" | "50" | "100"
+  const [sortBy, setSortBy] = useState("default"); // "default" | "distance" | "rating" | "price_asc" | "price_desc"
 
   // Modals
   const [selectedVendor, setSelectedVendor] = useState(null); // Detail modal
@@ -87,7 +123,7 @@ export default function MusicTentServiceView({
           setVendors(data.vendors);
         }
       } catch (err) {
-        console.warn("Could not load vendors from API, showing default 12 DJ & Sound vendors:", err);
+        console.warn("Could not load vendors from API, showing default vendors:", err);
       }
     }
     loadVendors();
@@ -111,35 +147,198 @@ export default function MusicTentServiceView({
     loadEnquiries();
   }, [authData]);
 
-  // Filtered Vendors (Very Clean Logic)
+  // Active Center Coordinates for distance measurement
+  const activeCenterCoords = useMemo(() => {
+    if (userCoords) return userCoords;
+    if (selectedCity !== "All" && CITY_COORDINATES[selectedCity]) {
+      return CITY_COORDINATES[selectedCity];
+    }
+    return null;
+  }, [userCoords, selectedCity]);
+
+  // Handle GPS "Near Me" Location Detection
+  const handleDetectLocation = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser. Please select a city.");
+      return;
+    }
+    setDetectingLocation(true);
+    setLocationStatusText("Detecting your location...");
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        setUserCoords({ lat: latitude, lng: longitude });
+        setDetectingLocation(false);
+
+        // Find nearest city
+        let nearestCity = "All";
+        let minD = Infinity;
+        Object.entries(CITY_COORDINATES).forEach(([cName, coords]) => {
+          const d = calculateDistanceKm(latitude, longitude, coords.lat, coords.lng);
+          if (d < minD) {
+            minD = d;
+            nearestCity = cName;
+          }
+        });
+
+        if (minD <= 120) {
+          setSelectedCity(nearestCity);
+          setLocationStatusText(`📍 Detected near ${nearestCity} (~${Math.round(minD)} km away)`);
+        } else {
+          setSelectedCity("All");
+          setLocationStatusText(`📍 GPS Active (${latitude.toFixed(2)}°, ${longitude.toFixed(2)}°)`);
+        }
+        setSortBy("distance");
+      },
+      (err) => {
+        setDetectingLocation(false);
+        console.warn("Geolocation error:", err.message);
+        setLocationStatusText("Location permission not granted. Please pick a city manually.");
+      },
+      { timeout: 9000, enableHighAccuracy: false }
+    );
+  };
+
+  // Dynamic City Pills with Count
+  const cityPills = useMemo(() => {
+    const modeVendors = vendors.filter((v) => {
+      if (activeMode === "Music" && v.serviceType === "TentDecor") return false;
+      if (activeMode === "TentDecor" && v.serviceType === "Music") return false;
+      return true;
+    });
+
+    const counts = { All: modeVendors.length };
+    Object.keys(CITY_COORDINATES).forEach((city) => {
+      counts[city] = modeVendors.filter(
+        (v) => v.city === city || (v.extendedServiceAreas || []).includes(city)
+      ).length;
+    });
+
+    return [
+      { name: "All", label: "🇮🇳 All India", count: counts.All },
+      ...Object.keys(CITY_COORDINATES).map((city) => ({
+        name: city,
+        label: city,
+        count: counts[city] || 0,
+      })),
+    ];
+  }, [vendors, activeMode]);
+
+  // Open Quote Modal with Auto-Filled Location
+  const openQuoteModal = (vendor) => {
+    setQuoteModalVendor(vendor);
+    setQuoteForm((prev) => ({
+      ...prev,
+      eventLocation:
+        prev.eventLocation ||
+        (selectedCity !== "All"
+          ? `${selectedCity}`
+          : vendor.locality ? `${vendor.locality}, ${vendor.city}` : vendor.city),
+    }));
+  };
+
+  // Filtered & Distance-Calculated Vendors
   const filteredVendors = useMemo(() => {
-    return vendors.filter((v) => {
+    const list = vendors.map((v) => {
+      let distanceKm = null;
+      if (activeCenterCoords && v.coordinates?.lat && v.coordinates?.lng) {
+        distanceKm = calculateDistanceKm(
+          activeCenterCoords.lat,
+          activeCenterCoords.lng,
+          v.coordinates.lat,
+          v.coordinates.lng
+        );
+      }
+      const isWithinService =
+        distanceKm !== null
+          ? distanceKm <= (v.serviceRadiusKm || 60)
+          : selectedCity === "All" || v.city === selectedCity || (v.extendedServiceAreas || []).includes(selectedCity);
+
+      return {
+        ...v,
+        distanceKm,
+        isWithinService,
+      };
+    });
+
+    const result = list.filter((v) => {
       // 1. Service Type
       if (activeMode === "Music" && v.serviceType === "TentDecor") return false;
       if (activeMode === "TentDecor" && v.serviceType === "Music") return false;
 
-      // 2. City
-      if (selectedCity !== "All" && v.city !== selectedCity) {
-        const matchExtended = (v.extendedServiceAreas || []).includes(selectedCity);
-        if (!matchExtended) return false;
+      // 2. City / Location
+      if (selectedCity !== "All") {
+        const matchesCity =
+          v.city === selectedCity ||
+          (v.extendedServiceAreas || []).includes(selectedCity) ||
+          (v.distanceKm !== null && v.distanceKm <= (v.serviceRadiusKm || 60));
+        if (!matchesCity) return false;
       }
 
-      // 3. Verified only
+      // 3. Max Distance Filter
+      if (maxDistanceFilter !== "All" && v.distanceKm !== null) {
+        if (v.distanceKm > Number(maxDistanceFilter)) return false;
+      }
+
+      // 4. Verified only
       if (verifiedOnly && v.verificationStatus !== "Verified") return false;
 
-      // 4. Keyword
+      // 5. Keyword search
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
         const matchesName = v.name?.toLowerCase().includes(q);
         const matchesCity = v.city?.toLowerCase().includes(q);
         const matchesLoc = v.locality?.toLowerCase().includes(q);
         const matchesCat = (v.categories || []).some((c) => c.toLowerCase().includes(q));
-        if (!matchesName && !matchesCity && !matchesLoc && !matchesCat) return false;
+        const matchesDesc = v.description?.toLowerCase().includes(q);
+        if (!matchesName && !matchesCity && !matchesLoc && !matchesCat && !matchesDesc) {
+          return false;
+        }
       }
 
       return true;
     });
-  }, [vendors, activeMode, selectedCity, verifiedOnly, searchQuery]);
+
+    // Sorting
+    result.sort((a, b) => {
+      if (sortBy === "distance") {
+        const da = a.distanceKm != null ? a.distanceKm : 99999;
+        const db = b.distanceKm != null ? b.distanceKm : 99999;
+        return da - db;
+      }
+      if (sortBy === "rating") {
+        return (b.rating || 0) - (a.rating || 0);
+      }
+      if (sortBy === "price_asc") {
+        const pa = a.packages?.[0]?.price || 0;
+        const pb = b.packages?.[0]?.price || 0;
+        return pa - pb;
+      }
+      if (sortBy === "price_desc") {
+        const pa = a.packages?.[0]?.price || 0;
+        const pb = b.packages?.[0]?.price || 0;
+        return pb - pa;
+      }
+      if (userCoords) {
+        const da = a.distanceKm != null ? a.distanceKm : 99999;
+        const db = b.distanceKm != null ? b.distanceKm : 99999;
+        return da - db;
+      }
+      return 0;
+    });
+
+    return result;
+  }, [
+    vendors,
+    activeMode,
+    selectedCity,
+    maxDistanceFilter,
+    verifiedOnly,
+    searchQuery,
+    sortBy,
+    activeCenterCoords,
+    userCoords,
+  ]);
 
   // Handle Image Upload with Automatic Lightweight Compression
   const handleImageUpload = (e) => {
@@ -326,11 +525,75 @@ export default function MusicTentServiceView({
       </div>
 
       {/* ============================================================
-          TAB 1: BROWSE VENDORS (CLEAN & VISUAL)
+          TAB 1: BROWSE VENDORS (CLEAN & LOCATION-AWARE)
           ============================================================ */}
       {activeTab === "browse" && (
         <div>
-          {/* Simple Search & City Filter Bar */}
+          {/* Quick Location / City Pills Bar */}
+          <div className="mt-city-pills-bar">
+            <div className="mt-city-pills-label">
+              <MapPin size={14} color="#7c3aed" />
+              <span>Location:</span>
+            </div>
+            <div className="mt-city-pills-scroll">
+              {cityPills.map((pill) => (
+                <button
+                  key={pill.name}
+                  className={`mt-city-pill ${selectedCity === pill.name && !userCoords ? "active" : ""}`}
+                  onClick={() => {
+                    setSelectedCity(pill.name);
+                    setUserCoords(null);
+                    if (pill.name === "All") {
+                      setLocationStatusText("");
+                    } else {
+                      setLocationStatusText(`📍 Filtered for ${pill.name} & service radius`);
+                    }
+                  }}
+                >
+                  <span>{pill.label}</span>
+                  <span className="mt-pill-count">{pill.count}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* GPS "Near Me" Button */}
+            <button
+              className={`mt-detect-gps-btn ${detectingLocation ? "detecting" : ""} ${userCoords ? "active" : ""}`}
+              onClick={handleDetectLocation}
+              title="Detect your current location"
+            >
+              <Navigation size={13} />
+              <span>{detectingLocation ? "Detecting..." : userCoords ? "GPS Active" : "Near Me"}</span>
+            </button>
+          </div>
+
+          {/* Location Status & Active Filters Banner */}
+          {(locationStatusText || selectedCity !== "All" || maxDistanceFilter !== "All" || userCoords) && (
+            <div className="mt-location-status-banner">
+              <div className="mt-location-status-left">
+                <Compass size={14} color="#7c3aed" />
+                <span>
+                  {locationStatusText || `📍 Location: ${selectedCity}`}
+                  {maxDistanceFilter !== "All" ? ` • Within ${maxDistanceFilter} km` : ""}
+                  {` • Showing ${filteredVendors.length} provider(s)`}
+                </span>
+              </div>
+              <button
+                className="mt-location-reset-btn"
+                onClick={() => {
+                  setSelectedCity("All");
+                  setUserCoords(null);
+                  setMaxDistanceFilter("All");
+                  setLocationStatusText("");
+                  setSortBy("default");
+                }}
+              >
+                Reset Location
+              </button>
+            </div>
+          )}
+
+          {/* Search, City, Distance & Sort Bar */}
           <div className="mt-search-bar">
             <div className="mt-search-input-wrap">
               <Search size={16} color="#94a3b8" />
@@ -338,25 +601,61 @@ export default function MusicTentServiceView({
                 type="text"
                 placeholder={
                   activeMode === "Music"
-                    ? "Search DJs, bands, shehnai, sound systems..."
-                    : "Search mandaps, tents, floral decor, stages..."
+                    ? "Search DJs, bands, shehnai, sound systems, locality..."
+                    : "Search mandaps, tents, floral decor, stages, locality..."
                 }
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
 
+            {/* City Selector */}
             <select
               className="mt-filter-select"
               value={selectedCity}
-              onChange={(e) => setSelectedCity(e.target.value)}
+              onChange={(e) => {
+                setSelectedCity(e.target.value);
+                setUserCoords(null);
+                if (e.target.value === "All") {
+                  setLocationStatusText("");
+                } else {
+                  setLocationStatusText(`📍 Filtered for ${e.target.value}`);
+                }
+              }}
             >
               <option value="All">All Cities (Pan-India)</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Delhi NCR">Delhi NCR</option>
-              <option value="Jaipur">Jaipur</option>
-              <option value="Bengaluru">Bengaluru</option>
-              <option value="Pune">Pune</option>
+              {Object.keys(CITY_COORDINATES).map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
+
+            {/* Distance Radius Filter */}
+            <select
+              className="mt-filter-select"
+              value={maxDistanceFilter}
+              onChange={(e) => setMaxDistanceFilter(e.target.value)}
+              title="Filter by distance from location"
+            >
+              <option value="All">Any Distance</option>
+              <option value="25">Within 25 km</option>
+              <option value="50">Within 50 km</option>
+              <option value="100">Within 100 km</option>
+            </select>
+
+            {/* Sort Dropdown */}
+            <select
+              className="mt-filter-select"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              title="Sort vendors"
+            >
+              <option value="default">Sort: Recommended</option>
+              <option value="distance">Sort: Nearest Distance</option>
+              <option value="rating">Sort: Top Rated</option>
+              <option value="price_asc">Sort: Price (Low to High)</option>
+              <option value="price_desc">Sort: Price (High to Low)</option>
             </select>
 
             <label className="mt-verified-toggle">
@@ -384,9 +683,9 @@ export default function MusicTentServiceView({
                 border: "1px solid #e2e8f0",
               }}
             >
-              <h3 style={{ margin: "0 0 6px", color: "#334155" }}>No services found</h3>
+              <h3 style={{ margin: "0 0 6px", color: "#334155" }}>No services found in this location</h3>
               <p style={{ margin: 0, color: "#94a3b8", fontSize: "14px" }}>
-                Try changing your search term or select "All Cities".
+                Try selecting "All India" or expanding your distance radius.
               </p>
             </div>
           ) : (
@@ -442,12 +741,39 @@ export default function MusicTentServiceView({
                         </div>
                       </div>
 
-                      <div className="mt-card-location">
-                        <MapPin size={13} />
-                        <span>
-                          {vendor.locality ? `${vendor.locality}, ` : ""}
-                          {vendor.city}
-                        </span>
+                      {/* Location & Distance Line */}
+                      <div className="mt-card-location-row">
+                        <div className="mt-card-location">
+                          <MapPin size={13} color="#7c3aed" />
+                          <span>
+                            {vendor.locality ? `${vendor.locality}, ` : ""}
+                            {vendor.city}
+                          </span>
+                        </div>
+                        {vendor.distanceKm !== null && (
+                          <span
+                            className={`mt-distance-badge ${
+                              vendor.isWithinService ? "nearby" : "outstation"
+                            }`}
+                            title={
+                              vendor.isWithinService
+                                ? `Within service area (${vendor.serviceRadiusKm || 50} km)`
+                                : `Outstation distance: travel surcharge may apply`
+                            }
+                          >
+                            <Navigation size={10} /> {vendor.distanceKm} km away
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Coverage Info */}
+                      <div className="mt-card-coverage-info">
+                        <span>✓ Serves up to {vendor.serviceRadiusKm || 50} km</span>
+                        {vendor.extendedServiceAreas?.length > 0 && (
+                          <span className="mt-coverage-extended">
+                            • Covers: {vendor.extendedServiceAreas.slice(0, 2).join(", ")}
+                          </span>
+                        )}
                       </div>
 
                       {/* Clean 1-line services */}
@@ -471,7 +797,7 @@ export default function MusicTentServiceView({
                           </button>
                           <button
                             className="mt-btn-primary"
-                            onClick={() => setQuoteModalVendor(vendor)}
+                            onClick={() => openQuoteModal(vendor)}
                           >
                             Get Quote
                           </button>
@@ -682,6 +1008,22 @@ export default function MusicTentServiceView({
               {selectedVendor.city} • Serves radius up to {selectedVendor.serviceRadiusKm || 50} km
             </div>
 
+            {/* Location & Coverage Breakdown */}
+            <div style={{ background: "#f5f3ff", border: "1px solid #ddd6fe", padding: "12px 14px", borderRadius: "10px", marginBottom: "14px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", fontWeight: "700", fontSize: "13px", color: "#5b21b6", marginBottom: "4px" }}>
+                <MapPin size={14} color="#7c3aed" /> Service Location & Coverage
+              </div>
+              <div style={{ fontSize: "12.5px", color: "#4c1d95" }}>
+                Base: <strong>{selectedVendor.locality ? `${selectedVendor.locality}, ` : ""}{selectedVendor.city}</strong>
+                {selectedVendor.serviceRadiusKm ? ` • Local transit included up to ${selectedVendor.serviceRadiusKm} km` : ""}
+              </div>
+              {selectedVendor.extendedServiceAreas?.length > 0 && (
+                <div style={{ fontSize: "12px", color: "#6b21a8", marginTop: "4px" }}>
+                  Also serves: {selectedVendor.extendedServiceAreas.join(", ")}
+                </div>
+              )}
+            </div>
+
             <p style={{ fontSize: "13.5px", lineHeight: "1.5", color: "#475569", margin: "0 0 16px" }}>
               {selectedVendor.description}
             </p>
@@ -709,7 +1051,7 @@ export default function MusicTentServiceView({
                 onClick={() => {
                   const v = selectedVendor;
                   setSelectedVendor(null);
-                  setQuoteModalVendor(v);
+                  openQuoteModal(v);
                 }}
               >
                 Request Free Quote
@@ -730,8 +1072,29 @@ export default function MusicTentServiceView({
             </button>
 
             <h2 style={{ margin: "0 0 4px", fontSize: "19px" }}>Request Free Quote</h2>
-            <div style={{ fontSize: "13px", color: "#64748b", marginBottom: "16px" }}>
+            <div style={{ fontSize: "13px", color: "#64748b", marginBottom: "8px" }}>
               Vendor: <strong>{quoteModalVendor.name}</strong>
+            </div>
+
+            {/* Location Verification Tag */}
+            <div
+              style={{
+                background: "#f0fdf4",
+                border: "1px solid #bbf7d0",
+                padding: "8px 12px",
+                borderRadius: "8px",
+                marginBottom: "14px",
+                fontSize: "12px",
+                color: "#166534",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+              }}
+            >
+              <MapPin size={13} color="#16a34a" />
+              <span>
+                Based in <strong>{quoteModalVendor.locality ? `${quoteModalVendor.locality}, ` : ""}{quoteModalVendor.city}</strong> (Service Radius: {quoteModalVendor.serviceRadiusKm || 50} km)
+              </span>
             </div>
 
             <form onSubmit={handleSendQuote}>
